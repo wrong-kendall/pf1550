@@ -100,13 +100,6 @@ struct SiliconRev : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
-
-struct _STATE_INFO {
-  static const uint8_t REG = 0x67;
-  static const uint8_t MASK = BITS_5_4_3_2_1_0;
-  struct _STATE {
-  } STATE;
-};
 struct StateInfo : public I2CRegister {
   struct StateMask : public Mask {
     StateMask(uint8_t mask) : Mask(mask) {}
@@ -122,13 +115,6 @@ struct StateInfo : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
-struct _I2C_ADDR {
-  static const uint8_t REG = 0x68;
-  static const uint8_t MASK = BITS_2_1_0;
-  struct _ADDR {
-  } ADDR;
-};
-
 struct I2CAddr : public I2CRegister {
   struct AddrMask : public Mask {
     static const uint8_t DEFAULT;
@@ -147,18 +133,6 @@ struct I2CAddr : public I2CRegister {
 
 private:
   static const uint8_t kRegister;
-};
-
-struct _RC_16MHZ {
-  static const uint8_t REG = 0x6B;
-  struct _ACORE_ON {
-    static const uint8_t MASK = BITS_1;
-  } ACORE_ON;
-  struct _REQ_ACORE_HIPWR {
-    static const uint8_t MASK = BITS_2;
-    static const uint8_t LOW_POWER_STATEMACHINE_CONTROLLED = BITS_NONE;
-    static const uint8_t LOW_POWER_NEVER = BITS_2;
-  } REQ_ACORE_HIPWR;
 };
 
 struct RC16Mhz : public I2CRegister {
@@ -670,3 +644,154 @@ private:
   static const uint8_t kRegister;
 };
 // End Misch.h
+
+// Charger.h
+struct ChgInt : public I2CRegister {
+  struct SupIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    SupIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Bat2SocIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    Bat2SocIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct BatIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    BatIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ChgIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    ChgIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VbusIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    VbusIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VbusDpmIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    VbusDpmIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ThmIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    ThmIMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const SupIMask kSupIMask;
+  static const Bat2SocIMask kBat2SocIMask;
+  static const BatIMask kBatIMask;
+  static const ChgIMask kChgIMask;
+  static const VbusIMask kVbusIMask;
+  static const VbusDpmIMask kVbusDpmIMask;
+  static const ThmIMask kThmIMask;
+
+  ChgInt(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+
+struct ChgIntMask : public I2CRegister {
+  struct SupMMask : public Mask {
+    static const uint8_t MASKED;
+    static const uint8_t UNMASKED;
+    SupMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Bat2SocMMask : public Mask {
+    static const uint8_t MASKED;
+    static const uint8_t UNMASKED;
+    Bat2SocMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct BatMMask : public Mask {
+    static const uint8_t MASKED;
+    static const uint8_t UNMASKED;
+    BatMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ChgMMask : public Mask {
+    static const uint8_t MASKED;
+    static const uint8_t UNMASKED;
+    ChgMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VbusMMask : public Mask {
+    static const uint8_t MASKED;
+    static const uint8_t UNMASKED;
+    VbusMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VbusDpmMMask : public Mask {
+    static const uint8_t MASKED;
+    static const uint8_t UNMASKED;
+    VbusDpmMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ThmMMask : public Mask {
+    static const uint8_t MASKED;
+    static const uint8_t UNMASKED;
+    ThmMMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const SupMMask kSupMMask;
+  static const Bat2SocMMask kBat2SocMMask;
+  static const BatMMask kBatMMask;
+  static const ChgMMask kChgMMask;
+  static const VbusMMask kVbusMMask;
+  static const VbusDpmMMask kVbusDpmMMask;
+  static const ThmMMask kThmMMask;
+
+  ChgIntMask(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+
+struct ChgIntOk : public I2CRegister {
+  struct SupOkMask : public Mask {
+    static const uint8_t DETECTED;
+    static const uint8_t NOT_DETECTED;
+    SupOkMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Bat2SocOkMask : public Mask {
+    static const uint8_t OVERCURRENT;
+    static const uint8_t NOT_OVERCURRENT;
+    Bat2SocOkMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct BatOkMask : public Mask {
+    static const uint8_t BAT_OK;
+    static const uint8_t BAT_ISSUE;
+    BatOkMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ChgOkMask : public Mask {
+    static const uint8_t CHG_OK;
+    static const uint8_t NOT_CHARGING;
+    ChgOkMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VbusOkMask : public Mask {
+    static const uint8_t INVALID;
+    static const uint8_t VALID;
+    VbusOkMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VbusDpmOkMask : public Mask {
+    static const uint8_t DPM;
+    static const uint8_t NO_DPM;
+    VbusDpmOkMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ThmOkMask : public Mask {
+    static const uint8_t WITHIN_THRESHOLD;
+    static const uint8_t OUTSIDE_THRESHOLD;
+    ThmOkMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const SupOkMask kSupOkMask;
+  static const Bat2SocOkMask kBat2SocOkMask;
+  static const BatOkMask kBatOkMask;
+  static const ChgOkMask kChgOkMask;
+  static const VbusOkMask kVbusOkMask;
+  static const VbusDpmOkMask kVbusDpmOkMask;
+  static const ThmOkMask kThmOkMask;
+
+  ChgIntOk(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};

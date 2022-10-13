@@ -272,3 +272,52 @@ const VREFDDRPwrDnSeq::VREFDDRPwrDnSeqMask
 const uint8_t Key1::kRegister = 0x6B;
 const Key1::Key1Mask Key1::kKey1Mask(BITS_2_1_0);
 // End Misc.h
+
+// Charger.h
+static const uint8_t SPECIFIC_REGISTER_OFFSET = 0x80;
+
+const uint8_t ChgInt::kRegister = 0x00 + SPECIFIC_REGISTER_OFFSET;
+const ChgInt::SupIMask ChgInt::kSupIMask(BITS_0);
+const uint8_t ChgInt::SupIMask::CLEARED = BITS_NONE;
+const uint8_t ChgInt::SupIMask::ACTIVE = BITS_0;
+const ChgInt::Bat2SocIMask ChgInt::kBat2SocIMask(BITS_1);
+const uint8_t ChgInt::Bat2SocIMask::CLEARED = BITS_NONE;
+const uint8_t ChgInt::Bat2SocIMask::ACTIVE = BITS_1;
+const ChgInt::BatIMask ChgInt::kBatIMask(BITS_2);
+const uint8_t ChgInt::BatIMask::CLEARED = BITS_NONE;
+const uint8_t ChgInt::BatIMask::ACTIVE = BITS_2;
+const ChgInt::ChgIMask ChgInt::kChgIMask(BITS_3);
+const uint8_t ChgInt::ChgIMask::CLEARED = BITS_NONE;
+const uint8_t ChgInt::ChgIMask::ACTIVE = BITS_3;
+const ChgInt::VbusIMask ChgInt::kVbusIMask(BITS_5);
+const uint8_t ChgInt::VbusIMask::CLEARED = BITS_NONE;
+const uint8_t ChgInt::VbusIMask::ACTIVE = BITS_5;
+const ChgInt::VbusDpmIMask ChgInt::kVbusDpmIMask(BITS_6);
+const uint8_t ChgInt::VbusDpmIMask::CLEARED = BITS_NONE;
+const uint8_t ChgInt::VbusDpmIMask::ACTIVE = BITS_6;
+const ChgInt::ThmIMask ChgInt::kThmIMask(BITS_7);
+const uint8_t ChgInt::ThmIMask::CLEARED = BITS_NONE;
+const uint8_t ChgInt::ThmIMask::ACTIVE = BITS_7;
+
+const uint8_t ChgIntOk::kRegister = 0x04 + SPECIFIC_REGISTER_OFFSET;
+const ChgIntOk::SupOkMask ChgIntOk::kSupOkMask(BITS_0);
+const uint8_t ChgIntOk::SupOkMask::NOT_DETECTED = BITS_NONE;
+const uint8_t ChgIntOk::SupOkMask::DETECTED = BITS_0;
+const ChgIntOk::Bat2SocOkMask ChgIntOk::kBat2SocOkMask(BITS_1);
+const uint8_t ChgIntOk::Bat2SocOkMask::NOT_OVERCURRENT = BITS_NONE;
+const uint8_t ChgIntOk::Bat2SocOkMask::OVERCURRENT = BITS_1;
+const ChgIntOk::BatOkMask ChgIntOk::kBatOkMask(BITS_2);
+const uint8_t ChgIntOk::BatOkMask::BAT_ISSUE = BITS_NONE;
+const uint8_t ChgIntOk::BatOkMask::BAT_OK = BITS_2;
+const ChgIntOk::ChgOkMask ChgIntOk::kChgOkMask(BITS_3);
+const uint8_t ChgIntOk::ChgOkMask::NOT_CHARGING = BITS_NONE;
+const uint8_t ChgIntOk::ChgOkMask::CHG_OK = BITS_3;
+const ChgIntOk::VbusOkMask ChgIntOk::kVbusOkMask(BITS_5);
+const uint8_t ChgIntOk::VbusOkMask::INVALID = BITS_NONE;
+const uint8_t ChgIntOk::VbusOkMask::VALID = BITS_5;
+const ChgIntOk::VbusDpmOkMask ChgIntOk::kVbusDpmOkMask(BITS_6);
+const uint8_t ChgIntOk::VbusDpmOkMask::NO_DPM = BITS_NONE;
+const uint8_t ChgIntOk::VbusDpmOkMask::DPM = BITS_6;
+const ChgIntOk::ThmOkMask ChgIntOk::kThmOkMask(BITS_7);
+const uint8_t ChgIntOk::ThmOkMask::OUTSIDE_THRESHOLD = BITS_NONE;
+const uint8_t ChgIntOk::ThmOkMask::WITHIN_THRESHOLD = BITS_7;
