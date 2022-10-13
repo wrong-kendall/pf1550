@@ -408,3 +408,16 @@ const uint8_t ChgTmr::EoCTimeMask::_70M = BITS_2_1_0;
 const ChgTmr::TPreChgMask ChgTmr::kTPreChgMask(BITS_7);
 const uint8_t ChgTmr::TPreChgMask::_30M = BITS_NONE;
 const uint8_t ChgTmr::TPreChgMask::_45M = BITS_7;
+
+const uint8_t ChgEoCCnfg::kRegister = 0x0D + SPECIFIC_REGISTER_OFFSET;
+const ChgEoCCnfg::ChgRestartMask ChgEoCCnfg::kChgRestartMask(BITS_1_0);
+const uint8_t ChgEoCCnfg::ChgRestartMask::_100MV = BITS_NONE;
+const uint8_t ChgEoCCnfg::ChgRestartMask::_150MV = BITS_0;
+const uint8_t ChgEoCCnfg::ChgRestartMask::_200MV = BITS_1;
+const uint8_t ChgEoCCnfg::ChgRestartMask::DISABLED = BITS_1_0;
+const ChgEoCCnfg::IEoCMask ChgEoCCnfg::kIEoCMask(BITS_6_5_4);
+const uint8_t ChgEoCCnfg::IEoCMask::_5MA = BITS_NONE;
+const uint8_t ChgEoCCnfg::IEoCMask::_10MA = BITS_4;
+const uint8_t ChgEoCCnfg::IEoCMask::_20MA = BITS_5;
+const uint8_t ChgEoCCnfg::IEoCMask::_30MA = BITS_5_4;
+const uint8_t ChgEoCCnfg::IEoCMask::_50MA = BITS_6;

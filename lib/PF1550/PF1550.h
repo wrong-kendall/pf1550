@@ -964,3 +964,28 @@ struct ChgTmr : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct ChgEoCCnfg : public I2CRegister {
+  struct ChgRestartMask : public Mask {
+    static const uint8_t _100MV;
+    static const uint8_t _150MV;
+    static const uint8_t _200MV;
+    static const uint8_t DISABLED;
+    ChgRestartMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct IEoCMask : public Mask {
+    static const uint8_t _5MA;
+    static const uint8_t _10MA;
+    static const uint8_t _20MA;
+    static const uint8_t _30MA;
+    static const uint8_t _50MA;
+    IEoCMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const ChgRestartMask kChgRestartMask;
+  static const IEoCMask kIEoCMask;
+  ChgEoCCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
