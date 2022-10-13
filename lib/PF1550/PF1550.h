@@ -795,3 +795,39 @@ struct ChgIntOk : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct VbusSns : public I2CRegister {
+  struct VbusUvloSnsMask : public Mask {
+    static const uint8_t VBUS_DETACHED;
+    static const uint8_t VBUS_GT_UVLO;
+    VbusUvloSnsMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VbusIn2SysSnsMask : public Mask {
+    static const uint8_t GT;
+    static const uint8_t LT;
+    VbusIn2SysSnsMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VbusOvloSnsMask : public Mask {
+    static const uint8_t GT;
+    static const uint8_t LT;
+    VbusOvloSnsMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VbusValidMask : public Mask {
+    static const uint8_t INVALID;
+    static const uint8_t VALID;
+    VbusValidMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VbusDpmSnsMask : public Mask {
+    static const uint8_t NOT_TRIGGERED;
+    static const uint8_t TRIGGERED;
+    VbusDpmSnsMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const VbusUvloSnsMask kVbusUvloSnsMask;
+  static const VbusIn2SysSnsMask kVbusIn2SysSnsMask;
+  static const VbusOvloSnsMask kVbusOvloSnsMask;
+  static const VbusValidMask kVbusValidMask;
+  static const VbusDpmSnsMask kVbusDpmSnsMask;
+
+private:
+  static const uint8_t kRegister;
+};
