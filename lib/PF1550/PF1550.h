@@ -556,3 +556,37 @@ struct MiscIntSense0 : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct CoinCellControl : public I2CRegister {
+  struct VCoinMask : public Mask {
+    static const uint8_t _1_8;
+    static const uint8_t _1_9;
+    static const uint8_t _2_0;
+    static const uint8_t _2_1;
+    static const uint8_t _2_2;
+    static const uint8_t _2_3;
+    static const uint8_t _2_4;
+    static const uint8_t _2_5;
+    static const uint8_t _2_6;
+    static const uint8_t _2_7;
+    static const uint8_t _2_8;
+    static const uint8_t _2_9;
+    static const uint8_t _3_0;
+    static const uint8_t _3_1;
+    static const uint8_t _3_2;
+    static const uint8_t _3_3;
+    VCoinMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ChEnMask : public Mask {
+    static const uint8_t DISABLED;
+    static const uint8_t ENABLED;
+    ChEnMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const VCoinMask kVCoinMask;
+  static const ChEnMask kChEnMask;
+  CoinCellControl(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
