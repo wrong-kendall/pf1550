@@ -249,3 +249,21 @@ const uint8_t VSNVSCtrl::ForceBOSMask::ONLY_VSYS_LT_VDIV = BITS_NONE;
 const VSNVSCtrl::LiBGDisMask VSNVSCtrl::kLiBGDisMask(BITS_4);
 const uint8_t VSNVSCtrl::LiBGDisMask::VSNVS_BAND_GAP_DISABLED = BITS_NONE;
 const uint8_t VSNVSCtrl::LiBGDisMask::VSNVS_BAND_GAP_ENABLED = BITS_5;
+
+const uint8_t VREFDDRCtrl::kRegister = 0x4A;
+const VREFDDRCtrl::VREFDDREnMask VREFDDRCtrl::kVREFDDREnMask(BITS_0);
+const uint8_t VREFDDRCtrl::VREFDDREnMask::ENABLE = BITS_0;
+const uint8_t VREFDDRCtrl::VREFDDREnMask::DISABLE = BITS_NONE;
+const VREFDDRCtrl::VREFDDRStbyEnMask VREFDDRCtrl::kVREFDDRStbyEnMask(BITS_1);
+const uint8_t VREFDDRCtrl::VREFDDRStbyEnMask::ENABLE = BITS_1;
+const uint8_t VREFDDRCtrl::VREFDDRStbyEnMask::DISABLE = BITS_NONE;
+const VREFDDRCtrl::VREFDDROModeMask VREFDDRCtrl::kVREFDDROModeMask(BITS_2);
+const uint8_t VREFDDRCtrl::VREFDDROModeMask::ENABLE = BITS_2;
+const uint8_t VREFDDRCtrl::VREFDDROModeMask::DISABLE = BITS_NONE;
+const VREFDDRCtrl::VREFDDRLPwrMask VREFDDRCtrl::kVREFDDRLPwrMask(BITS_3);
+const uint8_t VREFDDRCtrl::VREFDDRLPwrMask::ENABLE = BITS_3;
+const uint8_t VREFDDRCtrl::VREFDDRLPwrMask::DISABLE = BITS_NONE;
+
+const uint8_t VREFDDRPwrDnSeq::kRegister = 0x65;
+const VREFDDRPwrDnSeq::VREFDDRPwrDnSeqMask
+    VREFDDRPwrDnSeq::kVREFDDRPwrDnSeqMask(BITS_2_1_0);

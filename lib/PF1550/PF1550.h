@@ -613,3 +613,47 @@ struct VSNVSCtrl : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct VREFDDRCtrl : public I2CRegister {
+  struct VREFDDREnMask : public Mask {
+    static const uint8_t DISABLE;
+    static const uint8_t ENABLE;
+    VREFDDREnMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VREFDDRStbyEnMask : public Mask {
+    static const uint8_t DISABLE;
+    static const uint8_t ENABLE;
+    VREFDDRStbyEnMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VREFDDROModeMask : public Mask {
+    static const uint8_t DISABLE;
+    static const uint8_t ENABLE;
+    VREFDDROModeMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VREFDDRLPwrMask : public Mask {
+    static const uint8_t DISABLE;
+    static const uint8_t ENABLE;
+    VREFDDRLPwrMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const VREFDDREnMask kVREFDDREnMask;
+  static const VREFDDRStbyEnMask kVREFDDRStbyEnMask;
+  static const VREFDDROModeMask kVREFDDROModeMask;
+  static const VREFDDRLPwrMask kVREFDDRLPwrMask;
+  VREFDDRCtrl(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+struct VREFDDRPwrDnSeq : public I2CRegister {
+  struct VREFDDRPwrDnSeqMask : public Mask {
+    // TODO(kendall): Add specific masks/values.
+    VREFDDRPwrDnSeqMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const VREFDDRPwrDnSeqMask kVREFDDRPwrDnSeqMask;
+  VREFDDRPwrDnSeq(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
