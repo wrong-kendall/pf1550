@@ -926,3 +926,41 @@ struct ChgOper : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct ChgTmr : public I2CRegister {
+  struct FChgTimeMask : public Mask {
+    static const uint8_t DISABLE;
+    static const uint8_t _2HR;
+    static const uint8_t _4HR;
+    static const uint8_t _6HR;
+    static const uint8_t _8HR;
+    static const uint8_t _10HR;
+    static const uint8_t _12HR;
+    static const uint8_t _14HR;
+    FChgTimeMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct EoCTimeMask : public Mask {
+    static const uint8_t _0M;
+    static const uint8_t _10M;
+    static const uint8_t _20M;
+    static const uint8_t _30M;
+    static const uint8_t _40M;
+    static const uint8_t _50M;
+    static const uint8_t _60M;
+    static const uint8_t _70M;
+    EoCTimeMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct TPreChgMask : public Mask {
+    static const uint8_t _30M;
+    static const uint8_t _45M;
+    TPreChgMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const FChgTimeMask kFChgTimeMask;
+  static const EoCTimeMask kEoCTimeMask;
+  static const TPreChgMask kTPreChgMask;
+
+  ChgTmr(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
