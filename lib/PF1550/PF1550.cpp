@@ -361,3 +361,15 @@ const uint8_t ChgSns::ThmSnsMask::WITHIN_THRESHOLDS = BITS_5;
 const ChgSns::TregSnsMask ChgSns::kTregSnsMask(BITS_7);
 const uint8_t ChgSns::TregSnsMask::LESS_THAN_THRESHOLD = BITS_NONE;
 const uint8_t ChgSns::TregSnsMask::GREATER_THAN_THRESHOLD = BITS_7;
+
+const uint8_t BattSns::kRegister = 0x08 + SPECIFIC_REGISTER_OFFSET;
+const BattSns::BattSnsMask BattSns::kBattSnsMask(BITS_2_1_0);
+const uint8_t BattSns::BattSnsMask::VBUS_INVALID = BITS_NONE;
+const uint8_t BattSns::BattSnsMask::VBATT_LT_PRECHG = BITS_0;
+const uint8_t BattSns::BattSnsMask::CHG_SUSPENDED = BITS_1;
+const uint8_t BattSns::BattSnsMask::VBATT_GT_PRECHG = BITS_2;
+const uint8_t BattSns::BattSnsMask::OVERVOLTAGE = BITS_2_0;
+const uint8_t BattSns::BattSnsMask::NOT_DETECTED = BITS_2_1;
+const BattSns::BattOCSnsMask BattSns::kBattOCSnsMask(BITS_5);
+const uint8_t BattSns::BattOCSnsMask::NOFAULT = BITS_NONE;
+const uint8_t BattSns::BattOCSnsMask::FAULT = BITS_5;

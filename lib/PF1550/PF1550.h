@@ -874,3 +874,27 @@ struct ChgSns : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct BattSns : public I2CRegister {
+  struct BattSnsMask : public Mask {
+    static const uint8_t VBUS_INVALID;
+    static const uint8_t VBATT_LT_PRECHG;
+    static const uint8_t CHG_SUSPENDED;
+    static const uint8_t VBATT_GT_PRECHG;
+    static const uint8_t OVERVOLTAGE;
+    static const uint8_t NOT_DETECTED;
+    BattSnsMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct BattOCSnsMask : public Mask {
+    static const uint8_t NOFAULT;
+    static const uint8_t FAULT;
+    BattOCSnsMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const BattSnsMask kBattSnsMask;
+  static const BattOCSnsMask kBattOCSnsMask;
+
+  BattSns(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
