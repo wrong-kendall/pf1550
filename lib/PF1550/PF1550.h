@@ -898,3 +898,31 @@ struct BattSns : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct ChgOper : public I2CRegister {
+  struct ChgOperMask : public Mask {
+    static const uint8_t CHG_OFF_LINEAR_OFF;
+    static const uint8_t CHG_OFF_LINEAR_ON;
+    static const uint8_t CHG_ON_LINEAR_ON;
+    ChgOperMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct WdtEnMask : public Mask {
+    static const uint8_t WATCHDOG_DISABLED;
+    static const uint8_t WATCHDOG_ENABLED;
+    WdtEnMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct DisBattFetMask : public Mask {
+    static const uint8_t FET_STATEMACHINE;
+    static const uint8_t FET_FORCED_OFF;
+    DisBattFetMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const ChgOperMask kChgOperMask;
+  static const WdtEnMask kWdtEnMask;
+  static const DisBattFetMask kDisBattFetMask;
+
+  ChgOper(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};

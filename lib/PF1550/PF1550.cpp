@@ -373,3 +373,15 @@ const uint8_t BattSns::BattSnsMask::NOT_DETECTED = BITS_2_1;
 const BattSns::BattOCSnsMask BattSns::kBattOCSnsMask(BITS_5);
 const uint8_t BattSns::BattOCSnsMask::NOFAULT = BITS_NONE;
 const uint8_t BattSns::BattOCSnsMask::FAULT = BITS_5;
+
+const uint8_t ChgOper::kRegister = 0x09 + SPECIFIC_REGISTER_OFFSET;
+const ChgOper::ChgOperMask ChgOper::kChgOperMask(BITS_1_0);
+const uint8_t ChgOper::ChgOperMask::CHG_OFF_LINEAR_OFF = BITS_NONE;
+const uint8_t ChgOper::ChgOperMask::CHG_OFF_LINEAR_ON = BITS_0;
+const uint8_t ChgOper::ChgOperMask::CHG_ON_LINEAR_ON = BITS_1;
+const ChgOper::WdtEnMask ChgOper::kWdtEnMask(BITS_3);
+const uint8_t ChgOper::WdtEnMask::WATCHDOG_DISABLED = BITS_NONE;
+const uint8_t ChgOper::WdtEnMask::WATCHDOG_ENABLED = BITS_3;
+const ChgOper::DisBattFetMask ChgOper::kDisBattFetMask(BITS_4);
+const uint8_t ChgOper::DisBattFetMask::FET_STATEMACHINE = BITS_NONE;
+const uint8_t ChgOper::DisBattFetMask::FET_FORCED_OFF = BITS_4;
