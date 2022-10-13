@@ -989,3 +989,44 @@ struct ChgEoCCnfg : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct ChgCurrCnfg : public I2CRegister {
+  struct ChgCcMask : public Mask {
+    static const uint8_t _100MA;
+    static const uint8_t _150MA;
+    static const uint8_t _200MA;
+    static const uint8_t _250MA;
+    static const uint8_t _300MA;
+    static const uint8_t _350MA;
+    static const uint8_t _400MA;
+    static const uint8_t _450MA;
+    static const uint8_t _500MA;
+    static const uint8_t _550MA;
+    static const uint8_t _600MA;
+    static const uint8_t _650MA;
+    static const uint8_t _700MA;
+    static const uint8_t _750MA;
+    static const uint8_t _800MA;
+    static const uint8_t _850MA;
+    static const uint8_t _900MA;
+    static const uint8_t _950MA;
+    static const uint8_t _1000MA;
+    ChgCcMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct PreChgLbThrsMask : public Mask {
+    static const uint8_t _2_8V;
+    static const uint8_t _2_7V;
+    static const uint8_t _2_9V;
+    static const uint8_t _3_0V;
+    PreChgLbThrsMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const ChgCcMask kChgCcMask;
+  static const PreChgLbThrsMask kPreChgLbThrsMask;
+
+  ChgCurrCnfg(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
