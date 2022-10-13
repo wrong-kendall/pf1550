@@ -828,6 +828,49 @@ struct VbusSns : public I2CRegister {
   static const VbusValidMask kVbusValidMask;
   static const VbusDpmSnsMask kVbusDpmSnsMask;
 
+  VbusSns(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+
+struct ChgSns : public I2CRegister {
+  struct ChgSnsMask : public Mask {
+    static const uint8_t PRECHARGE;
+    static const uint8_t FAST_CHARGE_CC;
+    static const uint8_t FAST_CHARGE_CV;
+    static const uint8_t END_OF_CHARGE;
+    static const uint8_t DONE;
+    static const uint8_t TIMER_FAULT;
+    static const uint8_t THERMISTOR_SUSPEND;
+    static const uint8_t OFF_INVALID_OR_DISABLED;
+    static const uint8_t OVERVOLTAGE;
+    static const uint8_t CHG_THERMAL_OFF;
+    static const uint8_t LINEAR_ONLY_NO_CHARGE;
+    ChgSnsMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct WdtSnsMask : public Mask {
+    static const uint8_t CHG_OFF_WATCHDOG;
+    static const uint8_t WATCHDOG_NOT_EXPIRED;
+    WdtSnsMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ThmSnsMask : public Mask {
+    static const uint8_t WITHIN_THRESHOLDS;
+    static const uint8_t OUTSIDE_THRESHOLDS;
+    ThmSnsMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct TregSnsMask : public Mask {
+    static const uint8_t GREATER_THAN_THRESHOLD;
+    static const uint8_t LESS_THAN_THRESHOLD;
+    TregSnsMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const ChgSnsMask kChgSnsMask;
+  static const WdtSnsMask kWdtSnsMask;
+  static const ThmSnsMask kThmSnsMask;
+  static const TregSnsMask kTregSnsMask;
+
+  ChgSns(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
 private:
   static const uint8_t kRegister;
 };
