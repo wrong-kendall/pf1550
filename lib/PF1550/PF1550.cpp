@@ -267,3 +267,8 @@ const uint8_t VREFDDRCtrl::VREFDDRLPwrMask::DISABLE = BITS_NONE;
 const uint8_t VREFDDRPwrDnSeq::kRegister = 0x65;
 const VREFDDRPwrDnSeq::VREFDDRPwrDnSeqMask
     VREFDDRPwrDnSeq::kVREFDDRPwrDnSeqMask(BITS_2_1_0);
+
+// TODO(kendall): Figure out the right register. This conflicts with RC_16MHz
+const uint8_t Key1::kRegister = 0x6B;
+const Key1::Key1Mask Key1::kKey1Mask(BITS_2_1_0);
+// End Misc.h

@@ -657,3 +657,16 @@ struct VREFDDRPwrDnSeq : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct Key1 : public I2CRegister {
+  struct Key1Mask : public Mask {
+    // TODO(kendall): Add specific masks/values.
+    Key1Mask(uint8_t mask) : Mask(mask) {}
+  };
+  static const Key1Mask kKey1Mask;
+  Key1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+// End Misch.h
