@@ -240,3 +240,12 @@ const uint8_t CoinCellControl::VCoinMask::_3_3 = BITS_3_2_1_0;
 const CoinCellControl::ChEnMask CoinCellControl::kChEnMask(BITS_4);
 const uint8_t CoinCellControl::ChEnMask::DISABLED = BITS_NONE;
 const uint8_t CoinCellControl::ChEnMask::ENABLED = BITS_4;
+
+const uint8_t VSNVSCtrl::kRegister = 0x48;
+const VSNVSCtrl::CLKPulseMask VSNVSCtrl::kCLKPulseMask(BITS_3);
+const VSNVSCtrl::ForceBOSMask VSNVSCtrl::kForceBOSMask(BITS_4);
+const uint8_t VSNVSCtrl::ForceBOSMask::FORCED = BITS_4;
+const uint8_t VSNVSCtrl::ForceBOSMask::ONLY_VSYS_LT_VDIV = BITS_NONE;
+const VSNVSCtrl::LiBGDisMask VSNVSCtrl::kLiBGDisMask(BITS_4);
+const uint8_t VSNVSCtrl::LiBGDisMask::VSNVS_BAND_GAP_DISABLED = BITS_NONE;
+const uint8_t VSNVSCtrl::LiBGDisMask::VSNVS_BAND_GAP_ENABLED = BITS_5;

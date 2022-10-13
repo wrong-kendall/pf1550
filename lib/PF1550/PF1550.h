@@ -590,3 +590,26 @@ struct CoinCellControl : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct VSNVSCtrl : public I2CRegister {
+  struct CLKPulseMask : public Mask {
+    CLKPulseMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ForceBOSMask : public Mask {
+    static const uint8_t FORCED;
+    static const uint8_t ONLY_VSYS_LT_VDIV;
+    ForceBOSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct LiBGDisMask : public Mask {
+    static const uint8_t VSNVS_BAND_GAP_DISABLED;
+    static const uint8_t VSNVS_BAND_GAP_ENABLED;
+    LiBGDisMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const CLKPulseMask kCLKPulseMask;
+  static const ForceBOSMask kForceBOSMask;
+  static const LiBGDisMask kLiBGDisMask;
+  VSNVSCtrl(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
