@@ -442,3 +442,117 @@ struct OnkeyIntSense0 : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct MiscIntStat0 : public I2CRegister {
+  struct PwrUpIMask : public Mask {
+    static const uint8_t ACTIVE;
+    static const uint8_t NOT_ACTIVE;
+    PwrUpIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct PwrDnIMask : public Mask {
+    static const uint8_t ACTIVE;
+    static const uint8_t NOT_ACTIVE;
+    PwrDnIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct PwrOnIMask : public Mask {
+    static const uint8_t ACTIVE;
+    static const uint8_t NOT_ACTIVE;
+    PwrOnIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct LowSysWarnIMask : public Mask {
+    static const uint8_t ACTIVE;
+    static const uint8_t NOT_ACTIVE;
+    LowSysWarnIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct SysOlvoIMask : public Mask {
+    static const uint8_t ACTIVE;
+    static const uint8_t NOT_ACTIVE;
+    SysOlvoIMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const PwrOnIMask kPwrOnIMask;
+  static const PwrDnIMask kPwrDnIMask;
+  static const PwrUpIMask kPwrUpIMask;
+  static const LowSysWarnIMask kLowSysWarnIMask;
+  static const SysOlvoIMask kSysOlvoIMask;
+  MiscIntStat0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+
+struct MiscIntMask0 : public I2CRegister {
+  struct PwrUpMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    PwrUpMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct PwrDnMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    PwrDnMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct PwrOnMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    PwrOnMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct LowSysWarnMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    LowSysWarnMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct SysOlvoMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    SysOlvoMMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const PwrOnMMask kPwrOnMMask;
+  static const PwrDnMMask kPwrDnMMask;
+  static const PwrUpMMask kPwrUpMMask;
+  static const LowSysWarnMMask kLowSysWarnMMask;
+  static const SysOlvoMMask kSysOlvoMMask;
+  MiscIntMask0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+
+struct MiscIntSense0 : public I2CRegister {
+  struct PwrUpSMask : public Mask {
+    static const uint8_t IN_PROGRESS;
+    static const uint8_t NOT_IN_PROGRESS;
+    PwrUpSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct PwrDnSMask : public Mask {
+    static const uint8_t IN_PROGRESS;
+    static const uint8_t NOT_IN_PROGRESS;
+    PwrDnSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct PwrOnSMask : public Mask {
+    static const uint8_t LOW;
+    static const uint8_t HIGH;
+    PwrOnSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct LowSysWarnSMask : public Mask {
+    static const uint8_t ABOVE;
+    static const uint8_t BELOW;
+    LowSysWarnSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct SysOlvoSMask : public Mask {
+    static const uint8_t ABOVE;
+    static const uint8_t BELOW;
+    SysOlvoSMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const PwrOnSMask kPwrOnSMask;
+  static const PwrDnSMask kPwrDnSMask;
+  static const PwrUpSMask kPwrUpSMask;
+  static const LowSysWarnSMask kLowSysWarnSMask;
+  static const SysOlvoSMask kSysOlvoSMask;
+  MiscIntSense0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
