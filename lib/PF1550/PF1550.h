@@ -283,9 +283,160 @@ struct TempIntMask0 : public I2CRegister {
     static const uint8_t ENABLED;
     Therm125MMask(uint8_t mask) : Mask(mask) {}
   };
-  static const Therm125MMask kTherm125MMask;
   static const Therm110MMask kTherm110MMask;
+  static const Therm125MMask kTherm125MMask;
   TempIntMask0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+
+struct TempIntSense0 : public I2CRegister {
+  struct Therm110SMask : public Mask {
+    static const uint8_t BELOW;
+    static const uint8_t ABOVE;
+    Therm110SMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Therm125SMask : public Mask {
+    static const uint8_t BELOW;
+    static const uint8_t ABOVE;
+    Therm125SMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const Therm110SMask kTherm110SMask;
+  static const Therm125SMask kTherm125SMask;
+  TempIntSense0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+struct OnkeyIntStat0 : public I2CRegister {
+  struct OnkeyPushIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    OnkeyPushIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey1SIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    Onkey1SIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey2SIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    Onkey2SIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey3SIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    Onkey3SIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey4SIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    Onkey4SIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey8SIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    Onkey8SIMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const OnkeyPushIMask kOnkeyPushIMask;
+  static const Onkey1SIMask kOnkey1SIMask;
+  static const Onkey2SIMask kOnkey2SIMask;
+  static const Onkey3SIMask kOnkey3SIMask;
+  static const Onkey4SIMask kOnkey4SIMask;
+  static const Onkey8SIMask kOnkey8SIMask;
+  OnkeyIntStat0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+
+struct OnkeyIntMask0 : public I2CRegister {
+  struct OnkeyPushMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    OnkeyPushMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey1SMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    Onkey1SMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey2SMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    Onkey2SMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey3SMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    Onkey3SMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey4SMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    Onkey4SMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey8SMMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t REMOVED;
+    Onkey8SMMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const OnkeyPushMMask kOnkeyPushMMask;
+  static const Onkey1SMMask kOnkey1SMMask;
+  static const Onkey2SMMask kOnkey2SMMask;
+  static const Onkey3SMMask kOnkey3SMMask;
+  static const Onkey4SMMask kOnkey4SMMask;
+  static const Onkey8SMMask kOnkey8SMMask;
+  OnkeyIntMask0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+
+struct OnkeyIntSense0 : public I2CRegister {
+  struct OnkeyPushSMask : public Mask {
+    static const uint8_t PUSHED;
+    static const uint8_t NOT_PUSHED;
+    OnkeyPushSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey1SSMask : public Mask {
+    static const uint8_t PUSHED;
+    static const uint8_t NOT_PUSHED;
+    Onkey1SSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey2SSMask : public Mask {
+    static const uint8_t PUSHED;
+    static const uint8_t NOT_PUSHED;
+    Onkey2SSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey3SSMask : public Mask {
+    static const uint8_t PUSHED;
+    static const uint8_t NOT_PUSHED;
+    Onkey3SSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey4SSMask : public Mask {
+    static const uint8_t PUSHED;
+    static const uint8_t NOT_PUSHED;
+    Onkey4SSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Onkey8SSMask : public Mask {
+    static const uint8_t PUSHED;
+    static const uint8_t NOT_PUSHED;
+    Onkey8SSMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const OnkeyPushSMask kOnkeyPushSMask;
+  static const Onkey1SSMask kOnkey1SSMask;
+  static const Onkey2SSMask kOnkey2SSMask;
+  static const Onkey3SSMask kOnkey3SSMask;
+  static const Onkey4SSMask kOnkey4SSMask;
+  static const Onkey8SSMask kOnkey8SSMask;
+  OnkeyIntSense0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
 private:
