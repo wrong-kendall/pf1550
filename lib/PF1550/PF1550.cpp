@@ -587,3 +587,20 @@ const uint8_t VbusInLimCnfg::VbusLinILimMask::_800MA = BITS_7_3;
 const uint8_t VbusInLimCnfg::VbusLinILimMask::_900MA = BITS_7_4;
 const uint8_t VbusInLimCnfg::VbusLinILimMask::_1000MA = BITS_7_4_3;
 const uint8_t VbusInLimCnfg::VbusLinILimMask::_1500MA = BITS_7_5;
+
+const uint8_t VbusLinDpm::kRegister = 0x15 + SPECIFIC_REGISTER_OFFSET;
+const VbusLinDpm::VbusDpmRegMask VbusLinDpm::kVbusDpmRegMask(BITS_2_1_0);
+const uint8_t VbusLinDpm::VbusDpmRegMask::_3_9V = BITS_NONE;
+const uint8_t VbusLinDpm::VbusDpmRegMask::_4_0V = BITS_0;
+const uint8_t VbusLinDpm::VbusDpmRegMask::_4_1V = BITS_1;
+const uint8_t VbusLinDpm::VbusDpmRegMask::_4_2V = BITS_1_0;
+const uint8_t VbusLinDpm::VbusDpmRegMask::_4_3V = BITS_2;
+const uint8_t VbusLinDpm::VbusDpmRegMask::_4_4V = BITS_2_0;
+const uint8_t VbusLinDpm::VbusDpmRegMask::_4_5V = BITS_2_1;
+const uint8_t VbusLinDpm::VbusDpmRegMask::_4_6V = BITS_2_1_0;
+const VbusLinDpm::PreChgdBattThrshMask
+    VbusLinDpm::kPreChgdBattThrshMask(BITS_4_3);
+const VbusLinDpm::VinDpmStopMask VbusLinDpm::kVinDpmStopMask(BITS_5);
+const uint8_t VbusLinDpm::VinDpmStopMask::_200MV = BITS_NONE;
+const uint8_t VbusLinDpm::VinDpmStopMask::_250MV = BITS_5;
+const VbusLinDpm::FetScaleMask VbusLinDpm::kFetScaleMask(BITS_7);

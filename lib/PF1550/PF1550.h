@@ -1235,3 +1235,38 @@ struct VbusInLimCnfg : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct VbusLinDpm : public I2CRegister {
+  struct VbusDpmRegMask : public Mask {
+    static const uint8_t _3_9V;
+    static const uint8_t _4_0V;
+    static const uint8_t _4_1V;
+    static const uint8_t _4_2V;
+    static const uint8_t _4_3V;
+    static const uint8_t _4_4V;
+    static const uint8_t _4_5V;
+    static const uint8_t _4_6V;
+    VbusDpmRegMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct PreChgdBattThrshMask : public Mask {
+    PreChgdBattThrshMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VinDpmStopMask : public Mask {
+    static const uint8_t _200MV;
+    static const uint8_t _250MV;
+    VinDpmStopMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct FetScaleMask : public Mask {
+    FetScaleMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const VbusDpmRegMask kVbusDpmRegMask;
+  static const PreChgdBattThrshMask kPreChgdBattThrshMask;
+  static const VinDpmStopMask kVinDpmStopMask;
+  static const FetScaleMask kFetScaleMask;
+
+  VbusLinDpm(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
