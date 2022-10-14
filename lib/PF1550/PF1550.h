@@ -1270,3 +1270,28 @@ struct VbusLinDpm : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct UsbPhyLdoCnfg : public I2CRegister {
+  struct ActDisPhyMask : public Mask {
+    static const uint8_t NO_DISCHARGE;
+    static const uint8_t DISCHARGE;
+    ActDisPhyMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct UsbPhyMask : public Mask {
+    static const uint8_t _3_3V;
+    static const uint8_t _4_9V;
+    UsbPhyMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct UsbPhyLdoMask : public Mask {
+    static const uint8_t DISABLED;
+    static const uint8_t ENABLED;
+    UsbPhyLdoMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const ActDisPhyMask kActDisPhyMask;
+  static const UsbPhyMask kUsbPhyMask;
+  static const UsbPhyLdoMask kUsbPhyLdoMask;
+
+private:
+  static const uint8_t kRegister;
+};

@@ -604,3 +604,14 @@ const VbusLinDpm::VinDpmStopMask VbusLinDpm::kVinDpmStopMask(BITS_5);
 const uint8_t VbusLinDpm::VinDpmStopMask::_200MV = BITS_NONE;
 const uint8_t VbusLinDpm::VinDpmStopMask::_250MV = BITS_5;
 const VbusLinDpm::FetScaleMask VbusLinDpm::kFetScaleMask(BITS_7);
+
+const uint8_t UsbPhyLdoCnfg::kRegister = 0x16 + SPECIFIC_REGISTER_OFFSET;
+const UsbPhyLdoCnfg::ActDisPhyMask UsbPhyLdoCnfg::kActDisPhyMask(BITS_0);
+const uint8_t UsbPhyLdoCnfg::ActDisPhyMask::NO_DISCHARGE = BITS_NONE;
+const uint8_t UsbPhyLdoCnfg::ActDisPhyMask::DISCHARGE = BITS_0;
+const UsbPhyLdoCnfg::UsbPhyMask UsbPhyLdoCnfg::kUsbPhyMask(BITS_1);
+const uint8_t UsbPhyLdoCnfg::UsbPhyMask::_3_3V = BITS_NONE;
+const uint8_t UsbPhyLdoCnfg::UsbPhyMask::_4_9V = BITS_1;
+const UsbPhyLdoCnfg::UsbPhyLdoMask UsbPhyLdoCnfg::kUsbPhyLdoMask(BITS_2);
+const uint8_t UsbPhyLdoCnfg::UsbPhyLdoMask::DISABLED = BITS_NONE;
+const uint8_t UsbPhyLdoCnfg::UsbPhyLdoMask::ENABLED = BITS_2;
