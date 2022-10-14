@@ -1159,3 +1159,46 @@ struct BattFetCnfg : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct ThmRegCnfg : public I2CRegister {
+  struct ThmCnfgMask : public Mask {
+    static const uint8_t MASK;
+    static const uint8_t THM_DOES_NOT_CONTROL;
+    static const uint8_t THM_CONTROLS;
+    static const uint8_t JEITA1;
+    static const uint8_t JEITA2;
+    ThmCnfgMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct RegTempMask : public Mask {
+    static const uint8_t _80C;
+    static const uint8_t _95C;
+    static const uint8_t _110C;
+    static const uint8_t _125C;
+    RegTempMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ThmColdMask : public Mask {
+    static const uint8_t _MINUS_10C;
+    static const uint8_t _0C;
+    ThmColdMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ThmHotMask : public Mask {
+    static const uint8_t _55C;
+    static const uint8_t _60C;
+    ThmHotMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct TempFbEnMask : public Mask {
+    static const uint8_t DISABLED;
+    static const uint8_t ENABLED;
+    TempFbEnMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const ThmCnfgMask kThmCnfgMask;
+  static const RegTempMask kRegTempMask;
+  static const ThmColdMask kThmColdMask;
+  static const ThmHotMask kThmHotMask;
+  static const TempFbEnMask kTempFbEnMask;
+  ThmRegCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
