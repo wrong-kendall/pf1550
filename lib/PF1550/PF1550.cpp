@@ -519,3 +519,25 @@ const BattReg::VsysMinMask BattReg::kVsysMinMask(BITS_7_6);
 const uint8_t BattReg::VsysMinMask::_3_5V = BITS_NONE;
 const uint8_t BattReg::VsysMinMask::_3_7V = BITS_6;
 const uint8_t BattReg::VsysMinMask::_4_3V = BITS_7;
+
+const uint8_t BattFetCnfg::kRegister = 0x11 + SPECIFIC_REGISTER_OFFSET;
+const BattFetCnfg::WdtClrMask BattFetCnfg::kWdtClrMask(BITS_1_0);
+const uint8_t BattFetCnfg::WdtClrMask::NOT_CLEARED = BITS_NONE;
+const uint8_t BattFetCnfg::WdtClrMask::CLEARED = BITS_0;
+const uint8_t BattFetCnfg::WdtClrMask::NOT_CLEARED_1 = BITS_1;
+const uint8_t BattFetCnfg::WdtClrMask::NOT_CLEARED_2 = BITS_1_0;
+const BattFetCnfg::BOVRCDisBattFetMask
+    BattFetCnfg::kBOVRCDisBattFetMask(BITS_3);
+const uint8_t BattFetCnfg::BOVRCDisBattFetMask::CHARGER_CONTROLLED = BITS_NONE;
+const uint8_t BattFetCnfg::BOVRCDisBattFetMask::NOT_TURNED_OFF_BY_OVC = BITS_3;
+const BattFetCnfg::BattFetOCMask BattFetCnfg::kBattFetOCMask(BITS_5_4);
+const uint8_t BattFetCnfg::BattFetOCMask::DISABLED = BITS_NONE;
+const uint8_t BattFetCnfg::BattFetOCMask::_2_2A = BITS_4;
+const uint8_t BattFetCnfg::BattFetOCMask::_2_8A = BITS_5;
+const uint8_t BattFetCnfg::BattFetOCMask::_3_2A = BITS_5_4;
+const BattFetCnfg::WdTimeMask BattFetCnfg::kWdTimeMask(BITS_6);
+const uint8_t BattFetCnfg::WdTimeMask::_80s = BITS_NONE;
+const uint8_t BattFetCnfg::WdTimeMask::_32s = BITS_6;
+const BattFetCnfg::BOVRCNoVBusMask BattFetCnfg::kBOVRCNoVBusMask(BITS_7);
+const uint8_t BattFetCnfg::BOVRCNoVBusMask::ENABLED = BITS_7;
+const uint8_t BattFetCnfg::BOVRCNoVBusMask::DISABLED = BITS_NONE;

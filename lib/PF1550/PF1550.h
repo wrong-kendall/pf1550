@@ -1113,3 +1113,49 @@ struct BattReg : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+struct BattFetCnfg : public I2CRegister {
+  struct WdtClrMask : public Mask {
+    static const uint8_t NOT_CLEARED;
+    static const uint8_t CLEARED;
+    static const uint8_t NOT_CLEARED_1;
+    static const uint8_t NOT_CLEARED_2;
+    WdtClrMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct WdBattFetOffMask : public Mask {
+    WdBattFetOffMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct BOVRCDisBattFetMask : public Mask {
+    static const uint8_t CHARGER_CONTROLLED;
+    static const uint8_t NOT_TURNED_OFF_BY_OVC;
+    BOVRCDisBattFetMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct BattFetOCMask : public Mask {
+    static const uint8_t DISABLED;
+    static const uint8_t _2_2A;
+    static const uint8_t _2_8A;
+    static const uint8_t _3_2A;
+    BattFetOCMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct WdTimeMask : public Mask {
+    static const uint8_t _80s;
+    static const uint8_t _32s;
+    WdTimeMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct BOVRCNoVBusMask : public Mask {
+    static const uint8_t ENABLED;
+    static const uint8_t DISABLED;
+    BOVRCNoVBusMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const WdtClrMask kWdtClrMask;
+  static const WdBattFetOffMask kWdBattFetOffMask;
+  static const BOVRCDisBattFetMask kBOVRCDisBattFetMask;
+  static const BattFetOCMask kBattFetOCMask;
+  static const WdTimeMask kWdTimeMask;
+  static const BOVRCNoVBusMask kBOVRCNoVBusMask;
+
+  BattFetCnfg(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
