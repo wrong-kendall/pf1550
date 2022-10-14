@@ -1202,3 +1202,36 @@ struct ThmRegCnfg : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct VbusInLimCnfg : public I2CRegister {
+  struct VbusLinILimMask : public Mask {
+    static const uint8_t _10MA;
+    static const uint8_t _15MA;
+    static const uint8_t _20MA;
+    static const uint8_t _25MA;
+    static const uint8_t _30MA;
+    static const uint8_t _35MA;
+    static const uint8_t _40MA;
+    static const uint8_t _45MA;
+    static const uint8_t _50MA;
+    static const uint8_t _100MA;
+    static const uint8_t _150MA;
+    static const uint8_t _200MA;
+    static const uint8_t _300MA;
+    static const uint8_t _400MA;
+    static const uint8_t _500MA;
+    static const uint8_t _600MA;
+    static const uint8_t _700MA;
+    static const uint8_t _800MA;
+    static const uint8_t _900MA;
+    static const uint8_t _1000MA;
+    static const uint8_t _1500MA;
+    VbusLinILimMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const VbusLinILimMask kVbusLinILimMask;
+  VbusInLimCnfg(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};

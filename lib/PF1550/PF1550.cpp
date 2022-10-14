@@ -562,3 +562,28 @@ const uint8_t ThmRegCnfg::ThmHotMask::_60C = BITS_NONE;
 const ThmRegCnfg::TempFbEnMask ThmRegCnfg::kTempFbEnMask(BITS_7);
 const uint8_t ThmRegCnfg::TempFbEnMask::DISABLED = BITS_NONE;
 const uint8_t ThmRegCnfg::TempFbEnMask::ENABLED = BITS_7;
+
+const uint8_t VbusInLimCnfg::kRegister = 0x14 + SPECIFIC_REGISTER_OFFSET;
+const VbusInLimCnfg::VbusLinILimMask
+    VbusInLimCnfg::kVbusLinILimMask(BITS_7_6_5_4_3);
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_10MA = BITS_NONE;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_15MA = BITS_3;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_20MA = BITS_4;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_25MA = BITS_4_3;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_30MA = BITS_5;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_35MA = BITS_5_3;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_40MA = BITS_5_4;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_45MA = BITS_5_4_3;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_50MA = BITS_6;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_100MA = BITS_6_3;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_150MA = BITS_6_4;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_200MA = BITS_6_4_3;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_300MA = BITS_6_5;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_400MA = BITS_6_5_3;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_500MA = BITS_6_5_4;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_600MA = BITS_6_5_4_3;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_700MA = BITS_7;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_800MA = BITS_7_3;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_900MA = BITS_7_4;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_1000MA = BITS_7_4_3;
+const uint8_t VbusInLimCnfg::VbusLinILimMask::_1500MA = BITS_7_5;
