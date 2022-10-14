@@ -1030,3 +1030,86 @@ struct ChgCurrCnfg : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct BattReg : public I2CRegister {
+  struct ChgCvMask : public Mask {
+    static const uint8_t _3_50V;
+    static const uint8_t _3_50V_1;
+    static const uint8_t _3_50V_2;
+    static const uint8_t _3_50V_3;
+    static const uint8_t _3_50V_4;
+    static const uint8_t _3_50V_5;
+    static const uint8_t _3_50V_6;
+    static const uint8_t _3_50V_7;
+    static const uint8_t _3_50V_8;
+    static const uint8_t _3_52V;
+    static const uint8_t _3_54V;
+    static const uint8_t _3_56V;
+    static const uint8_t _3_58V;
+    static const uint8_t _3_60V;
+    static const uint8_t _3_62V;
+    static const uint8_t _3_64V;
+    static const uint8_t _3_66V;
+    static const uint8_t _3_68V;
+    static const uint8_t _3_70V;
+    static const uint8_t _3_72V;
+    static const uint8_t _3_74V;
+    static const uint8_t _3_76V;
+    static const uint8_t _3_78V;
+    static const uint8_t _3_80V;
+    static const uint8_t _3_82V;
+    static const uint8_t _3_84V;
+    static const uint8_t _3_86V;
+    static const uint8_t _3_88V;
+    static const uint8_t _3_90V;
+    static const uint8_t _3_92V;
+    static const uint8_t _3_94V;
+    static const uint8_t _3_96V;
+    static const uint8_t _3_98V;
+    static const uint8_t _4_00V;
+    static const uint8_t _4_02V;
+    static const uint8_t _4_04V;
+    static const uint8_t _4_06V;
+    static const uint8_t _4_08V;
+    static const uint8_t _4_10V;
+    static const uint8_t _4_12V;
+    static const uint8_t _4_14V;
+    static const uint8_t _4_16V;
+    static const uint8_t _4_18V;
+    static const uint8_t _4_20V;
+    static const uint8_t _4_22V;
+    static const uint8_t _4_24V;
+    static const uint8_t _4_26V;
+    static const uint8_t _4_28V;
+    static const uint8_t _4_30V;
+    static const uint8_t _4_32V;
+    static const uint8_t _4_34V;
+    static const uint8_t _4_36V;
+    static const uint8_t _4_38V;
+    static const uint8_t _4_40V;
+    static const uint8_t _4_42V;
+    static const uint8_t _4_44V;
+    static const uint8_t _4_44V_1;
+    static const uint8_t _4_44V_2;
+    static const uint8_t _4_44V_3;
+    static const uint8_t _4_44V_4;
+    static const uint8_t _4_44V_5;
+    static const uint8_t _4_44V_6;
+    static const uint8_t _4_44V_7;
+    static const uint8_t _4_44V_8;
+    ChgCvMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct VsysMinMask : public Mask {
+    static const uint8_t _3_5V;
+    static const uint8_t _3_7V;
+    static const uint8_t _4_3V;
+    VsysMinMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const ChgCvMask kChgCvMask;
+  static const VsysMinMask kVsysMinMask;
+
+  BattReg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
