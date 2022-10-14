@@ -1295,3 +1295,35 @@ struct UsbPhyLdoCnfg : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+struct DbncDelayTime : public I2CRegister {
+  struct VbusOvTdbMask : public Mask {
+    static const uint8_t _10US;
+    static const uint8_t _100US;
+    static const uint8_t _1MS;
+    static const uint8_t _10MS;
+    VbusOvTdbMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct UsbPhyTdbMask : public Mask {
+    static const uint8_t _0MS;
+    static const uint8_t _16MS;
+    static const uint8_t _32MS;
+    UsbPhyTdbMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct SysWkUpDlyMask : public Mask {
+    static const uint8_t _8MS;
+    static const uint8_t _16MS;
+    static const uint8_t _32MS;
+    static const uint8_t _100MS;
+    SysWkUpDlyMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const VbusOvTdbMask kVbusOvTdbMask;
+  static const UsbPhyTdbMask kUsbPhyTdbMask;
+  static const SysWkUpDlyMask kSysWkUpDlyMask;
+
+  DbncDelayTime(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
