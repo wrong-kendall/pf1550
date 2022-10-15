@@ -616,7 +616,7 @@ const UsbPhyLdoCnfg::UsbPhyLdoMask UsbPhyLdoCnfg::kUsbPhyLdoMask(BITS_2);
 const uint8_t UsbPhyLdoCnfg::UsbPhyLdoMask::DISABLED = BITS_NONE;
 const uint8_t UsbPhyLdoCnfg::UsbPhyLdoMask::ENABLED = BITS_2;
 
-const uint8_t DbncDelayTime::kRegister = 0x18 + SPECIFIC_REGISTER_OFFSET;
+const uint8_t DbncDelayTime::kRegister = 0x19 + SPECIFIC_REGISTER_OFFSET;
 const DbncDelayTime::VbusOvTdbMask DbncDelayTime::kVbusOvTdbMask(BITS_1_0);
 const uint8_t DbncDelayTime::VbusOvTdbMask::_10US = BITS_NONE;
 const uint8_t DbncDelayTime::VbusOvTdbMask::_100US = BITS_0;
@@ -631,3 +631,29 @@ const uint8_t DbncDelayTime::SysWkUpDlyMask::_8MS = BITS_NONE;
 const uint8_t DbncDelayTime::SysWkUpDlyMask::_16MS = BITS_4;
 const uint8_t DbncDelayTime::SysWkUpDlyMask::_32MS = BITS_5;
 const uint8_t DbncDelayTime::SysWkUpDlyMask::_100MS = BITS_5_4;
+
+const uint8_t ChgIntCnfg::kRegister = 0x19 + SPECIFIC_REGISTER_OFFSET;
+const ChgIntCnfg::ChgIntGenMask ChgIntCnfg::kChgIntGenMask(BITS_0);
+const uint8_t ChgIntCnfg::ChgIntGenMask::INT_ONLY_FC_TO_CV = BITS_NONE;
+const uint8_t ChgIntCnfg::ChgIntGenMask::INT_ON_TRANSITION = BITS_0;
+const ChgIntCnfg::EoCIntMask ChgIntCnfg::kEoCIntMask(BITS_1);
+const uint8_t ChgIntCnfg::EoCIntMask::NO_EOC_INT = BITS_NONE;
+const uint8_t ChgIntCnfg::EoCIntMask::EOC_INT = BITS_1;
+
+const uint8_t ThmAdjSetting::kRegister = 0x1A + SPECIFIC_REGISTER_OFFSET;
+const ThmAdjSetting::ThmWarmMask ThmAdjSetting::kThmWarmMask(BITS_0);
+const uint8_t ThmAdjSetting::ThmWarmMask::_45C = BITS_NONE;
+const uint8_t ThmAdjSetting::ThmWarmMask::_50C = BITS_0;
+const ThmAdjSetting::ThmCoolMask ThmAdjSetting::kThmCoolMask(BITS_1);
+const uint8_t ThmAdjSetting::ThmCoolMask::_15C = BITS_NONE;
+const uint8_t ThmAdjSetting::ThmCoolMask::_10C = BITS_1;
+const ThmAdjSetting::CvAdjMask ThmAdjSetting::kCvAdjMask(BITS_3_2);
+const uint8_t ThmAdjSetting::CvAdjMask::_60MV = BITS_NONE;
+const uint8_t ThmAdjSetting::CvAdjMask::_100MV = BITS_2;
+const uint8_t ThmAdjSetting::CvAdjMask::_160MV = BITS_3;
+const uint8_t ThmAdjSetting::CvAdjMask::_200MV = BITS_3_2;
+const ThmAdjSetting::CcAdjMask ThmAdjSetting::kCcAdjMask(BITS_5_4);
+const uint8_t ThmAdjSetting::CcAdjMask::_25PCT = BITS_NONE;
+const uint8_t ThmAdjSetting::CcAdjMask::_50PCT = BITS_4;
+const uint8_t ThmAdjSetting::CcAdjMask::_75PCT = BITS_5;
+const uint8_t ThmAdjSetting::CcAdjMask::_100PCT = BITS_5_4;
