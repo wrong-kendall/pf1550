@@ -698,3 +698,21 @@ const uint8_t LedPwm::LedRampMask::ENABLE = BITS_6;
 const LedPwm::LedEnMask LedPwm::kLedEnMask(BITS_7);
 const uint8_t LedPwm::LedEnMask::DISABLE = BITS_NONE;
 const uint8_t LedPwm::LedEnMask::ENABLE = BITS_7;
+
+const uint8_t FaultBatFetCnfg::kRegister = 0x1D + SPECIFIC_REGISTER_OFFSET;
+const FaultBatFetCnfg::WdFltBfFetEnMask
+    FaultBatFetCnfg::kWdFltBfFetEnMask(BITS_0);
+const uint8_t FaultBatFetCnfg::WdFltBfFetEnMask::OPENED = BITS_NONE;
+const uint8_t FaultBatFetCnfg::WdFltBfFetEnMask::CLOSED = BITS_0;
+const FaultBatFetCnfg::ThmSusBFetEnMask
+    FaultBatFetCnfg::kThmSusBFetEnMask(BITS_1);
+const uint8_t FaultBatFetCnfg::ThmSusBFetEnMask::CLOSED = BITS_1;
+const uint8_t FaultBatFetCnfg::ThmSusBFetEnMask::OPENED = BITS_NONE;
+const FaultBatFetCnfg::TShdnBFetEnMask
+    FaultBatFetCnfg::kTShdnBFetEnMask(BITS_2);
+const uint8_t FaultBatFetCnfg::TShdnBFetEnMask::CLOSED = BITS_2;
+const uint8_t FaultBatFetCnfg::TShdnBFetEnMask::OPENED = BITS_NONE;
+const FaultBatFetCnfg::TmrFltBFetEnMask
+    FaultBatFetCnfg::kTmrFltBFetEnMask(BITS_3);
+const uint8_t FaultBatFetCnfg::TmrFltBFetEnMask::OPENED = BITS_NONE;
+const uint8_t FaultBatFetCnfg::TmrFltBFetEnMask::CLOSED = BITS_3;

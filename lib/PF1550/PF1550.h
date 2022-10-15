@@ -1463,3 +1463,33 @@ struct LedPwm : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct FaultBatFetCnfg : I2CRegister {
+  struct WdFltBfFetEnMask : public Mask {
+    static const uint8_t OPENED;
+    static const uint8_t CLOSED;
+    WdFltBfFetEnMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct ThmSusBFetEnMask : public Mask {
+    static const uint8_t OPENED;
+    static const uint8_t CLOSED;
+    ThmSusBFetEnMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct TShdnBFetEnMask : public Mask {
+    static const uint8_t OPENED;
+    static const uint8_t CLOSED;
+    TShdnBFetEnMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct TmrFltBFetEnMask : public Mask {
+    static const uint8_t OPENED;
+    static const uint8_t CLOSED;
+    TmrFltBFetEnMask(uint8_t mask) : Mask(mask) {}
+  };
+  static const WdFltBfFetEnMask kWdFltBfFetEnMask;
+  static const ThmSusBFetEnMask kThmSusBFetEnMask;
+  static const TShdnBFetEnMask kTShdnBFetEnMask;
+  static const TmrFltBFetEnMask kTmrFltBFetEnMask;
+
+private:
+  static const uint8_t kRegister;
+};
