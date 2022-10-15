@@ -657,3 +657,12 @@ const uint8_t ThmAdjSetting::CcAdjMask::_25PCT = BITS_NONE;
 const uint8_t ThmAdjSetting::CcAdjMask::_50PCT = BITS_4;
 const uint8_t ThmAdjSetting::CcAdjMask::_75PCT = BITS_5;
 const uint8_t ThmAdjSetting::CcAdjMask::_100PCT = BITS_5_4;
+
+const uint8_t Vbus2SysCnfg::kRegister = 0x19 + SPECIFIC_REGISTER_OFFSET;
+const Vbus2SysCnfg::Vbus2SysTdbMask Vbus2SysCnfg::kVbus2SysTdbMask(BITS_1_0);
+const uint8_t Vbus2SysCnfg::Vbus2SysTdbMask::_100US = BITS_0;
+const uint8_t Vbus2SysCnfg::Vbus2SysTdbMask::_1MS = BITS_1;
+const uint8_t Vbus2SysCnfg::Vbus2SysTdbMask::_10MS = BITS_1_0;
+const Vbus2SysCnfg::Vbus2SysThrshMask Vbus2SysCnfg::kVbus2SysThrshMask(BITS_2);
+const uint8_t Vbus2SysCnfg::Vbus2SysThrshMask::_50MV = BITS_NONE;
+const uint8_t Vbus2SysCnfg::Vbus2SysThrshMask::_175MV = BITS_2;

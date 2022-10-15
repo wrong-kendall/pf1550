@@ -1384,3 +1384,26 @@ struct ThmAdjSetting : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct Vbus2SysCnfg : public I2CRegister {
+  struct Vbus2SysTdbMask : public Mask {
+    static const uint8_t _100US;
+    static const uint8_t _1MS;
+    static const uint8_t _10MS;
+    Vbus2SysTdbMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Vbus2SysThrshMask : public Mask {
+    static const uint8_t _50MV;
+    static const uint8_t _175MV;
+    Vbus2SysThrshMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Vbus2SysTdbMask kVbus2SysTdbMask;
+  static const Vbus2SysThrshMask kVbus2SysThrshMask;
+
+  Vbus2SysCnfg(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
