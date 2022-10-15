@@ -1407,3 +1407,59 @@ struct Vbus2SysCnfg : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct LedPwm : public I2CRegister {
+  struct LedPwmMask : public Mask {
+    static const uint8_t _0_32;
+    static const uint8_t _1_32;
+    static const uint8_t _2_32;
+    static const uint8_t _3_32;
+    static const uint8_t _4_32;
+    static const uint8_t _5_32;
+    static const uint8_t _6_32;
+    static const uint8_t _7_32;
+    static const uint8_t _8_32;
+    static const uint8_t _9_32;
+    static const uint8_t _10_32;
+    static const uint8_t _11_32;
+    static const uint8_t _12_32;
+    static const uint8_t _13_32;
+    static const uint8_t _14_32;
+    static const uint8_t _15_32;
+    static const uint8_t _16_32;
+    static const uint8_t _17_32;
+    static const uint8_t _18_32;
+    static const uint8_t _19_32;
+    static const uint8_t _20_32;
+    static const uint8_t _21_32;
+    static const uint8_t _22_32;
+    static const uint8_t _23_32;
+    static const uint8_t _24_32;
+    static const uint8_t _25_32;
+    static const uint8_t _26_32;
+    static const uint8_t _27_32;
+    static const uint8_t _28_32;
+    static const uint8_t _29_32;
+    static const uint8_t _30_32;
+    static const uint8_t _31_32;
+    LedPwmMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct LedRampMask : public Mask {
+    static const uint8_t DISABLE;
+    static const uint8_t ENABLE;
+    LedRampMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct LedEnMask : public Mask {
+    static const uint8_t DISABLE;
+    static const uint8_t ENABLE;
+    LedEnMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const LedPwmMask kLedPwmMask;
+  static const LedRampMask kLedRampMask;
+  static const LedEnMask kLedEnMask;
+  LedPwm(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
