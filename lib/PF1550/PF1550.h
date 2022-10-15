@@ -1490,6 +1490,42 @@ struct FaultBatFetCnfg : I2CRegister {
   static const TShdnBFetEnMask kTShdnBFetEnMask;
   static const TmrFltBFetEnMask kTmrFltBFetEnMask;
 
+  FaultBatFetCnfg(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+struct LedCnfg : public I2CRegister {
+  struct LedFreqMask : public Mask {
+    static const uint8_t _1HZ;
+    static const uint8_t _0_5HZ;
+    static const uint8_t _256HZ;
+    static const uint8_t _8HZ;
+    LedFreqMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct LedCurrentMask : public Mask {
+    static const uint8_t _6MA;
+    LedCurrentMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct LedCfgMask : public Mask {
+    static const uint8_t CHG_ON_FAULT_FLASH;
+    static const uint8_t CHG_FLASH_FAULT_ON;
+    LedCfgMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct LedOvrdMask : public Mask {
+    static const uint8_t STATEMACHINE_CONTROLLED;
+    static const uint8_t SOFTWARE_CONTROLLED;
+    LedOvrdMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const LedOvrdMask kLedOvrdMask;
+  static const LedFreqMask kLedFreqMask;
+  static const LedCurrentMask kLedCurrentMask;
+  static const LedCfgMask kLedCfgMask;
+
+  LedCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
 private:
   static const uint8_t kRegister;
 };

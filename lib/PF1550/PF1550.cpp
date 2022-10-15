@@ -716,3 +716,18 @@ const FaultBatFetCnfg::TmrFltBFetEnMask
     FaultBatFetCnfg::kTmrFltBFetEnMask(BITS_3);
 const uint8_t FaultBatFetCnfg::TmrFltBFetEnMask::OPENED = BITS_NONE;
 const uint8_t FaultBatFetCnfg::TmrFltBFetEnMask::CLOSED = BITS_3;
+
+const uint8_t LedCnfg::kRegister = 0x1E + SPECIFIC_REGISTER_OFFSET;
+const LedCnfg::LedFreqMask LedCnfg::kLedFreqMask(BITS_1_0);
+const uint8_t LedCnfg::LedFreqMask::_1HZ = BITS_NONE;
+const uint8_t LedCnfg::LedFreqMask::_0_5HZ = BITS_0;
+const uint8_t LedCnfg::LedFreqMask::_256HZ = BITS_1;
+const uint8_t LedCnfg::LedFreqMask::_8HZ = BITS_1_0;
+const LedCnfg::LedCurrentMask LedCnfg::kLedCurrentMask(BITS_3_2);
+const uint8_t LedCnfg::LedCurrentMask::_6MA = BITS_2;
+const LedCnfg::LedCfgMask LedCnfg::kLedCfgMask(BITS_4);
+const uint8_t LedCnfg::LedCfgMask::CHG_FLASH_FAULT_ON = BITS_4;
+const uint8_t LedCnfg::LedCfgMask::CHG_ON_FAULT_FLASH = BITS_NONE;
+const LedCnfg::LedOvrdMask LedCnfg::kLedOvrdMask(BITS_5);
+const uint8_t LedCnfg::LedOvrdMask::STATEMACHINE_CONTROLLED = BITS_NONE;
+const uint8_t LedCnfg::LedOvrdMask::SOFTWARE_CONTROLLED = BITS_5;
