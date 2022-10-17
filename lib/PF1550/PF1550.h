@@ -1696,5 +1696,32 @@ struct LdoIntStat0 : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+struct LdoIntMask0 : public I2CRegister {
+  struct Ldo1FaultMMask : public Mask {
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
+    Ldo1FaultMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Ldo2FaultMMask : public Mask {
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
+    Ldo2FaultMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Ldo3FaultMMask : public Mask {
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
+    Ldo3FaultMMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Ldo1FaultMMask kLdo1FaultMMask;
+  static const Ldo2FaultMMask kLdo2FaultMMask;
+  static const Ldo3FaultMMask kLdo3FaultMMask;
+
+  LdoIntMask0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
 
 // end of LDOy.h
