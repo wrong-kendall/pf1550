@@ -1646,3 +1646,23 @@ struct Pwrctrl2 : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct Pwrctrl3 : public I2CRegister {
+  struct GotoShipMask : public Mask {
+    static const uint8_t GOTO_SHIP_EN;
+    GotoShipMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct CoreOffMask : public Mask {
+    static const uint8_t CORE_OFF_EN;
+    CoreOffMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const GotoShipMask kGotoShipMask;
+  static const CoreOffMask kCoreOffMask;
+
+  Pwrctrl3(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+// End of pwrctrl.h

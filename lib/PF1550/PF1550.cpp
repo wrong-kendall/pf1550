@@ -796,3 +796,10 @@ const uint8_t Pwrctrl2::LowSysWarnMask::_3_3_RISE_3_1_FALL = BITS_NONE;
 const uint8_t Pwrctrl2::LowSysWarnMask::_3_5_RISE_3_3_FALL = BITS_2;
 const uint8_t Pwrctrl2::LowSysWarnMask::_3_7_RISE_3_5_FALL = BITS_3;
 const uint8_t Pwrctrl2::LowSysWarnMask::_3_9_RISE_3_7_FALL = BITS_3_2;
+
+const uint8_t Pwrctrl3::kRegister = 0x5B;
+const Pwrctrl3::GotoShipMask Pwrctrl3::kGotoShipMask(BITS_0);
+const uint8_t Pwrctrl3::GotoShipMask::GOTO_SHIP_EN = BITS_0;
+const Pwrctrl3::CoreOffMask Pwrctrl3::kCoreOffMask(BITS_1);
+const uint8_t Pwrctrl3::CoreOffMask::CORE_OFF_EN = BITS_1;
+// End of pwrctrl.h
