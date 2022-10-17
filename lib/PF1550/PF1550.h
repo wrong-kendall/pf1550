@@ -1573,3 +1573,51 @@ struct Pwrctrl0 : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct Pwrctrl1 : public I2CRegister {
+  struct PwronDbncMask : public Mask {
+    // TODO(knedall): WTF? the first 2 are duplicated
+    static const uint8_t _31_25MS_FALL_31_25MS_RISE_1;
+    static const uint8_t _31_25MS_FALL_31_25MS_RISE_2;
+    static const uint8_t _125MS_FALL_31_25MS_RISE;
+    static const uint8_t _750MS_FALL_31_25MS_RISE;
+    PwronDbncMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct OnkeyBbncMask : public Mask {
+    static const uint8_t _31_25MS_FALL_31_25MS_RISE_1;
+    static const uint8_t _31_25MS_FALL_31_25MS_RISE_2;
+    static const uint8_t _125MS_FALL_31_25MS_RISE;
+    static const uint8_t _750MS_FALL_31_25MS_RISE;
+    OnkeyBbncMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct PwronRstEnMask : public Mask {
+    static const uint8_t LONG_PRESS_SLEEP_OR_REGS_DISABLE;
+    static const uint8_t LONG_PRESS_NO_SLEEP_OR_REGS_DISABLE;
+    PwronRstEnMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct RestartEnMask : public Mask {
+    static const uint8_t RESTART_AFTER_5S;
+    static const uint8_t NO_EFFECT;
+    RestartEnMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct RegScpEnMask : public Mask {
+    static const uint8_t SHUTDOWN_LDO_ON_CURRENT_LIMIT_FAULT;
+    static const uint8_t NO_SHUTDOWN_LDO_ON_CURRENT_LIMIT_FAULT;
+    RegScpEnMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct OnkeyRstEnmask : public Mask {
+    static const uint8_t ONKEY_RESET;
+    static const uint8_t NO_ONKEY_RESET;
+    OnkeyRstEnmask(uint8_t mask) : Mask(mask) {}
+  };
+  static const PwronDbncMask kPwronDbncMask;
+  static const OnkeyBbncMask kOnkeyBbncMask;
+  static const PwronRstEnMask kPwronRstEnMask;
+  static const RestartEnMask kRestartEnMask;
+  static const RegScpEnMask kRegScpEnMask;
+  static const OnkeyRstEnmask kOnkeyRstEnmask;
+  Pwrctrl1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};

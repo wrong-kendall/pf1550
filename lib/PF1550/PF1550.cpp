@@ -756,3 +756,31 @@ const uint8_t Pwrctrl0::TgResetMask::_4S = BITS_NONE;
 const uint8_t Pwrctrl0::TgResetMask::_8S = BITS_6;
 const uint8_t Pwrctrl0::TgResetMask::_12S = BITS_7;
 const uint8_t Pwrctrl0::TgResetMask::_16S = BITS_7_6;
+
+const uint8_t Pwrctrl1::kRegister = 0x59;
+const Pwrctrl1::PwronDbncMask Pwrctrl1::kPwronDbncMask(BITS_1_0);
+const uint8_t Pwrctrl1::PwronDbncMask::_31_25MS_FALL_31_25MS_RISE_1 = BITS_NONE;
+const uint8_t Pwrctrl1::PwronDbncMask::_31_25MS_FALL_31_25MS_RISE_2 = BITS_0;
+const uint8_t Pwrctrl1::PwronDbncMask::_125MS_FALL_31_25MS_RISE = BITS_1;
+const uint8_t Pwrctrl1::PwronDbncMask::_750MS_FALL_31_25MS_RISE = BITS_1_0;
+const Pwrctrl1::OnkeyBbncMask Pwrctrl1::kOnkeyBbncMask(BITS_3_2);
+const uint8_t Pwrctrl1::OnkeyBbncMask::_31_25MS_FALL_31_25MS_RISE_1 = BITS_NONE;
+const uint8_t Pwrctrl1::OnkeyBbncMask::_31_25MS_FALL_31_25MS_RISE_2 = BITS_2;
+const uint8_t Pwrctrl1::OnkeyBbncMask::_125MS_FALL_31_25MS_RISE = BITS_3;
+const uint8_t Pwrctrl1::OnkeyBbncMask::_750MS_FALL_31_25MS_RISE = BITS_3_2;
+const Pwrctrl1::PwronRstEnMask Pwrctrl1::kPwronRstEnMask(BITS_4);
+const uint8_t Pwrctrl1::PwronRstEnMask::LONG_PRESS_SLEEP_OR_REGS_DISABLE =
+    BITS_4;
+const uint8_t Pwrctrl1::PwronRstEnMask::LONG_PRESS_NO_SLEEP_OR_REGS_DISABLE =
+    BITS_NONE;
+const Pwrctrl1::RestartEnMask Pwrctrl1::kRestartEnMask(BITS_5);
+const uint8_t Pwrctrl1::RestartEnMask::RESTART_AFTER_5S = BITS_5;
+const uint8_t Pwrctrl1::RestartEnMask::NO_EFFECT = BITS_NONE;
+const Pwrctrl1::RegScpEnMask Pwrctrl1::kRegScpEnMask(BITS_6);
+const uint8_t Pwrctrl1::RegScpEnMask::SHUTDOWN_LDO_ON_CURRENT_LIMIT_FAULT =
+    BITS_6;
+const uint8_t Pwrctrl1::RegScpEnMask::NO_SHUTDOWN_LDO_ON_CURRENT_LIMIT_FAULT =
+    BITS_NONE;
+const Pwrctrl1::OnkeyRstEnmask Pwrctrl1::kOnkeyRstEnmask(BITS_7);
+const uint8_t Pwrctrl1::OnkeyRstEnmask::ONKEY_RESET = BITS_7;
+const uint8_t Pwrctrl1::OnkeyRstEnmask::NO_ONKEY_RESET = BITS_NONE;
