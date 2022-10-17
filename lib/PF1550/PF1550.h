@@ -1751,4 +1751,96 @@ private:
   static const uint8_t kRegister;
 };
 
+struct LDOy {
+  struct Volt : public I2CRegister {
+    struct VoltMask : public Mask {
+      static const uint8_t MASK;
+      static const uint8_t _0_75;
+      static const uint8_t _0_80;
+      static const uint8_t _0_85;
+      static const uint8_t _0_90;
+      static const uint8_t _0_95;
+      static const uint8_t _1_00;
+      static const uint8_t _1_05;
+      static const uint8_t _1_10;
+      static const uint8_t _1_15;
+      static const uint8_t _1_20;
+      static const uint8_t _1_25;
+      static const uint8_t _1_30;
+      static const uint8_t _1_35;
+      static const uint8_t _1_40;
+      static const uint8_t _1_45;
+      static const uint8_t _1_50;
+      static const uint8_t _1_80;
+      static const uint8_t _1_90;
+      static const uint8_t _2_00;
+      static const uint8_t _2_10;
+      static const uint8_t _2_20;
+      static const uint8_t _2_30;
+      static const uint8_t _2_40;
+      static const uint8_t _2_50;
+      static const uint8_t _2_60;
+      static const uint8_t _2_70;
+      static const uint8_t _2_80;
+      static const uint8_t _2_90;
+      static const uint8_t _3_00;
+      static const uint8_t _3_10;
+      static const uint8_t _3_20;
+      static const uint8_t _3_30;
+      VoltMask(uint8_t mask) : Mask(mask) {}
+    };
+
+    static const VoltMask kVoltMask;
+    Volt(uint8_t device_address, uint8_t register_address)
+        : I2CRegister(device_address, register_address) {}
+  };
+  struct Ctrl : public I2CRegister {
+    struct EnableMask : public Mask {
+      static const uint8_t MASK;
+      static const uint8_t ENABLED;
+      EnableMask(uint8_t mask) : Mask(mask) {}
+    };
+    struct StbyMask : public Mask {
+      static const uint8_t MASK;
+      static const uint8_t ENABLED;
+      StbyMask(uint8_t mask) : Mask(mask) {}
+    };
+    struct OmodeMask : public Mask {
+      static const uint8_t MASK;
+      static const uint8_t ENABLED;
+      OmodeMask(uint8_t mask) : Mask(mask) {}
+    };
+    struct LPwrMask : public Mask {
+      static const uint8_t MASK;
+      static const uint8_t IN_SLP_AND_STBY;
+      static const uint8_t NOT_IN_SLP_AND_STBY;
+      LPwrMask(uint8_t mask) : Mask(mask) {}
+    };
+    struct LsMask : public Mask {
+      static const uint8_t MASK;
+      static const uint8_t SWITCH_MODE;
+      static const uint8_t LDO_MODE;
+      LsMask(uint8_t mask) : Mask(mask) {}
+    };
+
+    static const EnableMask kEnableMask;
+    static const StbyMask kStbyMask;
+    static const OmodeMask kOmodeMask;
+    static const LPwrMask kLPwrMask;
+    static const LsMask kLsMask;
+
+    Ctrl(uint8_t device_address, uint8_t register_address)
+        : I2CRegister(device_address, register_address) {}
+  };
+  struct PwrDnSeq : public I2CRegister {
+    struct PwrDnSeqMask : public Mask {
+      static const uint8_t MASK;
+      PwrDnSeqMask(uint8_t mask) : Mask(mask) {}
+    };
+
+    static const PwrDnSeqMask kPwrDnSeqMask;
+    PwrDnSeq(uint8_t device_address, uint8_t register_address)
+        : I2CRegister(device_address, register_address) {}
+  };
+};
 // end of LDOy.h
