@@ -1872,4 +1872,57 @@ struct SwIntStat0 : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+struct SwIntMask0 : public I2CRegister {
+  struct Sw1LsMMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw1LsMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw2LsMMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw2LsMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw3LsMMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw3LsMMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Sw1LsMMask kSw1LsMMask;
+  static const Sw2LsMMask kSw2LsMMask;
+  static const Sw3LsMMask kSw3LsMMask;
+
+  SwIntMask0(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+struct SwIntSense0 : public I2CRegister {
+  struct Sw1LsSMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw1LsSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw2LsSMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw2LsSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw3LsSMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw3LsSMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Sw1LsSMask kSw1LsSMask;
+  static const Sw2LsSMask kSw2LsSMask;
+  static const Sw3LsSMask kSw3LsSMask;
+
+  SwIntSense0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
 // end of Swx.h

@@ -897,4 +897,26 @@ const uint8_t SwIntStat0::Sw2LsIMask::INT = BITS_0;
 const SwIntStat0::Sw3LsIMask SwIntStat0::kSw3LsIMask(BITS_2);
 const uint8_t SwIntStat0::Sw3LsIMask::CLEAR = BITS_NONE;
 const uint8_t SwIntStat0::Sw3LsIMask::INT = BITS_0;
+
+const uint8_t SwIntMask0::kRegister = 0x09;
+const SwIntMask0::Sw1LsMMask SwIntMask0::kSw1LsMMask(BITS_0);
+const uint8_t SwIntMask0::Sw1LsMMask::CLEAR = BITS_NONE;
+const uint8_t SwIntMask0::Sw1LsMMask::INT = BITS_0;
+const SwIntMask0::Sw2LsMMask SwIntMask0::kSw2LsMMask(BITS_1);
+const uint8_t SwIntMask0::Sw2LsMMask::CLEAR = BITS_NONE;
+const uint8_t SwIntMask0::Sw2LsMMask::INT = BITS_0;
+const SwIntMask0::Sw3LsMMask SwIntMask0::kSw3LsMMask(BITS_2);
+const uint8_t SwIntMask0::Sw3LsMMask::CLEAR = BITS_NONE;
+const uint8_t SwIntMask0::Sw3LsMMask::INT = BITS_0;
+
+const uint8_t SwIntSense0::kRegister = 0x0A;
+const SwIntSense0::Sw1LsSMask SwIntSense0::kSw1LsSMask(BITS_0);
+const uint8_t SwIntSense0::Sw1LsSMask::CLEAR = BITS_NONE;
+const uint8_t SwIntSense0::Sw1LsSMask::INT = BITS_0;
+const SwIntSense0::Sw2LsSMask SwIntSense0::kSw2LsSMask(BITS_1);
+const uint8_t SwIntSense0::Sw2LsSMask::CLEAR = BITS_NONE;
+const uint8_t SwIntSense0::Sw2LsSMask::INT = BITS_0;
+const SwIntSense0::Sw3LsSMask SwIntSense0::kSw3LsSMask(BITS_2);
+const uint8_t SwIntSense0::Sw3LsSMask::CLEAR = BITS_NONE;
+const uint8_t SwIntSense0::Sw3LsSMask::INT = BITS_0;
 // end of swx.h
