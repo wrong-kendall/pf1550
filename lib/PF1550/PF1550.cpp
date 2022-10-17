@@ -826,4 +826,15 @@ const LdoIntMask0::Ldo3FaultMMask LdoIntMask0::kLdo3FaultMMask(BITS_2);
 const uint8_t LdoIntMask0::Ldo3FaultMMask::REMOVED = BITS_NONE;
 const uint8_t LdoIntMask0::Ldo3FaultMMask::ENABLED = BITS_2;
 
+const uint8_t LdoIntSense0::kRegister = 0x1A;
+const LdoIntSense0::Ldo1FaultSMask LdoIntSense0::kLdo1FaultSMask(BITS_0);
+const uint8_t LdoIntSense0::Ldo1FaultSMask::FAULT_REMOVED = BITS_NONE;
+const uint8_t LdoIntSense0::Ldo1FaultSMask::FAULT_EXISTS = BITS_0;
+const LdoIntSense0::Ldo2FaultSMask LdoIntSense0::kLdo2FaultSMask(BITS_1);
+const uint8_t LdoIntSense0::Ldo2FaultSMask::FAULT_REMOVED = BITS_NONE;
+const uint8_t LdoIntSense0::Ldo2FaultSMask::FAULT_EXISTS = BITS_1;
+const LdoIntSense0::Ldo3FaultSMask LdoIntSense0::kLdo3FaultSMask(BITS_2);
+const uint8_t LdoIntSense0::Ldo3FaultSMask::FAULT_REMOVED = BITS_NONE;
+const uint8_t LdoIntSense0::Ldo3FaultSMask::FAULT_EXISTS = BITS_2;
+
 // end of LDOy.h
