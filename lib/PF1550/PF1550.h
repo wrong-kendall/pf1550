@@ -1666,3 +1666,35 @@ private:
   static const uint8_t kRegister;
 };
 // End of pwrctrl.h
+
+// LDOy.h
+struct LdoIntStat0 : public I2CRegister {
+  static const uint8_t REG;
+  struct Ldo1FaultIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    Ldo1FaultIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Ldo2FaultIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    Ldo2FaultIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Ldo3FaultIMask : public Mask {
+    static const uint8_t CLEARED;
+    static const uint8_t ACTIVE;
+    Ldo3FaultIMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Ldo1FaultIMask kLdo1FaultIMask;
+  static const Ldo2FaultIMask kLdo2FaultIMask;
+  static const Ldo3FaultIMask kLdo3FaultIMask;
+
+  LdoIntStat0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+
+// end of LDOy.h

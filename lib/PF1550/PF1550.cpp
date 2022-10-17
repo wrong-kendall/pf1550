@@ -803,3 +803,16 @@ const uint8_t Pwrctrl3::GotoShipMask::GOTO_SHIP_EN = BITS_0;
 const Pwrctrl3::CoreOffMask Pwrctrl3::kCoreOffMask(BITS_1);
 const uint8_t Pwrctrl3::CoreOffMask::CORE_OFF_EN = BITS_1;
 // End of pwrctrl.h
+// LDOy.h
+const uint8_t LdoIntStat0::kRegister = 0x18;
+const LdoIntStat0::Ldo1FaultIMask LdoIntStat0::kLdo1FaultIMask(BITS_0);
+const uint8_t LdoIntStat0::Ldo1FaultIMask::CLEARED = BITS_NONE;
+const uint8_t LdoIntStat0::Ldo1FaultIMask::ACTIVE = BITS_0;
+const LdoIntStat0::Ldo2FaultIMask LdoIntStat0::kLdo2FaultIMask(BITS_1);
+const uint8_t LdoIntStat0::Ldo2FaultIMask::CLEARED = BITS_NONE;
+const uint8_t LdoIntStat0::Ldo2FaultIMask::ACTIVE = BITS_1;
+const LdoIntStat0::Ldo3FaultIMask LdoIntStat0::kLdo3FaultIMask(BITS_2);
+const uint8_t LdoIntStat0::Ldo3FaultIMask::CLEARED = BITS_NONE;
+const uint8_t LdoIntStat0::Ldo3FaultIMask::ACTIVE = BITS_2;
+
+// end of LDOy.h
