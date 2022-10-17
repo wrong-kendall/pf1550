@@ -2004,4 +2004,84 @@ struct SwIntSense1 : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct SwIntStat2 : public I2CRegister {
+  struct Sw1DvsDoneIMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw1DvsDoneIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw2DvsDoneIMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw2DvsDoneIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw3DvsDoneIMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw3DvsDoneIMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Sw1DvsDoneIMask kSw1DvsDoneIMask;
+  static const Sw2DvsDoneIMask kSw2DvsDoneIMask;
+  static const Sw3DvsDoneIMask kSw3DvsDoneIMask;
+
+  SwIntStat2(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+struct SwIntMask2 : public I2CRegister {
+  struct Sw1DvsDoneMMask : public Mask {
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
+    Sw1DvsDoneMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw2DvsDoneMMask : public Mask {
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
+    Sw2DvsDoneMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw3DvsDoneMMask : public Mask {
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
+    Sw3DvsDoneMMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Sw1DvsDoneMMask kSw1DvsDoneMMask;
+  static const Sw2DvsDoneMMask kSw2DvsDoneMMask;
+  static const Sw3DvsDoneMMask kSw3DvsDoneMMask;
+
+  SwIntMask2(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+struct SwIntSense2 : public I2CRegister {
+  struct Sw1DvsDoneSMask : public Mask {
+    static const uint8_t NOT_IN_PROGRESS;
+    static const uint8_t IN_PROGRESS;
+    Sw1DvsDoneSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw2DvsDoneSMask : public Mask {
+    static const uint8_t NOT_IN_PROGRESS;
+    static const uint8_t IN_PROGRESS;
+    Sw2DvsDoneSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw3DvsDoneSMask : public Mask {
+    static const uint8_t NOT_IN_PROGRESS;
+    static const uint8_t IN_PROGRESS;
+    Sw3DvsDoneSMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Sw1DvsDoneSMask kSw1DvsDoneSMask;
+  static const Sw2DvsDoneSMask kSw2DvsDoneSMask;
+  static const Sw3DvsDoneSMask kSw3DvsDoneSMask;
+
+  SwIntSense2(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
 // end of Swx.h

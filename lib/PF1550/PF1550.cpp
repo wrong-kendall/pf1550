@@ -952,4 +952,37 @@ const uint8_t SwIntSense1::Sw2HsSMask::FAULT_EXISTS = BITS_1;
 const SwIntSense1::Sw3HsSMask SwIntSense1::kSw3HsSMask(BITS_2);
 const uint8_t SwIntSense1::Sw3HsSMask::FAULT_REMOVED = BITS_NONE;
 const uint8_t SwIntSense1::Sw3HsSMask::FAULT_EXISTS = BITS_2;
+
+const uint8_t SwIntStat2::kRegister = 0x0E;
+const SwIntStat2::Sw1DvsDoneIMask SwIntStat2::kSw1DvsDoneIMask(BITS_0);
+const uint8_t SwIntStat2::Sw1DvsDoneIMask::CLEAR = BITS_NONE;
+const uint8_t SwIntStat2::Sw1DvsDoneIMask::INT = BITS_0;
+const SwIntStat2::Sw2DvsDoneIMask SwIntStat2::kSw2DvsDoneIMask(BITS_1);
+const uint8_t SwIntStat2::Sw2DvsDoneIMask::CLEAR = BITS_NONE;
+const uint8_t SwIntStat2::Sw2DvsDoneIMask::INT = BITS_1;
+const SwIntStat2::Sw3DvsDoneIMask SwIntStat2::kSw3DvsDoneIMask(BITS_2);
+const uint8_t SwIntStat2::Sw3DvsDoneIMask::CLEAR = BITS_NONE;
+const uint8_t SwIntStat2::Sw3DvsDoneIMask::INT = BITS_2;
+
+const uint8_t SwIntMask2::kRegister = 0x0F;
+const SwIntMask2::Sw1DvsDoneMMask SwIntMask2::kSw1DvsDoneMMask(BITS_0);
+const uint8_t SwIntMask2::Sw1DvsDoneMMask::REMOVED = BITS_NONE;
+const uint8_t SwIntMask2::Sw1DvsDoneMMask::ENABLED = BITS_0;
+const SwIntMask2::Sw2DvsDoneMMask SwIntMask2::kSw2DvsDoneMMask(BITS_1);
+const uint8_t SwIntMask2::Sw2DvsDoneMMask::REMOVED = BITS_NONE;
+const uint8_t SwIntMask2::Sw2DvsDoneMMask::ENABLED = BITS_1;
+const SwIntMask2::Sw3DvsDoneMMask SwIntMask2::kSw3DvsDoneMMask(BITS_2);
+const uint8_t SwIntMask2::Sw3DvsDoneMMask::REMOVED = BITS_NONE;
+const uint8_t SwIntMask2::Sw3DvsDoneMMask::ENABLED = BITS_2;
+
+const uint8_t SwIntSense2::kRegister = 0x10;
+const SwIntSense2::Sw1DvsDoneSMask SwIntSense2::kSw1DvsDoneSMask(BITS_0);
+const uint8_t SwIntSense2::Sw1DvsDoneSMask::NOT_IN_PROGRESS = BITS_NONE;
+const uint8_t SwIntSense2::Sw1DvsDoneSMask::IN_PROGRESS = BITS_0;
+const SwIntSense2::Sw2DvsDoneSMask SwIntSense2::kSw2DvsDoneSMask(BITS_1);
+const uint8_t SwIntSense2::Sw2DvsDoneSMask::NOT_IN_PROGRESS = BITS_NONE;
+const uint8_t SwIntSense2::Sw2DvsDoneSMask::IN_PROGRESS = BITS_1;
+const SwIntSense2::Sw3DvsDoneSMask SwIntSense2::kSw3DvsDoneSMask(BITS_2);
+const uint8_t SwIntSense2::Sw3DvsDoneSMask::NOT_IN_PROGRESS = BITS_NONE;
+const uint8_t SwIntSense2::Sw3DvsDoneSMask::IN_PROGRESS = BITS_2;
 // end of swx.h
