@@ -1844,3 +1844,32 @@ struct LDOy {
   };
 };
 // end of LDOy.h
+// Swx.h
+
+struct SwIntStat0 : public I2CRegister {
+  struct Sw1LsIMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw1LsIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw2LsIMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw2LsIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw3LsIMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw3LsIMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Sw1LsIMask kSw1LsIMask;
+  static const Sw2LsIMask kSw2LsIMask;
+  static const Sw3LsIMask kSw3LsIMask;
+
+  SwIntStat0(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+// end of Swx.h

@@ -885,3 +885,16 @@ const uint8_t LDOy::Ctrl::LsMask::LDO_MODE = BITS_NONE;
 const LDOy::PwrDnSeq::PwrDnSeqMask LDOy::PwrDnSeq::kPwrDnSeqMask(BITS_2_1_0);
 // TODO(kendall): Fill in the values here.
 // end of LDOy.h
+
+// swx.h
+const uint8_t SwIntStat0::kRegister = 0x08;
+const SwIntStat0::Sw1LsIMask SwIntStat0::kSw1LsIMask(BITS_0);
+const uint8_t SwIntStat0::Sw1LsIMask::CLEAR = BITS_NONE;
+const uint8_t SwIntStat0::Sw1LsIMask::INT = BITS_0;
+const SwIntStat0::Sw2LsIMask SwIntStat0::kSw2LsIMask(BITS_1);
+const uint8_t SwIntStat0::Sw2LsIMask::CLEAR = BITS_NONE;
+const uint8_t SwIntStat0::Sw2LsIMask::INT = BITS_0;
+const SwIntStat0::Sw3LsIMask SwIntStat0::kSw3LsIMask(BITS_2);
+const uint8_t SwIntStat0::Sw3LsIMask::CLEAR = BITS_NONE;
+const uint8_t SwIntStat0::Sw3LsIMask::INT = BITS_0;
+// end of swx.h
