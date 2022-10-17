@@ -1621,3 +1621,28 @@ struct Pwrctrl1 : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+struct Pwrctrl2 : public I2CRegister {
+  struct UvdetMask : public Mask {
+    static const uint8_t _2_65_RISE_2_55_FALL;
+    static const uint8_t _2_8_RISE_2_7_FALL;
+    static const uint8_t _3_0_RISE_2_9_FALL;
+    static const uint8_t _3_1_RISE_3_0_FALL;
+    UvdetMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct LowSysWarnMask : public Mask {
+    static const uint8_t _3_3_RISE_3_1_FALL;
+    static const uint8_t _3_5_RISE_3_3_FALL;
+    static const uint8_t _3_7_RISE_3_5_FALL;
+    static const uint8_t _3_9_RISE_3_7_FALL;
+    LowSysWarnMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const LowSysWarnMask kLowSysWarnMask;
+  static const UvdetMask kUvdetMask;
+
+  Pwrctrl2(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};

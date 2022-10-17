@@ -784,3 +784,15 @@ const uint8_t Pwrctrl1::RegScpEnMask::NO_SHUTDOWN_LDO_ON_CURRENT_LIMIT_FAULT =
 const Pwrctrl1::OnkeyRstEnmask Pwrctrl1::kOnkeyRstEnmask(BITS_7);
 const uint8_t Pwrctrl1::OnkeyRstEnmask::ONKEY_RESET = BITS_7;
 const uint8_t Pwrctrl1::OnkeyRstEnmask::NO_ONKEY_RESET = BITS_NONE;
+
+const uint8_t Pwrctrl2::kRegister = 0x5A;
+const Pwrctrl2::UvdetMask Pwrctrl2::kUvdetMask(BITS_1_0);
+const uint8_t Pwrctrl2::UvdetMask::_2_65_RISE_2_55_FALL = BITS_NONE;
+const uint8_t Pwrctrl2::UvdetMask::_2_8_RISE_2_7_FALL = BITS_0;
+const uint8_t Pwrctrl2::UvdetMask::_3_0_RISE_2_9_FALL = BITS_1;
+const uint8_t Pwrctrl2::UvdetMask::_3_1_RISE_3_0_FALL = BITS_1_0;
+const Pwrctrl2::LowSysWarnMask Pwrctrl2::kLowSysWarnMask(BITS_3_2);
+const uint8_t Pwrctrl2::LowSysWarnMask::_3_3_RISE_3_1_FALL = BITS_NONE;
+const uint8_t Pwrctrl2::LowSysWarnMask::_3_5_RISE_3_3_FALL = BITS_2;
+const uint8_t Pwrctrl2::LowSysWarnMask::_3_7_RISE_3_5_FALL = BITS_3;
+const uint8_t Pwrctrl2::LowSysWarnMask::_3_9_RISE_3_7_FALL = BITS_3_2;
