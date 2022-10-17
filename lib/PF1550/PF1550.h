@@ -1529,3 +1529,47 @@ struct LedCnfg : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
+
+// Pwrctrl.h
+struct Pwrctrl0 : public I2CRegister {
+  struct StandbyDlyMask : public Mask {
+    static const uint8_t NO_DELAY;
+    // TODO(kendall): WTF? these don't make sense
+    static const uint8_t _1_32KHZ_DELAY;
+    static const uint8_t _2_32KHZ_DELAY;
+    static const uint8_t _3_32KHZ_DELAY;
+    StandbyDlyMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct StandbyInvMask : public Mask {
+    static const uint8_t ACTIVE_HIGH;
+    static const uint8_t ACTIVE_LOW;
+    StandbyInvMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct PoRDlyMask : public Mask {
+    static const uint8_t RESETBMCU_DELAY_2MS;
+    static const uint8_t RESETBMCU_DELAY_4MS;
+    static const uint8_t RESETBMCU_DELAY_8MS;
+    static const uint8_t RESETBMCU_DELAY_16MS;
+    static const uint8_t RESETBMCU_DELAY_128MS;
+    static const uint8_t RESETBMCU_DELAY_256MS;
+    static const uint8_t RESETBMCU_DELAY_1024MS;
+    PoRDlyMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct TgResetMask : public Mask {
+    static const uint8_t _4S;
+    static const uint8_t _8S;
+    static const uint8_t _12S;
+    static const uint8_t _16S;
+    TgResetMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const StandbyDlyMask kStandbyDlyMask;
+  static const StandbyInvMask kStandbyInvMask;
+  static const PoRDlyMask kPoRDlyMask;
+  static const TgResetMask kTgResetMask;
+
+  Pwrctrl0(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};

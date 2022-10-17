@@ -731,3 +731,28 @@ const uint8_t LedCnfg::LedCfgMask::CHG_ON_FAULT_FLASH = BITS_NONE;
 const LedCnfg::LedOvrdMask LedCnfg::kLedOvrdMask(BITS_5);
 const uint8_t LedCnfg::LedOvrdMask::STATEMACHINE_CONTROLLED = BITS_NONE;
 const uint8_t LedCnfg::LedOvrdMask::SOFTWARE_CONTROLLED = BITS_5;
+// End charger.h
+
+// Pwrctrl.h
+const uint8_t Pwrctrl0::kRegister = 0x58;
+const Pwrctrl0::StandbyDlyMask Pwrctrl0::kStandbyDlyMask(BITS_1_0);
+// TODO(kendall): WTF? these don't make sense
+const uint8_t Pwrctrl0::StandbyDlyMask::_1_32KHZ_DELAY = BITS_0;
+const uint8_t Pwrctrl0::StandbyDlyMask::_2_32KHZ_DELAY = BITS_1;
+const uint8_t Pwrctrl0::StandbyDlyMask::_3_32KHZ_DELAY = BITS_1_0;
+const Pwrctrl0::StandbyInvMask Pwrctrl0::kStandbyInvMask(BITS_2);
+const uint8_t Pwrctrl0::StandbyInvMask::ACTIVE_HIGH = BITS_NONE;
+const uint8_t Pwrctrl0::StandbyInvMask::ACTIVE_LOW = BITS_2;
+const Pwrctrl0::PoRDlyMask Pwrctrl0::kPoRDlyMask(BITS_5_4_3);
+const uint8_t Pwrctrl0::PoRDlyMask::RESETBMCU_DELAY_2MS = BITS_NONE;
+const uint8_t Pwrctrl0::PoRDlyMask::RESETBMCU_DELAY_4MS = BITS_3;
+const uint8_t Pwrctrl0::PoRDlyMask::RESETBMCU_DELAY_8MS = BITS_4_3;
+const uint8_t Pwrctrl0::PoRDlyMask::RESETBMCU_DELAY_16MS = BITS_5;
+const uint8_t Pwrctrl0::PoRDlyMask::RESETBMCU_DELAY_128MS = BITS_5_3;
+const uint8_t Pwrctrl0::PoRDlyMask::RESETBMCU_DELAY_256MS = BITS_5_4;
+const uint8_t Pwrctrl0::PoRDlyMask::RESETBMCU_DELAY_1024MS = BITS_5_4_3;
+const Pwrctrl0::TgResetMask Pwrctrl0::kTgResetMask(BITS_7_6);
+const uint8_t Pwrctrl0::TgResetMask::_4S = BITS_NONE;
+const uint8_t Pwrctrl0::TgResetMask::_8S = BITS_6;
+const uint8_t Pwrctrl0::TgResetMask::_12S = BITS_7;
+const uint8_t Pwrctrl0::TgResetMask::_16S = BITS_7_6;
