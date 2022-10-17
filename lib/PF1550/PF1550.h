@@ -1874,18 +1874,18 @@ private:
 };
 struct SwIntMask0 : public I2CRegister {
   struct Sw1LsMMask : public Mask {
-    static const uint8_t CLEAR;
-    static const uint8_t INT;
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
     Sw1LsMMask(uint8_t mask) : Mask(mask) {}
   };
   struct Sw2LsMMask : public Mask {
-    static const uint8_t CLEAR;
-    static const uint8_t INT;
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
     Sw2LsMMask(uint8_t mask) : Mask(mask) {}
   };
   struct Sw3LsMMask : public Mask {
-    static const uint8_t CLEAR;
-    static const uint8_t INT;
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
     Sw3LsMMask(uint8_t mask) : Mask(mask) {}
   };
 
@@ -1900,18 +1900,18 @@ private:
 };
 struct SwIntSense0 : public I2CRegister {
   struct Sw1LsSMask : public Mask {
-    static const uint8_t CLEAR;
-    static const uint8_t INT;
+    static const uint8_t FAULT_REMOVED;
+    static const uint8_t FAULT_EXISTS;
     Sw1LsSMask(uint8_t mask) : Mask(mask) {}
   };
   struct Sw2LsSMask : public Mask {
-    static const uint8_t CLEAR;
-    static const uint8_t INT;
+    static const uint8_t FAULT_REMOVED;
+    static const uint8_t FAULT_EXISTS;
     Sw2LsSMask(uint8_t mask) : Mask(mask) {}
   };
   struct Sw3LsSMask : public Mask {
-    static const uint8_t CLEAR;
-    static const uint8_t INT;
+    static const uint8_t FAULT_REMOVED;
+    static const uint8_t FAULT_EXISTS;
     Sw3LsSMask(uint8_t mask) : Mask(mask) {}
   };
 
@@ -1920,6 +1920,85 @@ struct SwIntSense0 : public I2CRegister {
   static const Sw3LsSMask kSw3LsSMask;
 
   SwIntSense0(uint8_t device_address)
+      : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+struct SwIntStat1 : public I2CRegister {
+  struct Sw1HsIMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw1HsIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw2HsIMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw2HsIMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw3HsIMask : public Mask {
+    static const uint8_t CLEAR;
+    static const uint8_t INT;
+    Sw3HsIMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Sw1HsIMask kSw1HsIMask;
+  static const Sw2HsIMask kSw2HsIMask;
+  static const Sw3HsIMask kSw3HsIMask;
+
+  SwIntStat1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+struct SwIntMask1 : public I2CRegister {
+  struct Sw1HsMMask : public Mask {
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
+    Sw1HsMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw2HsMMask : public Mask {
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
+    Sw2HsMMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw3HsMMask : public Mask {
+    static const uint8_t REMOVED;
+    static const uint8_t ENABLED;
+    Sw3HsMMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Sw1HsMMask kSw1HsMMask;
+  static const Sw2HsMMask kSw2HsMMask;
+  static const Sw3HsMMask kSw3HsMMask;
+
+  SwIntMask1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+private:
+  static const uint8_t kRegister;
+};
+struct SwIntSense1 : public I2CRegister {
+  struct Sw1HsSMask : public Mask {
+    static const uint8_t FAULT_REMOVED;
+    static const uint8_t FAULT_EXISTS;
+    Sw1HsSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw2HsSMask : public Mask {
+    static const uint8_t FAULT_REMOVED;
+    static const uint8_t FAULT_EXISTS;
+    Sw2HsSMask(uint8_t mask) : Mask(mask) {}
+  };
+  struct Sw3HsSMask : public Mask {
+    static const uint8_t FAULT_REMOVED;
+    static const uint8_t FAULT_EXISTS;
+    Sw3HsSMask(uint8_t mask) : Mask(mask) {}
+  };
+
+  static const Sw1HsSMask kSw1HsSMask;
+  static const Sw2HsSMask kSw2HsSMask;
+  static const Sw3HsSMask kSw3HsSMask;
+
+  SwIntSense1(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
 private:
