@@ -2330,3 +2330,24 @@ struct SWx {
   };
 };
 // end of Swx.h
+
+// TODO(kendall): Ask if he wants attribution
+// Below is courtesy of ...
+template <typename... B> constexpr int count_first_falses(bool b1, B... b) {
+  if (b1)
+    return 0;
+  else
+    return 1 + count_first_falses(b...);
+}
+
+template <class... Registers> class PF1550 {
+public:
+  PF1550(uint8_t device_address) : registers_(Registers(device_address)...) {}
+
+  template <typename R> decltype(auto) get_register() {
+    return std::get<count_first_falses((std::is_same<Registers, R>::value)...)>(
+        registers_);
+  }
+
+  tuple<Registers...> registers_;
+};
