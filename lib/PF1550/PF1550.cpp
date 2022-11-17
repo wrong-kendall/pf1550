@@ -985,4 +985,243 @@ const uint8_t SwIntSense2::Sw2DvsDoneSMask::IN_PROGRESS = BITS_1;
 const SwIntSense2::Sw3DvsDoneSMask SwIntSense2::kSw3DvsDoneSMask(BITS_2);
 const uint8_t SwIntSense2::Sw3DvsDoneSMask::NOT_IN_PROGRESS = BITS_NONE;
 const uint8_t SwIntSense2::Sw3DvsDoneSMask::IN_PROGRESS = BITS_2;
+
+const struct SWx::Volt::VoltMask SWx::Volt::kVoltMask(BITS_5_4_3_2_1_0);
+const SWx::SlpVolt::SlpVoltMask SWx::SlpVolt::kSlpVoltMask(BITS_5_4_3_2_1_0);
+const SWx::StbyVolt::StbyVoltMask
+    SWx::StbyVolt::kStbyVoltMask(BITS_5_4_3_2_1_0);
+
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_1_10 = BITS_NONE;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_1_20 = BITS_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_1_35 = BITS_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_1_50 = BITS_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_1_80 = BITS_2;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_2_50 = BITS_2_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_00 = BITS_2_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_3;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_3_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_3_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_3_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_3_2;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_3_2_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_3_2_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_3_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_2;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_2_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_2_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_3;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_3_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_3_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_3_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_3_2;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_3_2_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_3_2_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_4_3_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_2;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_2_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_2_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_3;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_3_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_3_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_3_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_3_2;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_3_2_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_3_2_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_3_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_2;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_2_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_2_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_3;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_3_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_3_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_3_1_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_3_2;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_3_2_0;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_3_2_1;
+const uint8_t SWx::OtpSWxDvsSelDisVolt::_3_30 = BITS_5_4_3_2_1_0;
+
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_6000 = BITS_NONE;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_6125 = BITS_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_6250 = BITS_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_6375 = BITS_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_6500 = BITS_2;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_6625 = BITS_2_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_6750 = BITS_2_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_6875 = BITS_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_7000 = BITS_3;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_7125 = BITS_3_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_7250 = BITS_3_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_7375 = BITS_3_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_7500 = BITS_3_2;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_7625 = BITS_3_2_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_7750 = BITS_3_2_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_7875 = BITS_3_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_8000 = BITS_4;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_8125 = BITS_4_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_8250 = BITS_4_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_8375 = BITS_4_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_8500 = BITS_4_2;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_8625 = BITS_4_2_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_8750 = BITS_4_2_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_8875 = BITS_4_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_9000 = BITS_4_3;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_9125 = BITS_4_3_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_9250 = BITS_4_3_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_9375 = BITS_4_3_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_9500 = BITS_4_3_2;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_9625 = BITS_4_3_2_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_9750 = BITS_4_3_2_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_0_9875 = BITS_4_3_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_0000 = BITS_5;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_0125 = BITS_5_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_0250 = BITS_5_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_0375 = BITS_5_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_0500 = BITS_5_2;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_0625 = BITS_5_2_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_0750 = BITS_5_2_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_0875 = BITS_5_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_1000 = BITS_5_3;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_1125 = BITS_5_3_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_125 = BITS_5_3_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_1375 = BITS_5_3_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_1500 = BITS_5_3_2;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_1625 = BITS_5_3_2_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_1750 = BITS_5_3_2_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_1875 = BITS_5_3_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_2000 = BITS_5_4;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_2125 = BITS_5_4_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_2250 = BITS_5_4_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_2375 = BITS_5_4_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_2500 = BITS_5_4_2;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_2625 = BITS_5_4_2_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_2750 = BITS_5_4_2_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_2875 = BITS_5_4_2_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3000 = BITS_5_4_3;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3125 = BITS_5_4_3_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3250 = BITS_5_4_3_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3375 = BITS_5_4_3_1_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3500 = BITS_5_4_3_2;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3625 = BITS_5_4_3_2_0;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3750 = BITS_5_4_3_2_1;
+const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3875 = BITS_5_4_3_2_1_0;
+
+/*
+const SWx::PwrUp::PwrUpSeqMask SWx::PwrUp::k
+
+    : public I2CRegister {
+      struct PwrUpSeqMask : public Mask {
+        static const uint8_t MASK = BITS_2_1_0;
+        PwrUpSeqMask(uint8_t mask) : Mask(mask) {}
+        // TODO(kendall): Figure these out
+      };
+      static const PwrUpSeqMask kPwrUpSeqMask;
+      PwrUp(uint8_t device_address, uint8_t register_address)
+          : I2CRegister(device_address, register_address) {}
+    };
+
+    struct Ctrl : public I2CRegister {
+      struct EnableMask : public Msak {
+        static const uint8_t ENABLED = BITS_0;
+        static const uint8_t DISABLED = BITS_NONE;
+        EnableMask(uint8_t mask) : Mask(mask) {}
+      };
+      struct StbyMask : public Mask {
+        static const uint8_t ENABLED = BITS_1;
+        static const uint8_t DISABLED = BITS_NONE;
+        StbyMask(uint8_t mask) : Mask(mask) {}
+      };
+      struct OmodeMask : public Mask {
+        static const uint8_t ENABLED = BITS_2;
+        static const uint8_t DISABLED = BITS_NONE;
+        OmodeMask(uint8_t mask) : Mask(mask) {}
+      };
+      struct LPwrMask : public Mask {
+        static const uint8_t ENABLED = BITS_3;
+        static const uint8_t DISABLED = BITS_NONE;
+        LPwrMask(uint8_t mask) : Mask(mask) {}
+      };
+
+      struct DvsSpeedMask : public Mask {
+        static const uint8_t _12_5MV_DIV_2US = BITS_4;
+        static const uint8_t _12_5MV_DIV_4US = BITS_NONE;
+        DvsSpeedMask(uint8_t mask) : Mask(mask) {}
+      };
+      struct FPwmInDvsMask : public Mask {
+        static const uint8_t FORCE = BITS_5;
+        static const uint8_t NO_FORCE = BITS_NONE;
+        FPwmInDvsMask(uint8_t mask) : Mask(mask) {}
+      };
+      struct FPwmMask {
+        static const uint8_t FPWM_ON = BITS_6;
+        static const uint8_t NO_FPWM = BITS_NONE;
+        FPwmMask(uint8_t mask) : Mask(mask) {}
+      };
+
+      struct RDisMask : public Mask {
+        static const uint8_t ENABLED = BITS_7;
+        static const uint8_t DISABLED = BITS_NONE;
+        RDisMask(uint8_t mask) : Mask(mask) {}
+      };
+
+      static const EnableMask kEnableMask;
+      static const StbyMask kStbyMask;
+      static const OmodeMask kOmodeMask;
+      static const LPwrMask kLPwrMask;
+      static const DvsSpeedMask kDvsSpeedMask;
+      static const FPwmInDvsMask kFPwmInDvsMask;
+      static const FPwmMask kFPwmMask;
+      static const RDisMask kRDisMask;
+      Ctrl(uint8_t device_address, uint8_t register_address)
+          : I2CRegister(device_address, register_address)
+    };
+    struct Ctrl1 : public I2CRegister {
+      struct ILimMask : public Mask {
+        static const uint8_t _1A = BITS_NONE;
+        static const uint8_t _1_2A = BITS_0;
+        static const uint8_t _1_5A = BITS_1;
+        static const uint8_t _2A = BITS_1_0;
+        ILimMask(uint8_t mask) : Mask(mask) {}
+      };
+      struct TmodeMask : public Mask {
+        static const uint8_t T_ON = BITS_4;
+        static const uint8_t T_OFF = BITS_NONE;
+        TmodeMask(uint8_t mask) : Mask(mask) {}
+      };
+
+      static const TmodeMask kTmodeMask;
+      static const ILimMask kILimMask;
+
+      Ctrl1(uint8_t device_address, uint8_t register_address)
+          : I2CRegister(device_address, register_address) {}
+    };
+    struct PwrDn : public I2CRegister {
+      struct PwrDnSeqMask : public Mask {
+        // TODO(kendall): Figure these out.
+        static const uint8_t MASK = BITS_2_1_0;
+        PwrDnSeqMask(uint8_t mask) : Mask(mask) {}
+      };
+      static const PwrDnSeqMask kPwrDnSeqMask;
+
+      PwrDn(uint8_t device_address, register_address)
+          : I2CRegister(device_address, register_address) {}
+    };
+    }
+    ;
+    */
 // end of swx.h

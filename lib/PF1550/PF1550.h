@@ -57,6 +57,8 @@ struct DeviceId : public I2CRegister {
   static const DeviceIdMask kDeviceIdMask;
   DeviceId(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
+  // TODO(kendall): Add Family
+
 private:
   static const uint8_t kRegister;
 };
@@ -2083,5 +2085,258 @@ struct SwIntSense2 : public I2CRegister {
 
 private:
   static const uint8_t kRegister;
+};
+
+struct SWx {
+  struct OtpSWxDvsSelEnVolt {
+    static const uint8_t _0_6000;
+    static const uint8_t _0_6125;
+    static const uint8_t _0_6250;
+    static const uint8_t _0_6375;
+    static const uint8_t _0_6500;
+    static const uint8_t _0_6625;
+    static const uint8_t _0_6750;
+    static const uint8_t _0_6875;
+    static const uint8_t _0_7000;
+    static const uint8_t _0_7125;
+    static const uint8_t _0_7250;
+    static const uint8_t _0_7375;
+    static const uint8_t _0_7500;
+    static const uint8_t _0_7625;
+    static const uint8_t _0_7750;
+    static const uint8_t _0_7875;
+    static const uint8_t _0_8000;
+    static const uint8_t _0_8125;
+    static const uint8_t _0_8250;
+    static const uint8_t _0_8375;
+    static const uint8_t _0_8500;
+    static const uint8_t _0_8625;
+    static const uint8_t _0_8750;
+    static const uint8_t _0_8875;
+    static const uint8_t _0_9000;
+    static const uint8_t _0_9125;
+    static const uint8_t _0_9250;
+    static const uint8_t _0_9375;
+    static const uint8_t _0_9500;
+    static const uint8_t _0_9625;
+    static const uint8_t _0_9750;
+    static const uint8_t _0_9875;
+    static const uint8_t _1_0000;
+    static const uint8_t _1_0125;
+    static const uint8_t _1_0250;
+    static const uint8_t _1_0375;
+    static const uint8_t _1_0500;
+    static const uint8_t _1_0625;
+    static const uint8_t _1_0750;
+    static const uint8_t _1_0875;
+    static const uint8_t _1_1000;
+    static const uint8_t _1_1125;
+    static const uint8_t _1_125;
+    static const uint8_t _1_1375;
+    static const uint8_t _1_1500;
+    static const uint8_t _1_1625;
+    static const uint8_t _1_1750;
+    static const uint8_t _1_1875;
+    static const uint8_t _1_2000;
+    static const uint8_t _1_2125;
+    static const uint8_t _1_2250;
+    static const uint8_t _1_2375;
+    static const uint8_t _1_2500;
+    static const uint8_t _1_2625;
+    static const uint8_t _1_2750;
+    static const uint8_t _1_2875;
+    static const uint8_t _1_3000;
+    static const uint8_t _1_3125;
+    static const uint8_t _1_3250;
+    static const uint8_t _1_3375;
+    static const uint8_t _1_3500;
+    static const uint8_t _1_3625;
+    static const uint8_t _1_3750;
+    static const uint8_t _1_3875;
+  };
+
+  struct OtpSWxDvsSelDisVolt {
+    static const uint8_t _1_10;
+    static const uint8_t _1_20;
+    static const uint8_t _1_35;
+    static const uint8_t _1_50;
+    static const uint8_t _1_80;
+    static const uint8_t _2_50;
+    static const uint8_t _3_00;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+    static const uint8_t _3_30;
+  };
+  struct Volt : public I2CRegister {
+    static const VoltMask kVoltMask;
+    Volt(uint8_t device_address, uint8_t register_address)
+        : I2CRegister(device_address, register_address) {}
+  };
+
+  struct StbyVolt : public I2CRegister {
+    struct StbyVoltMask : public Mask {
+      StbyVoltMask(uint8_t mask) : Mask(mask) {}
+    };
+    static const StbyVoltMask kStbyVoltMask;
+    StbyVolt(uint8_t device_address, uint8_t register_address)
+        : I2CRegister(device_address, register_address) {}
+  };
+  struct SlpVolt : public I2CRegister {
+    struct SlpVoltMask : public Mask {
+      SlpVoltMask(uint8_t mask) : Mask(mask) {}
+    };
+    static const SlpVoltMask kSlpVoltMask;
+    SlpVolt(uint8_t device_address, uint8_t register_address)
+        : I2CRegister(device_address, register_address) {}
+  };
+  struct PwrUp : public I2CRegister {
+    struct PwrUpSeqMask : public Mask {
+      PwrUpSeqMask(uint8_t mask) : Mask(mask) {}
+      // TODO(kendall): Figure these out
+    };
+    static const PwrUpSeqMask kPwrUpSeqMask;
+    PwrUp(uint8_t device_address, uint8_t register_address)
+        : I2CRegister(device_address, register_address) {}
+  };
+
+  struct Ctrl : public I2CRegister {
+    struct EnableMask : public Mask {
+      static const uint8_t ENABLED;
+      static const uint8_t DISABLED;
+      EnableMask(uint8_t mask) : Mask(mask) {}
+    };
+    struct StbyMask : public Mask {
+      static const uint8_t ENABLED;
+      static const uint8_t DISABLED;
+      StbyMask(uint8_t mask) : Mask(mask) {}
+    };
+    struct OmodeMask : public Mask {
+      static const uint8_t ENABLED;
+      static const uint8_t DISABLED;
+      OmodeMask(uint8_t mask) : Mask(mask) {}
+    };
+    struct LPwrMask : public Mask {
+      static const uint8_t ENABLED;
+      static const uint8_t DISABLED;
+      LPwrMask(uint8_t mask) : Mask(mask) {}
+    };
+
+    struct DvsSpeedMask : public Mask {
+      static const uint8_t _12_5MV_DIV_2US;
+      static const uint8_t _12_5MV_DIV_4US;
+      DvsSpeedMask(uint8_t mask) : Mask(mask) {}
+    };
+    struct FPwmInDvsMask : public Mask {
+      static const uint8_t FORCE;
+      static const uint8_t NO_FORCE;
+      FPwmInDvsMask(uint8_t mask) : Mask(mask) {}
+    };
+    struct FPwmMask : public Mask {
+      static const uint8_t FPWM_ON;
+      static const uint8_t NO_FPWM;
+      FPwmMask(uint8_t mask) : Mask(mask) {}
+    };
+
+    struct RDisMask : public Mask {
+      static const uint8_t ENABLED;
+      static const uint8_t DISABLED;
+      RDisMask(uint8_t mask) : Mask(mask) {}
+    };
+
+    static const EnableMask kEnableMask;
+    static const StbyMask kStbyMask;
+    static const OmodeMask kOmodeMask;
+    static const LPwrMask kLPwrMask;
+    static const DvsSpeedMask kDvsSpeedMask;
+    static const FPwmInDvsMask kFPwmInDvsMask;
+    static const FPwmMask kFPwmMask;
+    static const RDisMask kRDisMask;
+    Ctrl(uint8_t device_address, uint8_t register_address)
+        : I2CRegister(device_address, register_address) {}
+  };
+  struct Ctrl1 : public I2CRegister {
+    struct ILimMask : public Mask {
+      static const uint8_t _1A;
+      static const uint8_t _1_2A;
+      static const uint8_t _1_5A;
+      static const uint8_t _2A;
+      ILimMask(uint8_t mask) : Mask(mask) {}
+    };
+    struct TmodeMask : public Mask {
+      static const uint8_t T_ON;
+      static const uint8_t T_OFF;
+      TmodeMask(uint8_t mask) : Mask(mask) {}
+    };
+
+    static const TmodeMask kTmodeMask;
+    static const ILimMask kILimMask;
+
+    Ctrl1(uint8_t device_address, uint8_t register_address)
+        : I2CRegister(device_address, register_address) {}
+  };
+  struct PwrDn : public I2CRegister {
+    struct PwrDnSeqMask : public Mask {
+      // TODO(kendall): Figure these out.
+      PwrDnSeqMask(uint8_t mask) : Mask(mask) {}
+    };
+    static const PwrDnSeqMask kPwrDnSeqMask;
+
+    PwrDn(uint8_t device_address, uint8_t register_address)
+        : I2CRegister(device_address, register_address) {}
+  };
 };
 // end of Swx.h
