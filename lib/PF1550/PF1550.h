@@ -2212,6 +2212,9 @@ struct SWx {
   struct Volt : public I2CRegister {
     // TODO(kendall): I think you left off here trying to figure out how to
     // make VoltMask generic
+    struct VoltMask : public Mask {
+      VoltMask(uint8_t mask) : Mask(mask) {}
+    };
     static const VoltMask kVoltMask;
     Volt(uint8_t device_address, uint8_t register_address)
         : I2CRegister(device_address, register_address) {}
