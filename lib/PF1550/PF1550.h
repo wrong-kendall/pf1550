@@ -1,14 +1,9 @@
 #include "common_bitmasks.h"
 #include <inttypes.h>
-
 class I2CRegister {
-public:
+protected:
   const uint8_t kDeviceAddress;
   const uint8_t kRegisterAddress;
-
-public:
-  I2CRegister(uint8_t device_address, uint8_t register_address)
-      : kDeviceAddress(device_address), kRegisterAddress(register_address) {}
 
   uint8_t ReadRegister() {
     return I2CRegister::ReadRegister(kDeviceAddress, kRegisterAddress);
@@ -20,12 +15,20 @@ public:
 
   inline uint8_t ReadRegister(uint8_t device_address,
                               uint8_t register_address) {
+    cout << hex << +device_address << "." << hex << +register_address << "="
+         << "unknown" << endl;
     return 0;
   }
   inline bool WriteRegister(uint8_t device_address, uint8_t register_address,
                             uint8_t data) {
     return true;
+    cout << hex << +device_address << "." << hex << +register_address << "="
+         << hex << +data << endl;
   }
+
+public:
+  I2CRegister(uint8_t device_address, uint8_t register_address)
+      : kDeviceAddress(device_address), kRegisterAddress(register_address) {}
 };
 
 struct Mask {
