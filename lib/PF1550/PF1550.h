@@ -1,19 +1,6 @@
 #include "common_bitmasks.h"
 #include <inttypes.h>
 
-/*
-struct X : public I2CRegister {
-  struct YMask : public Mask {
-    YMask(uint8_t mask) : Mask(mask) {}
-  };
-  static const YMask kYMask;
-  X(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
-
-private:
-  static const uint8_t kRegister;
-};
-*/
-
 class I2CRegister {
 public:
   const uint8_t kDeviceAddress;
@@ -31,11 +18,11 @@ public:
     return I2CRegister::WriteRegister(kDeviceAddress, kRegisterAddress, data);
   }
 
-  static uint8_t ReadRegister(uint8_t device_address,
+  inline uint8_t ReadRegister(uint8_t device_address,
                               uint8_t register_address) {
     return 0;
   }
-  static bool WriteRegister(uint8_t device_address, uint8_t register_address,
+  inline bool WriteRegister(uint8_t device_address, uint8_t register_address,
                             uint8_t data) {
     return true;
   }
