@@ -1,5 +1,6 @@
 #include "common_bitmasks.h"
 #include <inttypes.h>
+#include <tuple>
 class I2CRegister {
 protected:
   const uint8_t kDeviceAddress;
@@ -15,15 +16,11 @@ protected:
 
   inline uint8_t ReadRegister(uint8_t device_address,
                               uint8_t register_address) {
-    cout << hex << +device_address << "." << hex << +register_address << "="
-         << "unknown" << endl;
     return 0;
   }
   inline bool WriteRegister(uint8_t device_address, uint8_t register_address,
                             uint8_t data) {
     return true;
-    cout << hex << +device_address << "." << hex << +register_address << "="
-         << hex << +data << endl;
   }
 
 public:
@@ -2152,66 +2149,69 @@ struct SWx {
     static const uint8_t _1_50;
     static const uint8_t _1_80;
     static const uint8_t _2_50;
-    static const uint8_t _3_00;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
-    static const uint8_t _3_30;
+    // TODO(kendall): This is absurd. Figure this out...
+    static const uint8_t _3_00_0;
+    static const uint8_t _3_30_1;
+    static const uint8_t _3_30_2;
+    static const uint8_t _3_30_3;
+    static const uint8_t _3_30_4;
+    static const uint8_t _3_30_5;
+    static const uint8_t _3_30_6;
+    static const uint8_t _3_30_7;
+    static const uint8_t _3_30_8;
+    static const uint8_t _3_30_9;
+    static const uint8_t _3_30_10;
+    static const uint8_t _3_30_11;
+    static const uint8_t _3_30_12;
+    static const uint8_t _3_30_13;
+    static const uint8_t _3_30_14;
+    static const uint8_t _3_30_15;
+    static const uint8_t _3_30_16;
+    static const uint8_t _3_30_17;
+    static const uint8_t _3_30_18;
+    static const uint8_t _3_30_19;
+    static const uint8_t _3_30_20;
+    static const uint8_t _3_30_21;
+    static const uint8_t _3_30_22;
+    static const uint8_t _3_30_23;
+    static const uint8_t _3_30_24;
+    static const uint8_t _3_30_25;
+    static const uint8_t _3_30_26;
+    static const uint8_t _3_30_27;
+    static const uint8_t _3_30_28;
+    static const uint8_t _3_30_29;
+    static const uint8_t _3_30_30;
+    static const uint8_t _3_30_31;
+    static const uint8_t _3_30_32;
+    static const uint8_t _3_30_33;
+    static const uint8_t _3_30_34;
+    static const uint8_t _3_30_35;
+    static const uint8_t _3_30_36;
+    static const uint8_t _3_30_37;
+    static const uint8_t _3_30_38;
+    static const uint8_t _3_30_39;
+    static const uint8_t _3_30_40;
+    static const uint8_t _3_30_41;
+    static const uint8_t _3_30_42;
+    static const uint8_t _3_30_43;
+    static const uint8_t _3_30_44;
+    static const uint8_t _3_30_45;
+    static const uint8_t _3_30_46;
+    static const uint8_t _3_30_47;
+    static const uint8_t _3_30_48;
+    static const uint8_t _3_30_49;
+    static const uint8_t _3_30_50;
+    static const uint8_t _3_30_51;
+    static const uint8_t _3_30_52;
+    static const uint8_t _3_30_53;
+    static const uint8_t _3_30_54;
+    static const uint8_t _3_30_55;
+    static const uint8_t _3_30_56;
+    static const uint8_t _3_30_57;
   };
   struct Volt : public I2CRegister {
+    // TODO(kendall): I think you left off here trying to figure out how to
+    // make VoltMask generic
     static const VoltMask kVoltMask;
     Volt(uint8_t device_address, uint8_t register_address)
         : I2CRegister(device_address, register_address) {}
@@ -2331,6 +2331,7 @@ struct SWx {
 };
 // end of Swx.h
 
+/*
 // TODO(kendall): Ask if he wants attribution
 // Below is courtesy of ...
 template <typename... B> constexpr int count_first_falses(bool b1, B... b) {
@@ -2351,3 +2352,4 @@ public:
 
   tuple<Registers...> registers_;
 };
+*/
