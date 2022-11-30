@@ -2337,6 +2337,7 @@ struct SWx {
 
 // TODO(kendall): Ask if he wants attribution
 // Below is courtesy of ...
+constexpr int count_first_falses() { return 0; }
 template <typename... B> constexpr int count_first_falses(bool b1, B... b) {
   if (b1)
     return 0;
@@ -2353,4 +2354,5 @@ public:
     return std::get<count_first_falses((std::is_same<Registers, R>::value)...)>(
         registers_);
   }
+  friend class PF1550Test;
 };
