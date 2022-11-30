@@ -1,8 +1,9 @@
 #include "common_bitmasks.h"
 #include <inttypes.h>
 #include <tuple>
+
 class I2CRegister {
-protected:
+public:
   const uint8_t kDeviceAddress;
   const uint8_t kRegisterAddress;
 
@@ -2150,7 +2151,7 @@ struct SWx {
     static const uint8_t _1_80;
     static const uint8_t _2_50;
     // TODO(kendall): This is absurd. Figure this out...
-    static const uint8_t _3_00_0;
+    static const uint8_t _3_30_0;
     static const uint8_t _3_30_1;
     static const uint8_t _3_30_2;
     static const uint8_t _3_30_3;
@@ -2334,7 +2335,6 @@ struct SWx {
 };
 // end of Swx.h
 
-/*
 // TODO(kendall): Ask if he wants attribution
 // Below is courtesy of ...
 template <typename... B> constexpr int count_first_falses(bool b1, B... b) {
@@ -2346,13 +2346,11 @@ template <typename... B> constexpr int count_first_falses(bool b1, B... b) {
 
 template <class... Registers> class PF1550 {
 public:
+  std::tuple<Registers...> registers_;
   PF1550(uint8_t device_address) : registers_(Registers(device_address)...) {}
 
   template <typename R> decltype(auto) get_register() {
     return std::get<count_first_falses((std::is_same<Registers, R>::value)...)>(
         registers_);
   }
-
-  tuple<Registers...> registers_;
 };
-*/
