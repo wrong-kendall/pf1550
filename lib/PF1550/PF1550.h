@@ -51,7 +51,7 @@ private:
   static const uint8_t kRegister;
 };
 
-struct OTPFlavor : public I2CRegister {
+struct OtpFlavor : public I2CRegister {
   struct ModelMask : public Mask {
     static const uint8_t A0;
     static const uint8_t A1;
@@ -66,7 +66,7 @@ struct OTPFlavor : public I2CRegister {
     ModelMask(uint8_t mask) : Mask(mask) {}
   };
   static const ModelMask kModelMask;
-  OTPFlavor(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+  OtpFlavor(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
   static const uint8_t kRegister;
@@ -105,7 +105,7 @@ struct StateInfo : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
-struct I2CAddr : public I2CRegister {
+struct I2cAddr : public I2CRegister {
   struct AddrMask : public Mask {
     static const uint8_t DEFAULT;
     static const uint8_t X08;
@@ -119,13 +119,13 @@ struct I2CAddr : public I2CRegister {
     AddrMask(uint8_t mask) : Mask(mask) {}
   };
   static const AddrMask kAddrMask;
-  I2CAddr(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+  I2cAddr(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
   static const uint8_t kRegister;
 };
 
-struct RC16Mhz : public I2CRegister {
+struct Rc16mhz : public I2CRegister {
   struct Req16MhzMask : public Mask {
     static const uint8_t ALWAYS_ON;
     static const uint8_t STATEMACHINE_EN;
@@ -144,7 +144,7 @@ struct RC16Mhz : public I2CRegister {
   static const Req16MhzMask kReq16MhzMask;
   static const ReqAcoreOnMask kReqAcoreOnMask;
   static const ReqAcoreHiPwrMask kReqAcoreHiPwrMask;
-  RC16Mhz(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+  Rc16mhz(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
   static const uint8_t kRegister;
@@ -521,7 +521,7 @@ private:
   static const uint8_t kRegister;
 };
 
-struct CoinCellControl : public I2CRegister {
+struct CoincellControl : public I2CRegister {
   struct VCoinMask : public Mask {
     static const uint8_t _1_8;
     static const uint8_t _1_9;
@@ -548,14 +548,14 @@ struct CoinCellControl : public I2CRegister {
   };
   static const VCoinMask kVCoinMask;
   static const ChEnMask kChEnMask;
-  CoinCellControl(uint8_t device_address)
+  CoincellControl(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
 private:
   static const uint8_t kRegister;
 };
 
-struct VSNVSCtrl : public I2CRegister {
+struct VsnvsCtrl : public I2CRegister {
   struct CLKPulseMask : public Mask {
     CLKPulseMask(uint8_t mask) : Mask(mask) {}
   };
@@ -565,57 +565,57 @@ struct VSNVSCtrl : public I2CRegister {
     ForceBOSMask(uint8_t mask) : Mask(mask) {}
   };
   struct LiBGDisMask : public Mask {
-    static const uint8_t VSNVS_BAND_GAP_DISABLED;
-    static const uint8_t VSNVS_BAND_GAP_ENABLED;
+    static const uint8_t Vsnvs_BAND_GAP_DISABLED;
+    static const uint8_t Vsnvs_BAND_GAP_ENABLED;
     LiBGDisMask(uint8_t mask) : Mask(mask) {}
   };
   static const CLKPulseMask kCLKPulseMask;
   static const ForceBOSMask kForceBOSMask;
   static const LiBGDisMask kLiBGDisMask;
-  VSNVSCtrl(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+  VsnvsCtrl(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
   static const uint8_t kRegister;
 };
 
-struct VREFDDRCtrl : public I2CRegister {
-  struct VREFDDREnMask : public Mask {
+struct VrefddrCtrl : public I2CRegister {
+  struct VrefddrEnMask : public Mask {
     static const uint8_t DISABLE;
     static const uint8_t ENABLE;
-    VREFDDREnMask(uint8_t mask) : Mask(mask) {}
+    VrefddrEnMask(uint8_t mask) : Mask(mask) {}
   };
-  struct VREFDDRStbyEnMask : public Mask {
+  struct VrefddrStbyEnMask : public Mask {
     static const uint8_t DISABLE;
     static const uint8_t ENABLE;
-    VREFDDRStbyEnMask(uint8_t mask) : Mask(mask) {}
+    VrefddrStbyEnMask(uint8_t mask) : Mask(mask) {}
   };
-  struct VREFDDROModeMask : public Mask {
+  struct VrefddrOModeMask : public Mask {
     static const uint8_t DISABLE;
     static const uint8_t ENABLE;
-    VREFDDROModeMask(uint8_t mask) : Mask(mask) {}
+    VrefddrOModeMask(uint8_t mask) : Mask(mask) {}
   };
-  struct VREFDDRLPwrMask : public Mask {
+  struct VrefddrLPwrMask : public Mask {
     static const uint8_t DISABLE;
     static const uint8_t ENABLE;
-    VREFDDRLPwrMask(uint8_t mask) : Mask(mask) {}
+    VrefddrLPwrMask(uint8_t mask) : Mask(mask) {}
   };
-  static const VREFDDREnMask kVREFDDREnMask;
-  static const VREFDDRStbyEnMask kVREFDDRStbyEnMask;
-  static const VREFDDROModeMask kVREFDDROModeMask;
-  static const VREFDDRLPwrMask kVREFDDRLPwrMask;
-  VREFDDRCtrl(uint8_t device_address)
+  static const VrefddrEnMask kVrefddrEnMask;
+  static const VrefddrStbyEnMask kVrefddrStbyEnMask;
+  static const VrefddrOModeMask kVrefddrOModeMask;
+  static const VrefddrLPwrMask kVrefddrLPwrMask;
+  VrefddrCtrl(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
 private:
   static const uint8_t kRegister;
 };
-struct VREFDDRPwrDnSeq : public I2CRegister {
-  struct VREFDDRPwrDnSeqMask : public Mask {
+struct VrefddrPwrdnseq : public I2CRegister {
+  struct VrefddrPwrdnseqMask : public Mask {
     // TODO(kendall): Add specific masks/values.
-    VREFDDRPwrDnSeqMask(uint8_t mask) : Mask(mask) {}
+    VrefddrPwrdnseqMask(uint8_t mask) : Mask(mask) {}
   };
-  static const VREFDDRPwrDnSeqMask kVREFDDRPwrDnSeqMask;
-  VREFDDRPwrDnSeq(uint8_t device_address)
+  static const VrefddrPwrdnseqMask kVrefddrPwrdnseqMask;
+  VrefddrPwrdnseq(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -955,7 +955,7 @@ private:
   static const uint8_t kRegister;
 };
 
-struct ChgEoCCnfg : public I2CRegister {
+struct ChgEocCnfg : public I2CRegister {
   struct ChgRestartMask : public Mask {
     static const uint8_t _100MV;
     static const uint8_t _150MV;
@@ -974,7 +974,7 @@ struct ChgEoCCnfg : public I2CRegister {
 
   static const ChgRestartMask kChgRestartMask;
   static const IEoCMask kIEoCMask;
-  ChgEoCCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+  ChgEocCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
   static const uint8_t kRegister;
@@ -1103,7 +1103,7 @@ struct BattReg : public I2CRegister {
 private:
   static const uint8_t kRegister;
 };
-struct BattFetCnfg : public I2CRegister {
+struct BatfetCnfg : public I2CRegister {
   struct WdtClrMask : public Mask {
     static const uint8_t NOT_CLEARED;
     static const uint8_t CLEARED;
@@ -1143,7 +1143,7 @@ struct BattFetCnfg : public I2CRegister {
   static const WdTimeMask kWdTimeMask;
   static const BOVRCNoVBusMask kBOVRCNoVBusMask;
 
-  BattFetCnfg(uint8_t device_address)
+  BatfetCnfg(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -1454,7 +1454,7 @@ private:
   static const uint8_t kRegister;
 };
 
-struct FaultBatFetCnfg : I2CRegister {
+struct FaultBatfetCnfg : I2CRegister {
   struct WdFltBfFetEnMask : public Mask {
     static const uint8_t OPENED;
     static const uint8_t CLOSED;
@@ -1480,7 +1480,7 @@ struct FaultBatFetCnfg : I2CRegister {
   static const TShdnBFetEnMask kTShdnBFetEnMask;
   static const TmrFltBFetEnMask kTmrFltBFetEnMask;
 
-  FaultBatFetCnfg(uint8_t device_address)
+  FaultBatfetCnfg(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -2211,8 +2211,6 @@ struct SWx {
     static const uint8_t _3_30_57;
   };
   struct Volt : public I2CRegister {
-    // TODO(kendall): I think you left off here trying to figure out how to
-    // make VoltMask generic
     struct VoltMask : public Mask {
       VoltMask(uint8_t mask) : Mask(mask) {}
     };

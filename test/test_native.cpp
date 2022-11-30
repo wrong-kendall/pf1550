@@ -8,9 +8,13 @@ void setUp(void) {}
 
 struct PF1550Test {
   static void test_some_old_bullshit() {
-    PF1550<DeviceId, OTPFlavor> pf1550(0x08);
+    PF1550<DeviceId, OtpFlavor> pf1550(0x08);
+    // TODO(kendall): 2022/12/1: you left off here. You want to use
+    // parse_register_map.csv to generate the mapping of registers to their
+    // addresses and add a test here for all of them. After that, you want to
+    // actually add some I2C shit....
     TEST_ASSERT_EQUAL(0x00, pf1550.get_register<DeviceId>().kRegisterAddress);
-    TEST_ASSERT_EQUAL(0x01, pf1550.get_register<OTPFlavor>().kRegisterAddress);
+    TEST_ASSERT_EQUAL(0x01, pf1550.get_register<OtpFlavor>().kRegisterAddress);
   }
 };
 
