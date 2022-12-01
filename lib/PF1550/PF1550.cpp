@@ -1132,6 +1132,28 @@ const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3625 = BITS_5_4_3_2_0;
 const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3750 = BITS_5_4_3_2_1;
 const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3875 = BITS_5_4_3_2_1_0;
 
+const uint8_t Sw1::Volt::kRegister = 0x32;
+const uint8_t Sw1::StbyVolt::kRegister = 0x33;
+const uint8_t Sw1::SlpVolt::kRegister = 0x34;
+const uint8_t Sw1::Ctrl::kRegister = 0x35;
+// Misnamed in data sheet as SLP_VOLT
+const uint8_t Sw1::Ctrl1::kRegister = 0x36;
+const uint8_t Sw1::PwrDn::kRegister = 0x5F;
+
+const uint8_t Sw2::Volt::kRegister = 0x38;
+const uint8_t Sw2::StbyVolt::kRegister = 0x39;
+const uint8_t Sw2::SlpVolt::kRegister = 0x3A;
+const uint8_t Sw2::Ctrl::kRegister = 0x3B;
+const uint8_t Sw2::Ctrl1::kRegister = 0x3C;
+const uint8_t Sw2::PwrDn::kRegister = 0x60;
+
+const uint8_t Sw3::Volt::kRegister = 0x3E;
+const uint8_t Sw3::StbyVolt::kRegister = 0x3F;
+const uint8_t Sw3::SlpVolt::kRegister = 0x40;
+const uint8_t Sw3::Ctrl::kRegister = 0x41;
+const uint8_t Sw3::Ctrl1::kRegister = 0x42;
+const uint8_t Sw3::PwrDn::kRegister = 0x61;
+
 /*
 const SWx::PwrUp::PwrUpSeqMask SWx::PwrUp::k
 
