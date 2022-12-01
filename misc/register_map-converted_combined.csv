@@ -1,0 +1,1167 @@
+Register Name;Register Address;Register Offset;Mask Name;Bits;RW;Default;Description
+DEVICE_ID;0x00;0x0;DEVICE_ID;2 to 0;R;100;"Loaded from fuses
+000 — Devices with ""00"" at the end of the part number, such as ""PF1500""
+001 — Future use 010 — Future use 011 — Future use
+100 — Devices with ""50"" at the end of the part number, such as ""PF1550""
+101 — Future use 110 — Future use 111 — Future use"
+DEVICE_ID;0x00;0x0;FAMILY;7 to 3;R;1111;"Identifies PMIC
+01111 — 0b0_1111 for ""15"" used to denote the ""PF1550"""
+OTP_FLAVOR;0x01;0x0;UNUSED;7 to 0;R;0x00;"Blown by ATE to indicate flavor of OTP used
+0x00 — OTP not burned
+0x01 — A1
+0x02 — A2
+0x03 — A3
+continues..."
+SILICON_REV;0x02;0x0;METAL_LAYER_REV;2 to 0;R;1;Unused
+SILICON_REV;0x02;0x0;FULL_LAYER_REV;5 to 3;R;10;Unused
+SILICON_REV;0x02;0x0;FAB_FIN;7 to 6;R;0;Unused
+INT_CATEGORY;0x06;0x0;CHG_INT;0;R;0;"This bit is set high if any of the charger interrupt status bits are set
+0 — No charger interrupt bit is set, cleared, or did not occur
+1 — ""OR"" function of all charger interrupt status bit"
+INT_CATEGORY;0x06;0x0;SW1_INT;1;R;0;"This bit is set high if any of the Buck 1 interrupt status bits are set
+0 — SW1 interrupts cleared or did not occur
+1 — Any of the SW1 interrupt status bits are set"
+INT_CATEGORY;0x06;0x0;SW2_INT;2;R;0;"This bit is set high if any of the Buck 2 interrupt status bits are set
+0 — SW2 interrupts cleared or did not occur
+1 — Any of the SW2 interrupt status bits are set"
+INT_CATEGORY;0x06;0x0;SW3_INT;3;R;0;"This bit is set high if any of the Buck 3 interrupt status bits are set
+0 — SW3 interrupts cleared or did not occur
+1 — any of the SW3 interrupt status bits are set"
+INT_CATEGORY;0x06;0x0;LDO_INT;4;R;0;"This bit is set high if any of the LDO interrupt status bits are set. This includes LDO1, LDO2, and LDO3.
+0 — LDO interrupts cleared or did not occur
+1 — Any of the LDO interrupt status bits are set"
+INT_CATEGORY;0x06;0x0;ONKEY_INT;5;R;0;"This bit is set high if any of the interrupts associated with ONKEY push-button are set.
+0 — ONKEY related interrupts cleared or did not occur
+1 — Any of the ONKEY interrupt status bits are set"
+INT_CATEGORY;0x06;0x0;TEMP_INT;6;R;0;"This bit is set if any of the interrupts associated with the die temperature monitor are set
+0 — PMIC junction temperature related interrupts cleared or did not occur
+1 — any of the PMIC junction temperature interrupts status bits are set"
+INT_CATEGORY;0x06;0x0;MISC_INT;7;R;0;"This bit is set if interrupts not covered by the above mentioned categories occur
+0 — Other interrupts (not covered by categories above) cleared, or did not occur
+1 — Status bit of other interrupts (not covered by categories above) is set"
+SW_INT_STAT0;0x08;0x0;SW1_LS_I;0;RW1C[1];0;"SW1 low-side current limit interrupt status. This bit is set if the current limit fault persists for longer than the debounce time.  0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+SW_INT_STAT0;0x08;0x0;SW2_LS_I;1;RW1C;0;"SW2 low-side current limit interrupt status. This bit is set if the current limit fault persists for longer than the debounce time.  0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+SW_INT_STAT0;0x08;0x0;SW3_LS_I;2;RW1C;0;"SW3 low-side current limit interrupt status. This bit is set if the current limit fault persists for longer than the debounce time.  0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+SW_INT_STAT0;0x08;0x0;UNUSED;7 to 3;—;—;Unused
+SW_INT_MASK0;0x09;0x0;SW1_LS_M;0;RW;1;"SW1 low-side current limit interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is NOT pulled low if corresponding interrupt status bit is set."
+SW_INT_MASK0;0x09;0x0;SW2_LS_M;1;RW;1;"SW2 low-side current limit interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is NOT pulled low if corresponding interrupt status bit is set."
+SW_INT_MASK0;0x09;0x0;SW3_LS_M;2;RW;1;"SW3 low-side current limit interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is NOT pulled low if corresponding interrupt status bit is set."
+SW_INT_MASK0;0x09;0x0;UNUSED;7 to 3;—;—;Unused
+SW_INT_SENSE0;0x0A;0x0;SW1_LS_S;0;R;0;"SW1 low-side current limit interrupt sense. Sense is high as long as fault persists (post-debounce).
+0 — Fault removed
+1 — Fault exists"
+SW_INT_SENSE0;0x0A;0x0;SW2_LS_S;1;R;0;"SW2 low-side current limit interrupt sense. Sense is high as long as fault persists (post-debounce).
+0 — Fault removed
+1 — Fault exists"
+SW_INT_SENSE0;0x0A;0x0;SW3_LS_S;2;R;0;"SW3 low-side current limit interrupt sense. Sense is high as long as fault persists (post-debounce)
+0 — Fault removed
+1 — Fault exists"
+SW_INT_SENSE0;0x0A;0x0;UNUSED;7 to 3;—;—;Unused
+SW_INT_STAT1;0x0B;0x0;SW1_HS_I;0;RW1C [1];0;"SW1 high-side current limit interrupt
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+SW_INT_STAT1;0x0B;0x0;SW2_HS_I;1;RW1C;0;"SW2 high-side current limit interrupt
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+SW_INT_STAT1;0x0B;0x0;SW3_HS_I;2;RW1C;0;"SW3 high-side current limit interrupt
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+SW_INT_STAT1;0x0B;0x0;UNUSED;7 to 3;—;—;Unused
+SW_INT_MASK1;0x0C;0x0;SW1_HS_M;0;RW;1;"SW1 high-side current limit interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is NOT pulled low if corresponding interrupt status bit is set."
+SW_INT_MASK1;0x0C;0x0;SW2_HS_M;1;RW;1;"SW2 high-side current limit interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is NOT pulled low if corresponding interrupt status bit is set."
+SW_INT_MASK1;0x0C;0x0;SW3_HS_M;2;RW;1;"SW3 high-side current limit interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is NOT pulled low if corresponding interrupt status bit is set."
+SW_INT_MASK1;0x0C;0x0;UNUSED;7 to 3;—;—;Unused
+SW_INT_SENSE1;0x0D;0x0;SW1_HS_S;0;R;0;"SW1 high-side current limit interrupt sense. This bit should not toggle within a switching cycle (at buck switching frequency), but report the sense status within the switching cycle.
+0 — Fault removed
+1 — Fault exists"
+SW_INT_SENSE1;0x0D;0x0;SW2_HS_S;1;R;0;"SW2 high-side current limit interrupt sense. This bit should not toggle within a switching cycle (at buck switching frequency), but report the sense status within the switching cycle.
+0 — Fault removed
+1 — Fault exists"
+SW_INT_SENSE1;0x0D;0x0;SW3_HS_S;2;R;0;"SW3 high-side current limit interrupt sense. This bit should not toggle within a switching cycle (at buck switching frequency), but report the sense status within the switching cycle.
+0 — Fault removed
+1 — Fault exists"
+SW_INT_SENSE1;0x0D;0x0;UNUSED;7 to 3;—;—;Unused
+SW_INT_STAT2;0x0E;0x0;SW1_DVS_DONE_I;0;RW1C[1];0;"Interrupt to indicate SW1 DVS complete. This interrupt should occur every time regulator output voltage is changed (either via I2C within a given state, or if there is change in voltage when transitioning states, Run to Standby, for example).
+0 — DVS not complete and/or bit cleared
+1 — DVS complete"
+SW_INT_STAT2;0x0E;0x0;SW2_DVS_DONE_I;1;RW1C;0;"Interrupt to indicate SW2 DVS complete. This interrupt should occur every time regulator output voltage is changed (either via I2C within a given state, or if there is change in voltage when transitioning states, Run to Standby, for example).
+0 — DVS not complete and/or bit cleared
+1 — DVS complete"
+SW_INT_STAT2;0x0E;0x0;UNUSED;7 to 2;—;—;Unused
+SW_INT_MASK2;0x0F;0x0;SW1_DVS_DONE_M;0;RW;1;"Mask for interrupt that indicates SW1 DVS complete
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+SW_INT_MASK2;0x0F;0x0;SW2_DVS_DONE_M;1;RW;1;"Mask for interrupt that indicates SW2 DVS complete
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+SW_INT_MASK2;0x0F;0x0;UNUSED;7 to 2;—;—;Unused
+SW_INT_SENSE2;0x10;0x0;SW1_DVS_S;0;R;0;"Indicates DVS in progress for SW1
+0 — DVS not in progress
+1 — DVS in progress"
+SW_INT_SENSE2;0x10;0x0;SW2_DVS_S;1;R;0;"Indicates DVS in progress for SW2
+0 — DVS not in progress
+1 — DVS in progress"
+SW_INT_SENSE2;0x10;0x0;UNUSED;7 to 2;—;—;Unused
+LDO_INT_STAT0;0x18;0x0;LDO1_FAULTI;0;RW1C[1];0;"LDO1 current limit interrupt
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+LDO_INT_STAT0;0x18;0x0;LDO2_FAULTI;1;RW1C;0;"LDO2 current limit interrupt
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+LDO_INT_STAT0;0x18;0x0;LDO3_FAULTI;2;RW1C;0;"LDO3 current limit interrupt
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+LDO_INT_STAT0;0x18;0x0;UNUSED;7 to 3;—;—;Unused
+LDO_INT_MASK0;0x19;0x0;LDO1_FAULTM;0;RW;1;"LDO1 current limit fault interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+LDO_INT_MASK0;0x19;0x0;LDO2_FAULTM;1;RW;1;"LDO2 current limit fault interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+LDO_INT_MASK0;0x19;0x0;LDO3_FAULTM;2;RW;1;"LDO3 current limit fault interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+LDO_INT_MASK0;0x19;0x0;UNUSED;7 to 3;—;—;Unused
+LDO_INT_SENSE0;0x1A;0x0;LDO1_FAULTS;0;R;0;"LDO1 fault interrupt sense
+0 — Fault removed
+1 — Fault exists"
+LDO_INT_SENSE0;0x1A;0x0;LDO2_FAULTS;1;R;0;"LDO2 fault interrupt sense
+0 — Fault removed
+1 — Fault exists"
+LDO_INT_SENSE0;0x1A;0x0;LDO3_FAULTS;2;R;0;"LDO3 fault interrupt sense
+0 — Fault removed
+1 — Fault exists"
+LDO_INT_SENSE0;0x1A;0x0;UNUSED;7 to 3;—;—;Unused
+TEMP_INT_STAT0;0x20;0x0;THERM110I;0;RW1C[1];0;"Die temperature crosses 110 °C interrupt. Bidirectional interrupt.
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+TEMP_INT_STAT0;0x20;0x0;UNUSED;1;—;—;Unused
+TEMP_INT_STAT0;0x20;0x0;THERM125I;2;RW1C;0;"Die temperature crosses 125 °C interrupt. Bidirectional interrupt.
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+TEMP_INT_STAT0;0x20;0x0;UNUSED;7 to 3;—;—;Unused
+TEMP_INT_MASK0;0x21;0x0;THERM110M;0;RW;1;"Die temperature crosses 110 °C interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is NOT pulled low if corresponding interrupt status bit is set."
+TEMP_INT_MASK0;0x21;0x0;UNUSED;1;—;—;Unused
+TEMP_INT_MASK0;0x21;0x0;THERM125M;2;RW;1;"Die temperature crosses 125 °C interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+TEMP_INT_MASK0;0x21;0x0;UNUSED;7 to 3;—;—;Unused
+TEMP_INT_SENSE0;0x22;0x0;THERM110S;0;R;0;"110 °C interrupt sense
+0 — Die temperature below 110 °C
+1 — Die temperature above 110 °C"
+TEMP_INT_SENSE0;0x22;0x0;UNUSED;1;—;—;Unused
+TEMP_INT_SENSE0;0x22;0x0;THERM125S;2;R;0;"125 °C interrupt sense
+0 — Die temperature below 125 °C
+1 — Die temperature above 125 °C"
+TEMP_INT_SENSE0;0x22;0x0;UNUSED;7 to 3;—;—;Unused
+ONKEY_INT_STAT0;0x24;0x0;ONKEY_PUSHI;0;RW1C [1];0;"Interrupt to indicate a push of the ONKEY button. Goes high after debounce.
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared. Interrupt occurs whenever ONKEY button is pushed low for longer than the falling edge debounce setting.
+Interrupt also occurs whenever ONKEY button is released high for longer than the rising edge debounce setting, provided it went past the falling edge debounce time. In other words, this interrupt occurs whenever a change in status of the ONKEY_PUSHS sense bit occurs."
+ONKEY_INT_STAT0;0x24;0x0;ONKEY_1SI;1;RW1C;0;"Interrupt after ONKEY pressed for > 1 s
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+ONKEY_INT_STAT0;0x24;0x0;ONKEY_2SI;2;RW1C;0;"Interrupt after ONKEY pressed for > 2 s
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+ONKEY_INT_STAT0;0x24;0x0;ONKEY_3SI;3;RW1C;0;"Interrupt after ONKEY pressed for > 3 s
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+ONKEY_INT_STAT0;0x24;0x0;ONKEY_4SI;4;RW1C;0;"Interrupt after ONKEY pressed for > 4 s
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+ONKEY_INT_STAT0;0x24;0x0;ONKEY_8SI;5;RW1C;0;"Interrupt after ONKEY pressed for > 8 s
+0 — Interrupt cleared or did not occur
+1 — Interrupt occurred and/or not cleared"
+ONKEY_INT_STAT0;0x24;0x0;UNUSED;7 to 6;—;—;Unused
+ONKEY_INT_MASK0;0x25;0x0;ONKEY_PUSHM;0;RW;1;"Interrupt mask for ONKEY_PUSH_I
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+ONKEY_INT_MASK0;0x25;0x0;ONKEY_1SM;1;RW;1;"Interrupt mask for ONKEY_1SI
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+ONKEY_INT_MASK0;0x25;0x0;ONKEY_2SM;2;RW;1;"Interrupt mask for ONKEY_2SI
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is NOT pulled low if corresponding interrupt status bit is set."
+ONKEY_INT_MASK0;0x25;0x0;ONKEY_3SM;3;RW;1;"Interrupt mask for ONKEY_3SI
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+ONKEY_INT_MASK0;0x25;0x0;ONKEY_4SM;4;RW;1;"Interrupt mask for ONKEY_4SI
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+ONKEY_INT_MASK0;0x25;0x0;ONKEY_8SM;5;RW;1;"Interrupt mask for ONKEY_8SI
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+ONKEY_INT_MASK0;0x25;0x0;UNUSED;7 to 6;—;—;Unused
+ONKEY_INT_SENSE0;0x26;0x0;ONKEY_PUSHS;0;R;0;"Push interrupt sense
+0 — ONKEY not pushed low. This bit follows debounced version of the ONKEY button being released.
+1 — ONKEY pushed low. This follows the ONKEY button after the debounce circuit (debounce is programmable)."
+ONKEY_INT_SENSE0;0x26;0x0;ONKEY_1SS;1;R;0;"1 s interrupt sense or cleared after ONKEY button is released 0 — ONKEY not pushed low for >1 s or cleared after ONKEY button is released.
+1 — ONKEY pushed and being held low > 1 s. This bit is cleared when ONKEY_PUSHS goes back to 0 when the push-button is released."
+ONKEY_INT_SENSE0;0x26;0x0;ONKEY_2SS;2;R;0;"2 s interrupt sense or cleared after ONKEY button is released 0 — ONKEY not pushed low for >1 s or cleared after ONKEY button is released.
+1 — ONKEY pushed and being held low > 1 s. This bit is cleared when ONKEY_PUSHS goes back to 0 when the push-button is released."
+ONKEY_INT_SENSE0;0x26;0x0;ONKEY_3SS;3;R;0;"3 s interrupt sense or cleared after ONKEY button is released 0 — ONKEY not pushed low for >1 s or cleared after ONKEY button is released
+1 — ONKEY pushed and being held low > 1 s. This bit is cleared when ONKEY_PUSHS goes back to 0 when the push-button is released."
+ONKEY_INT_SENSE0;0x26;0x0;ONKEY_4SS;4;R;0;"4 s interrupt sense or cleared after ONKEY button is released 0 — ONKEY not pushed low for >1 s or cleared after ONKEY button is released.
+1 — ONKEY pushed and being held low > 1 s. This bit is cleared when ONKEY_PUSHS goes back to 0 when the push-button is released."
+ONKEY_INT_SENSE0;0x26;0x0;ONKEY_8SS;5;R;0;"8 s interrupt sense or cleared after ONKEY button is released 0 — ONKEY not pushed low for >1 s or cleared after ONKEY button is released.
+1 — ONKEY pushed and being held low > 1 s. This bit is cleared when ONKEY_PUSHS goes back to 0 when the push-button is released."
+ONKEY_INT_SENSE0;0x26;0x0;UNUSED;7 to 6;—;—;Unused
+MISC_INT_STAT0;0x28;0x0;PWRUP_I;0;RW1C[1];0;"Interrupt to indicate completion of transition from STANDBY to RUN and from SLEEP to RUN
+0 — Interrupt cleared or has not occurred
+1 — Interrupt has occurred"
+MISC_INT_STAT0;0x28;0x0;PWRDN_I;1;RW1C;0;"Interrupt to indicate completion of transition from RUN to STANDBY and from RUN to SLEEP
+0 — Interrupt cleared or has not occurred
+1 — Interrupt has occurred"
+MISC_INT_STAT0;0x28;0x0;PWRON_I;2;RW1C;0;"Power on button event interrupt
+0 — Interrupt cleared or has not occurred
+1 — Interrupt has occurred"
+MISC_INT_STAT0;0x28;0x0;LOW_SYS_WARN_I;3;RW1C;0;"LOW_SYS_WARN threshold crossed interrupt
+0 — Interrupt cleared or has not occurred
+1 — Interrupt has occurred"
+MISC_INT_STAT0;0x28;0x0;SYS_OVLO_I;4;RW1C;0;"SYS_OVLO threshold crossed interrupt
+0 — Interrupt cleared or has not occurred
+1 — Interrupt has occurred"
+MISC_INT_STAT0;0x28;0x0;UNUSED;7 to 5;—;—;Unused
+MISC_INT_MASK0;0x29;0x0;PWRUP_M;0;RW[1];1;"Mask for Interrupt to indicate completion on transition from STANDBY to RUN and from SLEEP to RUN
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+MISC_INT_MASK0;0x29;0x0;PWRDN_M;1;RW;1;"Mask for Interrupt to indicate completion on transition from RUN to STANDBY and from RUN to SLEEP
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+MISC_INT_MASK0;0x29;0x0;PWRON_M;2;RW;1;"Power on button event interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+MISC_INT_MASK0;0x29;0x0;LOW_SYS_WARN_M;3;RW;1;"LOW_SYS_WARN threshold crossed interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+MISC_INT_MASK0;0x29;0x0;SYS_OVLO_M;4;RW;1;"SYS_OVLO threshold crossed interrupt mask
+0 — Mask removed. INTB pin is pulled low if corresponding interrupt status bit is set.
+1 — Mask enabled. INTB pin is not pulled low if corresponding interrupt status bit is set."
+MISC_INT_MASK0;0x29;0x0;UNUSED;7 to 5;—;—;Unused
+MISC_INT_SENSE0;0x2A;0x0;PWRUP_S;0;R;0;"Sense for interrupt to indicate completion on transition from STANDBY to RUN and from SLEEP to RUN
+0 — Transition not in progress
+1 — Transition in progress"
+MISC_INT_SENSE0;0x2A;0x0;PWRDN_S;1;R;0;"Interrupt to indicate completion on transition from RUN to STANDBY and from RUN to SLEEP
+0 — Transition not in progress
+1 — Transition in progress"
+MISC_INT_SENSE0;0x2A;0x0;PWRON_S;2;R;0;"Power on button event interrupt sense
+0 — PWRON low
+1 — PWRON high"
+MISC_INT_SENSE0;0x2A;0x0;LOW_SYS_WARN_S;3;R;0;"LOW_SYS_WARN threshold crossed interrupt sense
+0 — SYS > LOW_SYS_WARN
+1 — SYS < LOW_SYS_WARN"
+MISC_INT_SENSE0;0x2A;0x0;SYS_OVLO_S;4;R;0;"SYS_OVLO threshold crossed interrupt sense
+0 — SYS < SYS_OVLO
+1 — SYS > SYS_OVLO"
+MISC_INT_SENSE0;0x2A;0x0;UNUSED;7 to 5;—;—;Unused
+COINCELL_CONTROL;0x30;0x0;VCOIN;3 to 0;RW;0;"Coin cell charger charging voltage
+0000 — 1.8 V
+0111 — 3.3 V (goes up in 100 mV step per LSB)"
+COINCELL_CONTROL;0x30;0x0;COINCHEN;4;RW;0;"Coin cell charger enable
+0 — Charger disabled
+1 — Charger enabled"
+COINCELL_CONTROL;0x30;0x0;UNUSED;7 to 5;—;—;Unused
+SW1_VOLT;0x32;0x0;SW1_VOLT;5 to 0;RW1S[1];—;SW1 voltage setting register (Run mode) 000000 — See Table 31 for voltage settings 111111 — See Table 31 for voltage settings Reset condition — POR
+SW1_VOLT;0x32;0x0;UNUSED;7 to 5;—;—;Unused
+SW1_STBY_VOLT;0x33;0x0;SW1_STBY_VOLT;5 to 0;RW1S[1];—;"SW1 output voltage setting register (Standby mode). The default value here should be identical to SW1_VOLT[5:0] register.
+000000 — See Table 31 for voltage settings
+111111 — See Table 31 for voltage settings"
+SW1_STBY_VOLT;0x33;0x0;UNUSED;7 to 6;—;—;Unused
+SW1_SLP_VOLT;0x34;0x0;SW1_SLP_VOLT;5 to 0;RW1S[1];—;"SW1 output voltage setting register (Sleep mode). The default value here should be identical to SW1_VOLT[5:0] register.
+000000 — See Table 31 for voltage settings
+111111 — See Table 31 for voltage settings"
+SW1_SLP_VOLT;0x34;0x0;UNUSED;7 to 6;—;—;Unused
+SW1_CTRL;0x35;0x0;SW1_EN;0;RW1S[1];0;"Enables buck regulator. Loaded from OTP based on the sequence settings. User can turn off regulator by clearing this bit. 0 — Regulator disabled in Run mode
+1 — Regulator enabled in Run mode"
+SW1_CTRL;0x35;0x0;SW1_STBY_EN;1;RW1S;0;"Enables buck regulator in Standby mode. User can turn off regulator by clearing this bit. The default value of this bit should be equal to the SW1_EN bit (based on OTP).
+0 — Regulator disabled in Standby mode
+1 — Regulator enabled in Standby mode"
+SW1_CTRL;0x35;0x0;SW1_OMODE;2;RW[2];0;"Enables buck regulator in Sleep mode. User can turn off regulator by clearing this bit.
+0 — Regulator disabled in Sleep mode
+1 — Regulator enabled in Sleep mode"
+SW1_CTRL;0x35;0x0;SW1_LPWR;3;RW;0;"Enables the buck to enter Low-power mode during Standby and Sleep
+0 — Regulator not in Low-power mode
+1 — Regulator in Low-power mode during Standby or Sleep modes"
+SW1_CTRL;0x35;0x0;SW1_DVSSPEED;4;RW1S;0;"Controls slew rate of DVS transitions. Loaded from OTP and changeable by user after boot up. Not used when OTP_SW1_ DVS_SEL = 1.
+0 — DVS rate at 12.5 mV/2 μs
+1 — DVS rate at 12.5 mV/4 μs"
+SW1_CTRL;0x35;0x0;SW1_FPWM_IN_DVS;5;RW;0;"Enables CCM operation during DVS down
+0 — does not force FPWM during DVS
+1 — forces regulator to track the DVS reference while it is falling rather than relying on the load current to pull the voltage low"
+SW1_CTRL;0x35;0x0;SW1_FPWM;6;RW;0;"Forces buck to go into CCM mode
+0 — Not in FPWM mode
+1 — Forced in PWM mode irrespective of load current"
+SW1_CTRL;0x35;0x0;SW1_RDIS_ENB;7;RW1S;0;"Controls discharge resistor on output when regulator disabled
+0 — Enables discharge resistor on output when regulator disabled. Resistor connected at FB pin when regulator disabled to force capacitor discharge.
+1 — Disables discharge resistor on output when regulator disabled. Resistor not connected at FB pin when regulator disabled. Relies on leakage/residue load to discharge output capacitor."
+SW1_CTRL1;0x36;0x0;SW1_ILIM;1 to 0;RW1S[1];0;Sets current limit of SW1 regulator 00 — Typical current limit of 1.0 A 01 — Typical current limit of 1.2 A 10 — Typical current limit of 1.5 A 11 — Typical current limit of 2.0 A
+SW1_CTRL1;0x36;0x0;UNUSED;3 to 2;—;—;Unused
+SW1_CTRL1;0x36;0x0;SW1_TMODE_SEL;4;RW;0;"0 — TON control
+1 — TOFF control"
+SW1_CTRL1;0x36;0x0;UNUSED;7 to 5;—;—;Unused
+SW2_VOLT;0x38;0x0;SW2_VOLT;5 to 0;RW1S[1];—;SW2 voltage setting register (Run mode) 000000 —See Table 31 for voltage settings 111111 — See Table 31 for voltage settings
+SW2_VOLT;0x38;0x0;UNUSED;7 to 6;—;—;Unused
+SW2_STBY_VOLT;0x39;0x0;SW2_STBY_VOLT;5 to 0;RW1S[1];—;"SW2 output voltage setting register (Standby mode). The default value here should be identical to SW2_VOLT[5:0] register.
+000000 — See Table 31 for voltage settings
+111111 — See Table 31 for voltage settings"
+SW2_STBY_VOLT;0x39;0x0;UNUSED;7 to 6;—;—;Unused
+SW2_SLP_VOLT;0x3A;0x0;SW2_SLP_VOLT;5 to 0;RW1S[1];—;"SW2 output voltage setting register (Sleep mode). The default value here should be identical to SW2_VOLT[5:0] register.
+000000 — See Table 31 for voltage settings
+111111 — See Table 31 for voltage settings"
+SW2_SLP_VOLT;0x3A;0x0;UNUSED;7 to 6;—;—;Unused
+SW2_CTRL;0x3B;0x0;SW2_EN;0;RW1S[1];0;"Enables buck regulator. Loaded from OTP based on the sequence settings. User can turn off regulator by clearing this bit. 0 — Regulator disabled in Run mode
+1 — Regulator enabled in Run mode"
+SW2_CTRL;0x3B;0x0;SW2_STBY_EN;1;RW1S;0;"Enables buck regulator in Standby mode. User can turn off regulator by clearing this bit. The default value of this bit should be equal to the SW1_EN bit (based on OTP).
+0 — Regulator disabled in Standby mode
+1 — Regulator enabled in Standby mode"
+SW2_CTRL;0x3B;0x0;SW2_OMODE;2;RW;0;"Enables buck regulator in Sleep mode. User can turn off regulator by clearing this bit.
+0 — Regulator disabled in Sleep mode
+1 — Regulator enabled in Sleep mode"
+SW2_CTRL;0x3B;0x0;SW2_LPWR;3;RW;0;"Enables the buck to enter Low-power mode during Standby and Sleep modes
+0 — Regulator not in Low-power mode
+1 — Regulator in Low-power mode during Standby or Sleep"
+SW2_CTRL;0x3B;0x0;SW2_DVSSPEED;4;RW1S;0;"Controls slew rate of DVS transitions. Loaded from OTP and changeable by user after boot up. Not used when OTP_SW2_ DVS_SEL = 1.
+0 — DVS rate at 12.5 mV/2 μs
+1 — DVS rate at 12.5 mV/4 μs"
+SW2_CTRL;0x3B;0x0;SW2_FPWM_IN_DVS;5;RW;0;"Enables CCM operation during DVS down
+0 — does not force FPWM during DVS
+1 — forces regulator to track the DVS reference while it is falling rather than relying on the load current to pull the voltage low"
+SW2_CTRL;0x3B;0x0;SW2_FPWM;6;RW;0;"Forces buck to go into CCM mode
+0 — Not in FPWM mode
+1 — Forced in PWM mode irrespective of load current."
+SW2_CTRL;0x3B;0x0;SW2_RDIS_ENB;7;RW1S;0;"Controls discharge resistor on output when regulator disabled
+0 — Enables discharge resistor on output when regulator disabled. Resistor connected at FB pin when regulator disabled to force capacitor discharge.
+1 — Disables discharge resistor on output when regulator disabled. Resistor not connected at FB pin when regulator disabled. Relies on leakage/residue load to discharge output capacitor."
+SW2_CTRL1;0x3C;0x0;SW2_ILIM;1 to 0;RW1S;0;Sets current limit of SW2 regulator 00 — Typical current limit of 1.0 A 01 — Typical current limit of 1.2 A 10 — Typical current limit of 1.5 A 11 — Typical current limit of 2.0 A
+SW2_CTRL1;0x3C;0x0;UNUSED;3 to 2;—;—;Unused
+SW2_CTRL1;0x3C;0x0;SW2_TMODE_SEL;4;RW;0;"0 — TON control
+1 — TOFF control"
+SW2_CTRL1;0x3C;0x0;UNUSED;7 to 5;—;—;Unused
+SW3_VOLT;0x3E;0x0;SW3_VOLT;3 to 0;RW1S;—;"SW3 voltage setting register (Run mode). Loaded from fuses. Read only because DVS is not supported in this regulator.
+0000 — See Table 37 for voltage settings
+1111 — See Table 37 for voltage settings"
+SW3_VOLT;0x3E;0x0;UNUSED;7 to 4;—;—;Unused
+SW3_STBY_VOLT;0x3F;0x0;SW3_STBY_VOLT;3 to 0;RW1S;—;"SW3 voltage setting register (Standby mode). Loaded from fuses. Read only because DVS is not supported in this regulator.
+0000 — See Table 37 for voltage settings
+1111 —See Table 37 for voltage settings"
+SW3_STBY_VOLT;0x3F;0x0;UNUSED;7 to 4;—;—;Unused
+SW3_SLP_VOLT;0x40;0x0;SW3_SLP_VOLT;3 to 0;RW1S;—;"SW3 voltage setting register (Sleep mode). Loaded from fuses. Read only because DVS is not supported in this regulator.
+0000 — See Table 37 for voltage settings
+1111 — See Table 37 for voltage settings"
+SW3_SLP_VOLT;0x40;0x0;UNUSED;7 to 4;—;—;Unused
+SW3_CTRL;0x41;0x0;SW3_EN;0;RW1S;0;"Enables buck regulator. Loaded from OTP based on the sequence settings. User can turn off regulator by clearing this bit. 0 — Regulator disabled in Run mode
+1 — Regulator enabled in Run mode"
+SW3_CTRL;0x41;0x0;SW3_STBY_EN;1;RW1S;0;"Enables buck regulator in Standby mode. User can turn off regulator by clearing this bit. The default value of this bit should be equal to the SW1_EN bit (based on OTP).
+0 — Regulator disabled in Standby mode
+1 — Regulator enabled in Standby mode"
+SW3_CTRL;0x41;0x0;SW3_OMODE;2;RW;0;"Enables buck regulator in Sleep mode. User can turn off regulator by clearing this bit.
+0 — Regulator disabled in Sleep mode
+1 — Regulator enabled in Sleep mode"
+SW3_CTRL;0x41;0x0;SW3_LPWR;3;RW;0;"Enables the buck to enter Low-power mode during Standby and Sleep modes
+0 — Regulator not in Low-power mode
+1 — Regulator in Low-power mode while in Standby or Sleep"
+SW3_CTRL;0x41;0x0;UNUSED;4;—;—;Unused
+SW3_CTRL;0x41;0x0;UNUSED;5;—;—;Unused
+SW3_CTRL;0x41;0x0;SW3_FPWM;6;RW;0;"Forces buck to go into CCM mode
+0 — Not in FPWM mode
+1 — Forced in PWM mode irrespective of load current"
+SW3_CTRL;0x41;0x0;SW3_RDIS_ENB;7;RW1S;0;"Controls discharge resistor on output when regulator disabled
+0 — Enables discharge resistor on output when regulator disabled. Resistor connected at FB pin when regulator disabled to force capacitor discharge.
+1 — Disables discharge resistor on output when regulator disabled. Resistor not connected at FB pin when regulator disabled. Relies on leakage/residue load to discharge output capacitor."
+SW3_CTRL1;0x42;0x0;SW3_ILIM;1 to 0;RW1S;0;Sets current limit of SW3 regulator 00 — Typical current limit of 1.0 A 01 — Typical current limit of 1.2 A 10 — Typical current limit of 1.5 A 11 — Typical current limit of 2.0 A
+SW3_CTRL1;0x42;0x0;UNUSED;3 to 2;—;—;Unused
+SW3_CTRL1;0x42;0x0;SW3_TMODE_SEL;4;RW;0;"0 — TON control
+1 — TOFF control"
+SW3_CTRL1;0x42;0x0;UNUSED;7 to 5;—;—;Unused
+VSNVS_CTRL;0x48;0x0;VSNVS_VOLT;2 to 0;RW1S;0;Not used in PF1550. Placeholder for future products.
+VSNVS_CTRL;0x48;0x0;CLKPULSE;3;RW;0;Optional bit used for evaluation (see IP block)
+VSNVS_CTRL;0x48;0x0;FORCEBOS;4;RW;0;"Optional bit for evaluation
+0 — BOS circuit activated only when VSYS < UVDET
+1 — Forces best of supply circuit irrespective of UVDET"
+VSNVS_CTRL;0x48;0x0;LIBGDIS;5;RW;0;"Use to reduce quiescent current in coin cell mode
+0 — VSNVS local band gap enabled in coin cell mode
+1 — VSNVS local band gap disabled in coin cell mode to save quiescent current"
+VSNVS_CTRL;0x48;0x0;UNUSED;7 to 6;—;—;Unused
+VREFDDR_CTRL;0x4A;0x0;VREFDDR_EN;0;RW1S;0;"0 — Disables VREFDDR regulator
+1 — Enables VREFDDR regulator. This is set by the OTP sequence."
+VREFDDR_CTRL;0x4A;0x0;VREFDDR_STBY_EN;1;RW1S;0;"The default value for this should be same as VREFDDREN
+0 — Disables VREFDDR regulator in Standby mode 1 — Enables VREFDDR regulator in Standby mode if VREFDDREN = 1"
+VREFDDR_CTRL;0x4A;0x0;VREFDDR_OMODE;2;RW;0;"0 — Keeps VREFDDR off in Off mode
+1 — Enables VREFDDR in Sleep mode if VREFDDREN = 1"
+VREFDDR_CTRL;0x4A;0x0;VREFDDR_LPWR;3;RW;0;"0 — Disables VREFDDR Low-power mode
+1 — Enables VREFDDR Low-power mode"
+VREFDDR_CTRL;0x4A;0x0;UNUSED;7 to 4;—;—;Unused
+LDO1_VOLT;0x4C;0x0;LDO1_VOLT;4 to 0;RW1S;—;"LDO1 output voltage setting register. Loaded from OTP.
+00000 — See Table 41 for voltage settings
+11111 — See Table 41 for voltage settings"
+LDO1_VOLT;0x4C;0x0;UNUSED;7 to 5;—;—;Unused
+LDO1_CTRL;0x4D;0x0;VLDO1_EN;0;RW1S;0;"Enables LDO regulator. Loaded from OTP based on the sequence settings. User can turn off regulator by clearing this bit. 0 — Disables regulator
+1 — Enables regulator"
+LDO1_CTRL;0x4D;0x0;VLDO1_STBY_EN;1;RW1S;0;"Enables LDO in Standby mode. Default value of this bit should be same as VLDO1_EN.
+0 — Disables regulator
+1 — Enables regulator"
+LDO1_CTRL;0x4D;0x0;VLDO1_OMODE;2;RW;0;"Enables LDO in Sleep mode
+0 — Disables regulator
+1 — Enables regulator"
+LDO1_CTRL;0x4D;0x0;VLDO1_LPWR;3;RW;0;"Forces LDO to Low-power mode in Sleep and Standby modes
+0 — Not in Low-power mode during Standby and Sleep
+1 — Regulator in Low-power mode during Standby and Sleep"
+LDO1_CTRL;0x4D;0x0;LDO1_LS_EN;4;RW1S;0;"This is loaded from OTP_LDOy_LS_EN and changeable from 0 to 1 on power-up. Changing from 1 to 0 is not allowed.
+0 — Sets LDOy in LDO mode
+1 — Sets LDOy to a load switch (fully on) mode"
+LDO1_CTRL;0x4D;0x0;UNUSED;7 to 5;—;—;Unused
+LDO2_VOLT;0x4F;0x0;LDO2_VOLT;3 to 0;RW1S;—;"LDO2 output voltage setting register. Loaded from OTP.
+0000 — See Table 43 for voltage settings
+1111 — See Table 43 for voltage settings"
+LDO2_VOLT;0x4F;0x0;UNUSED;7 to 4;—;—;Unused
+LDO2_CTRL;0x50;0x0;VLDO2_EN;0;RW1S;0;"Enables LDO regulator. Loaded from OTP based on the sequence settings. User can turn off regulator by clearing this bit. 0 — Disables regulator
+1 — Enables regulator"
+LDO2_CTRL;0x50;0x0;VLDO2_STBY_EN;1;RW1S;0;"Enables LDO in Standby mode. Default value of this bit should be same as VLDO1_EN.
+0 — Disables regulator
+1 — Enables regulator"
+LDO2_CTRL;0x50;0x0;VLDO2_OMODE;2;RW;0;"Enables LDO in Sleep mode
+0 — Disables regulator
+1 — Enables regulator"
+LDO2_CTRL;0x50;0x0;VLDO2_LPWR;3;RW;0;"Forces LDO to Low-power mode in Sleep and Standby modes
+0 — Not in Low-power mode during Standby and Sleep
+1 — Regulator in Low-power mode during Standby and Sleep"
+LDO2_CTRL;0x50;0x0;UNUSED;7 to 4;—;—;Unused
+LDO3_VOLT;0x52;0x0;LDO3_VOLT;4 to 0;RW1S;—;"LDO3 output voltage setting register. Loaded from OTP.
+00000 — See Table 41 for voltage settings
+11111 — See Table 41 for voltage settings"
+LDO3_VOLT;0x52;0x0;UNUSED;7 to 5;—;—;Unused
+LDO3_CTRL;0x53;0x0;VLDO3_EN;0;RW1S;0;"Enables LDO regulator. Loaded from OTP based on the sequence settings. User can turn off regulator by clearing this bit. 0 — Disables regulator
+1 — Enables regulator"
+LDO3_CTRL;0x53;0x0;VLDO3_STBY_EN;1;RW1S;0;"Enables LDO in Standby mode. Default value of this bit should be same as VLDO1_EN.
+0 — Disables regulator
+1 — Enables regulator"
+LDO3_CTRL;0x53;0x0;VLDO3_OMODE;2;RW;0;"Enables LDO in Sleep mode
+0 — Disables regulator
+1 — Enables regulator"
+LDO3_CTRL;0x53;0x0;VLDO3_LPWR;3;RW;0;"Forces LDO to Low-power mode in Sleep and Standby modes
+0 — Not in Low-power mode during Standby and Sleep
+1 — Regulator in Low-power mode during Standby and Sleep"
+LDO3_CTRL;0x53;0x0;LDO3_LS_EN;4;RW1S;0;"This is loaded from OTP_LDOy_LS_EN and changeable from 0 to 1 on power up. Changing from 1 to 0 is not allowed.
+0 — sets LDOy in LDO mode
+1 — sets LDOy to a load switch (fully on) mode"
+LDO3_CTRL;0x53;0x0;UNUSED;7 to 5;—;—;Unused
+PWRCTRL0;0x58;0x0;STANDBYDLY;1 to 0;RW;1;"Controls delay of Standby pin after synchronization
+0 — No additional delay
+1 — 32 kHz cycle additional delay 2 — 32 kHz cycle additional delay 3 — 32 kHz cycle additional delay"
+PWRCTRL0;0x58;0x0;STANDBYINV;2;RW;0;Controls polarity of STANDBY pin 0 — Standby pin input active high 1 — Standby pin input active low
+PWRCTRL0;0x58;0x0;POR_DLY;5 to 3;RW1S;0;"Controls delay of RESETBMCU pin after power up (loaded from OTP)
+000 — RESETBMCU goes high 2 ms after last regulator 010 — RESETBMCU goes high 4 ms after last regulator 011 — RESETBMCU goes high 8 ms after last regulator 100 — RESETBMCU goes high 16 ms after last regulator 101 — RESETBMCU goes high 128 ms after last regulator 110 — RESETBMCU goes high 256 ms after last regulator 111 — RESETBMCU goes high 1024 ms after last regulator"
+PWRCTRL0;0x58;0x0;TGRESET;7 to 6;RW1S;0;"Controls duration for which ONKEY has to be pushed low for a global reset (part goes to REGS_DISABLE)
+00 — 4 s
+01 — 8 s
+10 — 12 s
+11 — 16 s"
+PWRCTRL1;0x59;0x0;PWRONDBNC;1 to 0;RW;0;"Controls debounce of PWRON when in push-button mode (PWRON_CFG = 1)
+00 — 31.25 ms falling edge. 31.25 ms rising edge 01 — 31.25 ms falling edge. 31.25 ms rising edge 10 — 125 ms falling edge. 31.25 ms rising edge 11 — 750 ms falling edge. 31.25 ms rising edge"
+PWRCTRL1;0x59;0x0;ONKEYDBNC;3 to 2;RW;0;"Controls debounce of ONKEY push-button
+00 — 31.25 ms falling edge. 31.25 ms rising edge 01 — 31.25 ms falling edge. 31.25 ms rising edge 10 — 125 ms falling edge. 31.25 ms rising edge 11 — 750 ms falling edge. 31.25 ms rising edge"
+PWRCTRL1;0x59;0x0;PWRONRSTEN;4;RW;0;"Enables going to REGS_DISABLE or Sleep mode when PWRON_CFG = 1. See Section 10 ""PF1550 state machine"" for details.
+0 — Long press on PWRON button does not take state to REGS_DISABLE or Sleep
+1 — Long press on PWRON button takes state to REGS_DISABLE or Sleep"
+PWRCTRL1;0x59;0x0;RESTARTEN;5;RW;0;"Enables restart of system when PWRON push-button is held low for 5 s
+0 — No impact
+1 — When going to REGS_DISABLE via a long press of PWRON button, holding it low for 1 more second takes state back to RUN (Equally, a 5 second push restarts the system)"
+PWRCTRL1;0x59;0x0;REGSCPEN;6;RW;0;"Shuts down LDO if it enters a current limit fault. Controls LDO1, LDO2, and LDO3.
+0 — LDO does not shut down in the event of a current limit fault. Continues to current limit
+1 — LDO is turned off when it encounters a current limit fault"
+PWRCTRL1;0x59;0x0;ONKEY_RST_EN;7;RW;1;"Enables turning off of system via ONKEY. See Section 10 ""PF1550 state machine"" for details.
+0 — ONKEY cannot be used to turn off or restart system
+1 — ONKEY can be used to turn off or restart system"
+PWRCTRL2;0x5A;0x0;UVDET;1 to 0;RW1S;0;"Sets UVDET threshold
+00 — Rising 2.65 V. Falling 2.55 V
+01 — Rising 2.8 V. Falling 2.7 V
+10 — Rising 3.0 V. Falling 2.9 V
+11 — Rising 3.1 V. Falling 3.0 V"
+PWRCTRL2;0x5A;0x0;LOW_SYS_WARN;3 to 2;RW;0;"Sets LOW_SYS_WARN threshold
+00 — Rising 3.3 V. Falling 3.1 V
+01 — Rising 3.5 V. Falling 3.3 V
+10 — Rising 3.7 V. Falling 3.5 V
+11 — Rising 3.9 V. Falling 3.7 V"
+PWRCTRL2;0x5A;0x0;UNUSED;7 to 4;—;—;Unused
+PWRCTRL3;0x5B;0x0;GOTO_SHIP;0;RW;0;"Set this bit to go to SHIP mode from any state. See Section 10 ""PF1550 state machine"" for details.
+0 — No impact
+1 — PF1550 enters SHIP mode"
+PWRCTRL3;0x5B;0x0;GOTO_CORE_OFF;1;RW;0;"Set this bit to go to CORE_OFF mode once in REGS_DISABLE state
+0 — No impact
+1 — PF1550 enters CORE_OFF mode when in REGS_DISABLE state"
+PWRCTRL3;0x5B;0x0;UNUSED;7 to 2;—;—;Unused
+SW1_PWRDN_SEQ;0x5F;0x0;SW1_PWRDN_SEQ;2 to 0;RW1S;0;"This contains same value as power-up sequence value by default. Power-up sequence is in mirror registers.
+xxx = The power-down sequencer performs the function opposite to the power-up sequencer. Each regulator has an associated register setting (SW1_PWRDN_SEQ[2:0], SW2_PWRDN_ SEQ[2:0], SW3_PWRDN_SEQ[2:0], LDO1_PWRDN_SEQ[2:0], LDO2_PWRDN_SEQ[2:0], LDO3_PWRDN_SEQ[2:0].
+VREFDDR_PWRDN_SEQ[2:0]) that sets its power-down sequence. The default setting of the above registers is equal  to the corresponding power-up sequence setting. For example, SW1_PWRDN_SEQ[2:0] = OTP_SW1_PWRUP_SEQ[2:0].
+When the power-down sequencer is activated, regulators are turned off one by one in the descending order of the XXX_ PWRDN_SEQ[2:0] setting. This way, by default, power-down is a mirror of the power-up sequence. In one of the ""System On"" states, the processor can change the values of the XXX_
+PWRDN_SEQ[2:0] registers. The power-up sequence is fixed by OTP (or TBB). If all XXX_PWRDN_SEQ[2:0] = 0x00, the power- down sequencer is bypassed and all the regulators are turned off at once."
+SW1_PWRDN_SEQ;0x5F;0x0;UNUSED;7 to 3;—;—;Unused
+SW2_PWRDN_SEQ;0x60;0x0;SW2_PWRDN_SEQ;2 to 0;RW1S;0;"This contains same value as power-up sequence value by default. Power-up sequence is in mirror registers.
+xxx = The power-down sequencer performs the function opposite to the power-up sequencer. Each regulator has an associated register setting (SW1_PWRDN_SEQ[2:0], SW2_PWRDN_ SEQ[2:0], SW3_PWRDN_SEQ[2:0], LDO1_PWRDN_SEQ[2:0], LDO2_PWRDN_SEQ[2:0], LDO3_PWRDN_SEQ[2:0].
+VREFDDR_PWRDN_SEQ[2:0]) that sets its power-down sequence. The default setting of the above registers is equal  to the corresponding power-up sequence setting. For example, SW1_PWRDN_SEQ[2:0] = OTP_SW1_PWRUP_SEQ[2:0].
+When the power-down sequencer is activated, regulators are turned off one by one in the descending order of the XXX_ PWRDN_SEQ[2:0] setting. This way, by default, power-down is a mirror of the power-up sequence. In one of the ""System On"" states, the processor can change the values of the XXX_
+PWRDN_SEQ[2:0] registers. The power-up sequence is fixed by OTP (or TBB). If all XXX_PWRDN_SEQ[2:0] = 0x00, the power- down sequencer is bypassed and all the regulators are turned off at once."
+SW2_PWRDN_SEQ;0x60;0x0;UNUSED;7 to 3;—;—;Unused
+SW3_PWRDN_SEQ;0x61;0x0;SW3_PWRDN_SEQ;2 to 0;RW1S;0;"This contains same value as power-up sequence value by default. Power-up sequence is in mirror registers.
+xxx = The power-down sequencer performs the function opposite to the power-up sequencer. Each regulator has an associated register setting (SW1_PWRDN_SEQ[2:0], SW2_PWRDN_ SEQ[2:0], SW3_PWRDN_SEQ[2:0], LDO1_PWRDN_SEQ[2:0], LDO2_PWRDN_SEQ[2:0], LDO3_PWRDN_SEQ[2:0].
+VREFDDR_PWRDN_SEQ[2:0]) that sets its power-down sequence. The default setting of the above registers is equal  to the corresponding power-up sequence setting. For example, SW1_PWRDN_SEQ[2:0] = OTP_SW1_PWRUP_SEQ[2:0].
+When the power-down sequencer is activated, regulators are turned off one by one in the descending order of the XXX_ PWRDN_SEQ[2:0] setting. This way, by default, power-down is a mirror of the power-up sequence. In one of the ""System On"" states, the processor can change the values of the XXX_
+PWRDN_SEQ[2:0] registers. The power-up sequence is fixed by OTP (or TBB). If all XXX_PWRDN_SEQ[2:0] = 0x00, the power- down sequencer is bypassed and all the regulators are turned off at once."
+SW3_PWRDN_SEQ;0x61;0x0;UNUSED;7 to 3;—;—;Unused
+LDO1_PWRDN_SEQ;0x62;0x0;LDO1_PWRDN_SEQ;2 to 0;RW1S;0;"This contains same value as power-up sequence value by default. Power-up sequence is in mirror registers.
+xxx = The power-down sequencer performs the function opposite to the power-up sequencer. Each regulator has an associated register setting (SW1_PWRDN_SEQ[2:0], SW2_PWRDN_ SEQ[2:0], SW3_PWRDN_SEQ[2:0], LDO1_PWRDN_SEQ[2:0], LDO2_PWRDN_SEQ[2:0], LDO3_PWRDN_SEQ[2:0].
+VREFDDR_PWRDN_SEQ[2:0]) that sets its power-down sequence. The default setting of the above registers is equal  to the corresponding power-up sequence setting. For example, SW1_PWRDN_SEQ[2:0] = OTP_SW1_PWRUP_SEQ[2:0].
+When the power-down sequencer is activated, regulators are turned off one by one in the descending order of the XXX_ PWRDN_SEQ[2:0] setting. This way, by default, power-down is a mirror of the power-up sequence. In one of the ""System On"" states, the processor can change the values of the XXX_
+PWRDN_SEQ[2:0] registers. The power-up sequence is fixed by OTP (or TBB). If all XXX_PWRDN_SEQ[2:0] = 0x00, the power- down sequencer is bypassed and all the regulators are turned off at once."
+LDO1_PWRDN_SEQ;0x62;0x0;UNUSED;7 to 3;—;—;Unused
+LDO2_PWRDN_SEQ;0x63;0x0;LDO2_PWRDN_SEQ;2 to 0;RW1S;0;"This contains same value as power-up sequence value by default. Power-up sequence is in mirror registers.
+xxx = The power-down sequencer performs the functional opposite to the power-up sequencer. Each regulator has an associated register setting (SW1_PWRDN_SEQ[2:0], SW2_ PWRDN_SEQ[2:0], SW3_PWRDN_SEQ[2:0], LDO1_PWRDN_ SEQ[2:0], LDO2_PWRDN_SEQ[2:0], LDO3_PWRDN_SEQ[2:0].
+VREFDDR_PWRDN_SEQ[2:0]) that sets its power-down sequence. The default setting of the above registers is equal  to the corresponding power-up sequence setting. For example, SW1_PWRDN_SEQ[2:0] = OTP_SW1_PWRUP_SEQ[2:0].
+When the power-down sequencer is activated, regulators are turned off one by one in the descending order of the XXX_ PWRDN_SEQ[2:0] setting. This way, by default, power-down is a mirror of the power-up sequence. In one of the ""System On"" states, the processor can change the values of the XXX_
+PWRDN_SEQ[2:0] registers. The power-up sequence is fixed by OTP (or TBB). If all XXX_PWRDN_SEQ[2:0] = 0x00, the power- down sequencer is bypassed and all the regulators are turned off at once."
+LDO2_PWRDN_SEQ;0x63;0x0;UNUSED;7 to 3;—;—;Unused
+LDO3_PWRDN_SEQ;0x64;0x0;LDO3_PWRDN_SEQ;2 to 0;RW1S;0;"This contains same value as power-up sequence value by default. Power-up sequence is in mirror registers.
+xxx = The power-down sequencer performs the function opposite to the power-up sequencer. Each regulator has an associated register setting (SW1_PWRDN_SEQ[2:0], SW2_PWRDN_ SEQ[2:0], SW3_PWRDN_SEQ[2:0], LDO1_PWRDN_SEQ[2:0], LDO2_PWRDN_SEQ[2:0], LDO3_PWRDN_SEQ[2:0].
+VREFDDR_PWRDN_SEQ[2:0]) that sets its power-down sequence. The default setting of the above registers is equal  to the corresponding power-up sequence setting. For example, SW1_PWRDN_SEQ[2:0] = OTP_SW1_PWRUP_SEQ[2:0].
+When the power-down sequencer is activated, regulators are turned off one by one in the descending order of the XXX_ PWRDN_SEQ[2:0] setting. This way, by default, power-down is a mirror of the power-up sequence. In one of the ""System On"" states, the processor can change the values of the XXX_
+PWRDN_SEQ[2:0] registers. The power-up sequence is fixed by OTP (or TBB). If all XXX_PWRDN_SEQ[2:0] = 0x00, the power- down sequencer is bypassed and all the regulators are turned off at once."
+LDO3_PWRDN_SEQ;0x64;0x0;UNUSED;7 to 3;—;—;Unused
+VREFDDR_PWRDN_SEQ;0x65;0x0;VREFDDR_PWRDN_S EQ;2 to 0;RW1S;0;"This contains same value as power-up sequence value by default. Power-up sequence is in mirror registers.
+xxx = The power-down sequencer performs the function opposite to the power-up sequencer. Each regulator has an associated register setting (SW1_PWRDN_SEQ[2:0], SW2_PWRDN_ SEQ[2:0], SW3_PWRDN_SEQ[2:0], LDO1_PWRDN_SEQ[2:0], LDO2_PWRDN_SEQ[2:0], LDO3_PWRDN_SEQ[2:0].
+VREFDDR_PWRDN_SEQ[2:0]) that sets its power-down sequence. The default setting of the above registers is equal  to the corresponding power-up sequence setting. For example, SW1_PWRDN_SEQ[2:0] = OTP_SW1_PWRUP_SEQ[2:0].
+When the power-down sequencer is activated, regulators are turned off one by one in the descending order of the XXX_ PWRDN_SEQ[2:0] setting. This way, by default, power-down is a mirror of the power-up sequence. In one of the ""System On"" states, the processor can change the values of the XXX_
+PWRDN_SEQ[2:0] registers. The power-up sequence is fixed by OTP (or TBB). If all XXX_PWRDN_SEQ[2:0] = 0x00, the power- down sequencer is bypassed and all the regulators are turned off at once."
+VREFDDR_PWRDN_SEQ;0x65;0x0;UNUSED;7 to 3;—;—;Unused
+STATE_INFO;0x67;0x0;STATE;5 to 0;R;0;"Indicates machine state 000000 — Wait status 001100 — RUN state 001101 — STANDBY state
+001110 — SLEEP/LPSR state
+101011 — REGS_DISABLE state
+Other bits are reserved"
+STATE_INFO;0x67;0x0;UNUSED;7 to 6;—;—;Unused
+I2C_ADDR;0x68;0x0;I2C_SLAVE_ADDR_L SBS;2 to 0;R;0;"Loaded from fuses. But read only in functional space.
+000 — Slave Address: 0x08 
+001 — Slave Address: 0x09
+010 — Slave Address: 0x0A
+011 — Slave Address: 0x0B
+100 — Slave Address: 0x0C
+101 — Slave Address: 0x0D
+110 — Slave Address: 0x0E
+111 — Slave Address: 0x0F"
+I2C_ADDR;0x68;0x0;USE_DEFAULT_ADD R;7;RW;0;DEFAULT ADDR
+RC_16MHZ;0x6B;0x0;REQ_16MHZ;0;RW;0;"Enables 16 MHz clock
+0 — 16 MHz clock enable controlled by state machine
+1 — 16 MHz clock always enabled"
+RC_16MHZ;0x6B;0x0;REQ_ACORE_ON;1;RW;0;"Controls Analog core enable
+0 — Analog core enable controlled by state machine
+1 — Analog core always on"
+RC_16MHZ;0x6B;0x0;REQ_ACORE_HIPWR;2;RW;0;"Controls Low-power mode of the analog core
+0 — Analog core Low-power mode controlled by state machine
+1 — Analog core never in Low-power mode"
+RC_16MHZ;0x6B;0x0;UNUSED;7 to 3;—;—;Unused
+CHG_INT;0x00;0x80;SUP_I;0;RW1S[1];0;"Supplement mode interrupt
+0 — The SUP_OK bit interrupt has not occurred or been cleared
+1 — The SUP_OK bit interrupt has occurred
+Reset condition — VCOREDIG_RSTB"
+CHG_INT;0x00;0x80;BAT2SOC_I;1;RW1S;0;"VBATT to VSYS overcurrent interrupt
+0 — The BAT2SOC_OK interrupt has not occurred or been cleared
+1— The BAT2SOC _OK bit interrupt has occurred
+Reset condition — VCOREDIG_RSTB"
+CHG_INT;0x00;0x80;BAT_I;2;RW1S;0;"Battery interrupt
+0 — The BAT_OK interrupt has not occurred or been cleared
+1 — The BAT_OK interrupt has occurred
+Reset condition — VCOREDIG_RSTB"
+CHG_INT;0x00;0x80;CHG_I;3;RW1S;0;"Charger interrupt
+0 — The CHG_OK interrupt has not occurred or been cleared
+1 — The CHG_OK interrupt has occurred
+Reset condition — VCOREDIG_RSTB"
+CHG_INT;0x00;0x80;RSVD4;4;RW1S;0;Unused
+CHG_INT;0x00;0x80;VBUS_I;5;RW1S;0;"VBUS interrupt
+0 — The VBUS_OK interrupt has not occurred or been cleared
+1 — The VBUS_OK interrupt has occurred
+Reset condition — VCOREDIG_RSTB"
+CHG_INT;0x00;0x80;VBUS_DPM_I;6;RW1S;0;"VBUS_DPM interrupt
+0 — The VBUS_DPM _OK interrupt has not occurred or been cleared
+1 — The VBUS_DPM _OK interrupt has occurred
+Reset condition — VCOREDIG_RSTB"
+CHG_INT;0x00;0x80;THM_I;7;RW1S;0;"THM interrupt. Occurs when Warm/Cool thresholds are crossed or when thermal foldback is active. After the interrupt has occurred, THM_OK bit can be read to know the source of the interrupt.
+If THM_OK = 0, warm/cool thresholds are crossed If THM_OK = 1, thermal foldback is active
+0 — THM interrupt has not occurred or has been cleared
+1 — THM interrupt has occurred
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_MASK;0x02;0x80;SUP_M;0;RW;1;"Supplement mode interrupt mask
+0 — Unmasked
+1 — Masked
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_MASK;0x02;0x80;BAT2SOC_M;1;RW;1;"VBATT to VSYS overcurrent interrupt mask
+0 — Unmasked
+1 — Masked
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_MASK;0x02;0x80;BAT_M;2;RW;1;"Battery interrupt mask
+0 — Unmasked
+1 — Masked
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_MASK;0x02;0x80;CHG_M;3;RW;1;"Charger interrupt mask
+0 — Unmasked
+1 — Masked
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_MASK;0x02;0x80;RSVD4;4;RW;1;Unused
+CHG_INT_MASK;0x02;0x80;VBUS_M;5;RW;1;"VBUS interrupt mask
+0 — Unmasked
+1 — Masked
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_MASK;0x02;0x80;VBUS_DPM_M;6;RW;1;"VBUS_DPM interrupt mask
+0 — Unmasked
+1 — Masked
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_MASK;0x02;0x80;THM_M;7;RW;1;"THM interrupt mask
+0 — Unmasked
+1 — Masked
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_OK;0x04;0x80;SUP_OK;0;R;0;"Supplement mode indicator
+0 — Supplement mode not detected
+1 — Supplement mode detected
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_OK;0x04;0x80;BAT2SOC_OK;1;R;0;"Single-bit battery overcurrent indicator
+0 — Battery to VSYS has not hit overcurrent limit
+1 — Battery to VSYS has hit overcurrent limit (BATT_SNS Bit 5 = 0b1)
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_OK;0x04;0x80;BAT_OK;2;R;1;"Single-bit battery status indicator. See BATT_SNS for more information.
+0 — The battery has an issue or the charger has been suspended, for example, BAT_SNS = 0x06 or 0x07 or 0x09
+1 — The battery is okay, for example, BAT_SNS ≠ 0x06 or 0x07 or 0x09
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_OK;0x04;0x80;CHG_OK;3;R;0;"Single-bit charger status indicator. See CHG_SNS for more information.
+Reset condition — VCOREDIG_RSTB
+0 — The charger is not charging, has suspended charging or Thermal Reg = 1, for example, CHG_SNS ≠ 0x00 or 0x01 or 0x02 or 0x03
+1 — The charger is okay, for example, CHG_SNS = 0x00 or 0x01 or 0x02 or 0x03
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_OK;0x04;0x80;RSVD4;4;R;0;Unused
+CHG_INT_OK;0x04;0x80;VBUS_OK;5;R;0;"Single-bit VBUS_LIN input status indicator. See VBUS_LIN_SNS for more information.
+0 — The VBUS_LIN input is invalid. For example, VBUS_VALID = 0.
+1 — The VBUS_LIN input is valid. For example, VBUS_VALID = 1.
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_OK;0x04;0x80;VBUS_DPM_OK;6;R;0;"VBUS_DPM status indicator. This register provides status of input Dynamic Power Management threshold.
+0 — Not in VBUS_DPM mode
+1 — VBUS_DPM mode
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_OK;0x04;0x80;THM_OK;7;R;1;"Thermistor status indicator. This register provides information on whether battery temperature is within or outside the thermistor cool/warm thresholds.
+0 — Thermistor outside cool and warm thresholds 1 — Thermistor between cool and warm thresholds Reset condition — VCOREDIG_RSTB"
+VBUS_SNS;0x06;0x80;RSVD0;1 to 0;R;0;Unused
+VBUS_SNS;0x06;0x80;VBUS_UVLO_SNS;2;R;1;"0 — VBUS_ LIN > VBUS_LIN_UVLO
+1 — VBUS_ LIN < VBUS_LIN_UVLO or when VBUS is detached"
+VBUS_SNS;0x06;0x80;VBUS_IN2SYS_SNS;3;R;1;"0 — VBUS_ LIN > VBATT + VIN2SYS
+1 — VBUS_ LIN < VBATT + VIN2SYS"
+VBUS_SNS;0x06;0x80;VBUS_OVLO_SNS;4;R;0;"0 — VBUS_ LIN < VBUS_LIN_OVLO
+1 — VBUS_ LIN > VBUS_LIN_OVLO"
+VBUS_SNS;0x06;0x80;VBUS_VALID;5;R;0;"0 — VBUS is not valid
+1 — VBUS is valid, VBUS_LIN > VBUS_LIN_UVLO, VBUS_LIN > VBATT + VIN2SYS, VBUS_LIN < VBUS_LIN_OVLO
+Reset condition — VCOREDIG_RSTB"
+VBUS_SNS;0x06;0x80;RSVD6;6;R;0;Unused
+VBUS_SNS;0x06;0x80;VBUS_DPM_SNS;7;R;0;"VBUS_LIN DPM sense details
+0 — VBUS _LIN DPM threshold has not been triggered
+1 — VBUS_LIN DPM threshold has been triggered"
+CHG_SNS;0x07;0x80;CHG_SNS;3 to 0;R;1000;"Charger sense
+0 — Charger is in precharge mode, CHG_OK = 1, VBATT < VPRECHG.LB, TJ < TSHDN
+1 — Charger is in fast-charge constant current mode, CHG_OK = 1, VBATT < VBATREG, TJ < TSHDN
+2 — Charger is in fast-charge constant voltage mode, CHG_OK = 1, VBATT = VBATREG, TJ < TSHDN
+3 — Charger is in end-of-charge mode, CHG_OK = 1, VBATT ≥
+VBATREG, IBAT = IEOC, TJ < TSHDN
+4 — Charger is in done mode, CHG_OK = 0, VBATT > VBATREG-VRESTART, TJ < TSHDN
+5 — Reserved
+6 — Charger is in timer fault mode, CHG_OK = 0, VBATT < VBATOV, if BAT_SNS = 0b001 then VBATT < VBATPC, TJ < TSHDN
+7 — Charger is in thermistor suspend mode, CHG_OK = 0, VBATT < VBATOV, if BAT_SNS = 0b001 then VBATT < VPRECHG.LB, TJ < TSHDN
+8 — Charger is off, input invalid and/or charger is disabled, CHG_OK = 0
+9 — Battery overvoltage condition
+10 — Charger is off and TJ > TSHDN, CHG_OK = 0
+11 — Reserved
+12 — Charger block is in Linear only mode, not charging, CHG_OK = 0
+13 — Reserved
+14 — Reserved
+15 — Reserved
+Reset condition — VCOREDIG_RSTB"
+CHG_SNS;0x07;0x80;RSVD4;4;R;0;Unused
+CHG_SNS;0x07;0x80;WDT_SNS;5;R;0;"Watchdog sense bit
+0 — Watchdog timer has not expired
+1 — Charger is off because the watchdog timer expired, CHG_OK = 0
+Reset condition — VCOREDIG_RSTB"
+CHG_SNS;0x07;0x80;THM_SNS;6;R;0;"Cool/Warm sense bit
+0 — Thermistor temperature is between cool and warm thresholds
+1 — Thermistor temperature is < Cool, or > Warm threshold
+Reset condition — VCOREDIG_RSTB"
+CHG_SNS;0x07;0x80;TREG_SNS;7;R;0;"Temperature regulation sense
+0 — The junction temperature is less than the threshold set by REGTEMP and the full charge current limit is available
+1 — The junction temperature is greater than the threshold set by REGTEMP and the charge current limit may be folding back to reduce power dissipation
+Reset condition — VCOREDIG_RSTB"
+BATT_SNS;0x08;0x80;BATT_SNS;2 to 0;R;0;"0 — 0x00 = No valid VBUS input
+1 — 0x01 = VBATT < VPRECHG.LB
+2 — 0x02 = the battery cannot charge beyond the precharge threshold and charging has suspended and is in timer fault mode. This condition is also reported in the CHG_SNS as 0x06.
+3 — Reserved
+4 — 0x04 = VPRECHG.LB < VBATT
+5 — 0x05 = the battery voltage is greater than the battery overvoltage flag threshold (VBATOV). Tthis flag is generated only when there is a valid input.
+6 — 0x06 = battery not detected with a valid input and after system wake-up
+7 — Reserved
+Reset condition — VCOREDIG_RSTB"
+BATT_SNS;0x08;0x80;RSVD3;4 to 3;RW;0;Unused
+BATT_SNS;0x08;0x80;BATTOC_SNS;5;R;0;"VBATT to VSYS overcurrent fault
+0 — No fault
+1 — VBATT to VSYS in high current fault
+Reset condition — VCOREDIG_RSTB"
+BATT_SNS;0x08;0x80;RSVD6;7 to 6;RW;0;Unused
+CHG_OPER;0x09;0x80;CHG_OPER;1 to 0;RW1S[1];1;"Charger operation configuration
+0 — charger = off, linear = off. The BATFET switch is on to allow the battery to support the system.
+1 — charger = off, linear = on. When there is a valid VBUS input and no battery, the linear regulator regulates the VSYS voltage to VSYSMIN[1:0].
+2 — charger = on, linear = on. When there is a valid input, the battery is charging. VSYS is the larger of VSYSMIN and VBATT + IBAT * RBATFET.
+3 — Reserved
+Reset condition — VCOREDIG_RSTB"
+CHG_OPER;0x09;0x80;UNUSED;2;RW;0;Unused
+CHG_OPER;0x09;0x80;WDTEN;3;RW;0;"Enable watchdog timer bit. While enabled, the system controller must reset the watchdog timer within the timer period (tWD) for the charger to operate normally. Reset the watchdog timer by programming WDTCLR = 0x01.
+0 — Watchdog timer disabled
+1 — Watchdog timer enabled
+Reset condition — VCOREDIG_RSTB"
+CHG_OPER;0x09;0x80;DISBATFET;4;RW;0;"VBATT to VSYS FET disable control
+0 — VBATT to VSYS FET is controlled by internal state machine
+1 — VBATT to VSYS FET is forced off
+Reset condition — VCOREDIG_RSTB"
+CHG_OPER;0x09;0x80;UNUSED;7 to 5;RW;0;Unused
+CHG_TMR;0x0A;0x80;FCHGTIME;2 to 0;RW1S;10;"Fast-charge timer duration (tFC)
+0 — Disable
+1 — 2 hrs
+2 — 4 hrs
+3 — 6 hrs
+4 — 8 hrs
+5 — 10 hrs
+6 — 12 hrs
+7 — 14 hrs
+Reset condition — VCOREDIG_RSTB"
+CHG_TMR;0x0A;0x80;EOCTIME;5 to 3;RW1S;1;"End-of-charge timer setting
+0 — 0 min (16 secs debounce)
+1 — 10 min
+2 — 20 min
+3 — 30 min
+4 — 40 min
+5 — 50 min
+6 — 60 min
+7 — 70 min
+Reset condition — VCOREDIG_RSTB"
+CHG_TMR;0x0A;0x80;RSVD6;6;R;0;Unused
+CHG_TMR;0x0A;0x80;TPRECHG;7;RW1S;0;"Precharge timer value. Used for low battery.
+0 — Precharge timer value = 30 min
+1 — Precharge timer value = 45 min
+Reset condition — VCOREDIG_RSTB"
+CHG_EOC_CNFG;0x0D;0x80;CHG_RESTART;1 to 0;RW1S;1;"Charger restart threshold
+00 — 0x00 = 100 mV below the value programmed by CHG_CV_PRM
+01 — 0x01 = 150 mV below the value programmed by CHG_CV_PRM
+02 — 0x02 = 200 mV below the value programmed by CHG_CV_PRM
+03 — 0x03 = disabled
+Reset condition — VCOREDIG_RSTB"
+CHG_EOC_CNFG;0x0D;0x80;FORCE_BATT_ISO;2;RW1S;0;Unused
+CHG_EOC_CNFG;0x0D;0x80;EOC_EXIT;3;RW1S;0;Unused
+CHG_EOC_CNFG;0x0D;0x80;IEOC;6 to 4;RW;100;"End-of-charge current threshold. End-of-charge occurs during fast-charge constant voltage mode and end-of-charge current measured as battery decays to the value programmed in this register. This transition starts the end-of-charge timer (tEOC).
+0 — 5 mA
+1 — 10 mA
+2 — 20 mA
+3 — 30 mA
+4 — 50 mA
+5 — Reserved
+6 — Reserved
+7 — Reserved
+Reset condition — VCOREDIG_RSTB"
+CHG_EOC_CNFG;0x0D;0x80;EOC_MODE;7;RW1S;0;Unused
+CHG_CURR_CNFG;0x0E;0x80;CHG_CC;4 to 0;RW1S;0;"Fast charge current selection. When the charger is enabled, the charge current limit is set by these bits. These bits range from 100 mA to 1.0 A.
+0 — 100 mA
+1 — 150 mA
+2 — 200 mA
+3 — 250 mA
+4 — 300 mA
+5 — 350 mA
+6 — 400 mA
+7 — 450 mA
+8 — 500 mA
+9 — 550 mA
+10 — 600 mA
+11 — 650 mA
+12 — 700 mA
+13 — 750 mA
+14 — 800 mA
+15 — 850 mA
+16 — 900 mA
+17 — 950 mA
+18 — 1000 mA
+19 — 1050 mA (Reserved)
+20 — 1100 mA (Reserved)
+21 — 1150 mA (Reserved)
+22 — 1200 mA (Reserved)
+23 — 1250 mA (Reserved)
+24 — 1300 mA (Reserved)
+25 — 1350 mA (Reserved)
+26 — 1400 mA (Reserved)
+27 — 1450 mA (Reserved)
+28 — 1500 mA (Reserved)
+29 — 1550 mA (Reserved)
+30 — 1600 mA (Reserved)
+31 — 1650 mA (Reserved)
+Reset condition — VCOREDIG_RSTB"
+CHG_CURR_CNFG;0x0E;0x80;PRECHGLB_THRS;6 to 5;RW1S;0;"Precharge (low battery) charging voltage threshold setting
+0 — 2.8 V
+1 — 2.7 V (Reserved)
+2 — 2.9 V (Reserved)
+3 — 3.0 V (Reserved)
+Reset condition — VCOREDIG_RSTB"
+CHG_CURR_CNFG;0x0E;0x80;RSVD7;7;RW;0;Reserved
+BATT_REG;0x0F;0x80;CHGCV;5 to 0;RW1S;101011;"Battery termination voltage setting
+0 — 3.50 V
+1 — 3.50 V
+2 — 3.50 V
+3 — 3.50 V
+4 — 3.50 V
+5 — 3.50 V
+6 — 3.50 V
+7 — 3.50 V
+8 — 3.50 V
+9 — 3.52 V
+10 — 3.54 V
+11 — 3.56 V
+12 — 3.58 V
+13 — 3.60 V
+14 — 3.62 V
+15 — 3.64 V
+16 — 3.66 V
+17 — 3.68 V
+18 — 3.70 V
+19 — 3.72 V
+20 — 3.74 V
+21 — 3.76 V
+22 — 3.78 V
+23 — 3.80 V
+24 — 3.82 V
+25 — 3.84 V
+26 — 3.86 V
+27 — 3.88 V
+28 — 3.90 V
+29 — 3.92 V
+30 — 3.94 V
+31 — 3.96 V
+32 — 3.98 V
+33 — 4.00 V
+34 — 4.02 V
+35 — 4.04 V
+36 — 4.06 V
+37 — 4.08 V
+38 — 4.10 V
+39 — 4.12 V
+40 — 4.14 V
+41 — 4.16 V
+42 — 4.18 V
+43 — 4.20 V
+44 — 4.22 V
+45 — 4.24 V
+46 — 4.26 V
+47 — 4.28 V
+48 — 4.30 V
+49 — 4.32 V
+50 — 4.34 V
+51 — 4.36 V
+52 — 4.38 V
+53 — 4.40 V
+54 — 4.42 V
+55 — 4.44 V
+56 — 4.44 V
+57 — 4.44 V
+58 — 4.44 V
+59 — 4.44 V
+60 — 4.44 V
+61 — 4.44 V
+62 — 4.44 V
+63 — 4.44 V"
+BATT_REG;0x0F;0x80;VSYSMIN;7 to 6;RW1S;0;"Minimum system regulation voltage (VSYSMIN)
+0 — 3.5 V
+1 — 3.7 V
+2 — 4.3 V
+3 — Reserved
+Reset condition — VCOREDIG_RSTB"
+BATFET_CNFG;0x11;0x80;WDTCLR;1 to 0;RW;0;"Watchdog timer clear bits. Writing ""01"" to these bits clears the watchdog timer when the watchdog timer is enabled.
+0 — The watchdog timer is not cleared
+1 — The watchdog timer is cleared
+2 — The watchdog timer is not cleared 3 — The watchdog timer is not cleared Reset condition — VCOREDIG_RSTB"
+BATFET_CNFG;0x11;0x80;WD_BATFET_OFF;2;RW;0;"Watchdog timer BATFET control
+0 — Not used in PF1550. See WDFLT_BFET_EN bit in Fault_BATFET_CNFG register.
+1 — Not used in PF1550. See WDFLT_BFET_EN bit in Fault_BATFET_CNFG register.
+Reset condition — VCOREDIG_RSTB"
+BATFET_CNFG;0x11;0x80;BOVRC_DISBATFET;3;RW1S;0;"Disable BATFET in case of battery overcurrent limit
+0 — Charger controls BATFET switch. BATFET is turned off in case of battery overcurrent occurs for 16 ms (default)
+1 — BATFET is not turned off when battery overcurrent occurs. Charger operation remains undisturbed by overcurrent event. Reset condition — VCOREDIG_RSTB"
+BATFET_CNFG;0x11;0x80;BATFET_OC;5 to 4;RW1S;11;"VBATT to VSYS FET overcurrent threshold, 2 bits adjustment
+0 — Disabled
+1 — 2.2 A typ
+2 — 2.8 A typ
+3 — 3.2 A typ
+Reset condition — VCOREDIG_RSTB"
+BATFET_CNFG;0x11;0x80;WD_TIME;6;RW;0;"Sets watchdog timer value
+0 — 80 s
+0 — 32 s
+Reset condition — VCOREDIG_RSTB"
+BATFET_CNFG;0x11;0x80;BOVRC_NOVBUS;7;RW;0;"Enables/disables battery overcurrent protection when no VBUS is present
+0 — Disables battery overcurrent protection when no VBUS is present
+1 — Enables battery overcurrent protection when no VBUS is present
+Reset condition — VCOREDIG_RSTB"
+THM_REG_CNFG;0x12;0x80;THM_CNFG;1 to 0;RW1S;1;"Thermistor configuration. 2 bits adjustment.
+0 — Thermistor not in control of charger. TCOOL and TWARM interrupts are still generated. Thermistor Suspend mode is not entered in this setting. CC and CV values are not altered when TCOOL/cold, TWARM/hot thresholds are crossed.
+1 — Thermistor control in charger. Charging stops when battery temperature > THOT or < TCOLD.
+2 — JEITA 1 settings - Thermistor control in charger. Charging current and battery regulation voltage is reduced at battery temperature > TWARM and < TCOOL.
+3 — JEITA 2 settings - Thermistor control in charger. Charging current is reduced at battery temperature > TWARM and < TCOOL. Charger voltage is not changed.
+Reset condition — VCOREDIG_RSTB"
+THM_REG_CNFG;0x12;0x80;REGTEMP;3 to 2;RW1S;1;"Junction temperature thermal regulation loop set point. 2-bit adjustments. The charger's target current limit starts to fold back and the TREG_SNS bit is set if the junction temperature is greater than the REGTEMP set point.
+0 — 80 °C
+1 — 95 °C
+2 — 110 °C
+3 — 125 °C (Reserved)
+Reset condition — VCOREDIG_RSTB"
+THM_REG_CNFG;0x12;0x80;THM_COLD;4;RW1S;0;"Thermistor cold temperature selection
+0 — 0 °C
+1 — –10 °C
+Reset condition — VCOREDIG_RSTB"
+THM_REG_CNFG;0x12;0x80;THM_HOT;5;RW1S;0;"Thermistor hot temperature selection
+0 — 60 °C
+1 — 55 °C
+Reset condition — VCOREDIG_RSTB"
+THM_REG_CNFG;0x12;0x80;RSVD6;6;RW;0;Unused
+THM_REG_CNFG;0x12;0x80;TEMP_FB_EN;7;RW1S;0;"Enable/disable thermal foldback current function
+0 — Thermal foldback disabled
+1 — Thermal foldback enabled
+Reset condition — VCOREDIG_RSTB"
+VBUS_INLIM_CNFG;0x14;0x80;RSVD0;2 to 0;RW;0;Unused
+VBUS_INLIM_CNFG;0x14;0x80;VBUS_LIN_ILIM;7 to 3;RW1S;1101;"Maximum input current limit selection. 5-bit adjustment from 10 mA to 1500 mA.
+0 — 10 mA
+1 — 15 mA
+2 — 20 mA
+3 — 25 mA
+4 — 30 mA
+5 — 35 mA
+6 — 40 mA
+7 — 45 mA
+8 — 50 mA
+9 — 100 mA
+10 — 150 mA
+11 — 200 mA
+12 — 300 mA
+13 — 400 mA
+14 — 500 mA
+15 — 600 mA
+16 — 700 mA
+17 — 800 mA
+18 — 900 mA
+19 — 1000 mA
+20 — 1500 mA
+21 — Reserved
+22 — Reserved
+23 — Reserved
+24 — Reserved
+25 — Reserved
+26 — Reserved
+27 — Reserved
+28 — Reserved
+29 — Reserved
+30 — Reserved
+31 — Reserved
+Reset condition — CHGPOK_RSTB"
+VBUS_LIN_DPM;0x15;0x80;VBUS_DPM_REG;2 to 0;RW1S;0;"VBUS regulation voltage (DPM mode)
+0 — 3.90 V
+1 — 4.00 V
+2 — 4.10 V
+3 — 4.20 V
+4 — 4.30 V
+5 — 4.40 V
+6 — 4.50 V
+7 — 4.60 V
+Reset condition — VCOREDIG_RSTB"
+VBUS_LIN_DPM;0x15;0x80;PRECHGDBATT_T HRSH;4 to 3;RW1S;0;"Precharge threshold
+0 — Reserved
+1 — Reserved
+2 — Reserved
+3 — Reserved"
+VBUS_LIN_DPM;0x15;0x80;VIN_DPM_STOP;5;RW1S;0;"Dynamic input power management panic stop threshold
+0 — 200 mV
+1 — 250 mV
+Reset condition — VCOREDIG_RSTB"
+VBUS_LIN_DPM;0x15;0x80;RSVD6;6;R;0;Unused
+VBUS_LIN_DPM;0x15;0x80;FET_SCALE;7;RW1S;0;"Enables/disables BATFET scaling
+0 — Reserved
+1 — Reserved
+Reset condition — VCOREDIG_RSTB"
+USB_PHY_LDO_CNFG;0x16;0x80;ACTDISPHY;0;RW1S;1;"Active discharger enable bit for USBPHY
+0 — No active discharge
+1 — Active discharge when regulator disabled
+Reset condition — VCOREDIG_RSTB"
+USB_PHY_LDO_CNFG;0x16;0x80;USBPHY;1;RW1S;0;"USBPHY voltage setting register
+0 — 3.3 V
+1 — 4.9 V
+Reset condition — VCOREDIG_RSTB"
+USB_PHY_LDO_CNFG;0x16;0x80;USBPHYLDO;2;RW1S;0;"USBPHY LDO enable
+0 — Disabled
+1 — Enabled
+Reset condition — VCOREDIG_RSTB"
+USB_PHY_LDO_CNFG;0x16;0x80;RSVD3;3;RW;0;Unused
+USB_PHY_LDO_CNFG;0x16;0x80;RSVD4;5 to 4;RW;0;Unused
+USB_PHY_LDO_CNFG;0x16;0x80;RSVD6;7 to 6;RW;0;Unused
+DBNC_DELAY_TIME;0x18;0x80;VBUS_OV_TDB;1 to 0;RW1S;0;"VBUS overvoltage debounce delay
+0 — 10 µs (Reserved)
+1 — 100 µs
+2 — 1 ms
+3 — 10 ms
+Reset condition — VCOREDIG_RSTB"
+DBNC_DELAY_TIME;0x18;0x80;USB_PHY_TDB;3 to 2;RW1S;0;"USBPHY debounce timer - not used in PF1550
+0 — 0 ms
+1 — 16 ms
+2 — 32 ms
+3 — Not used
+Reset condition — VCOREDIG_RSTB"
+DBNC_DELAY_TIME;0x18;0x80;SYS_WKUP_DLY;5 to 4;RW1S;0;"System wake-up time
+0 — 8.0 ms
+1 — 16 ms
+2 — 32 ms
+3 — 100 ms
+Reset condition — VCOREDIG_RSTB"
+DBNC_DELAY_TIME;0x18;0x80;RSVD6;7 to 6;RW;0;Unused
+CHG_INT_CNFG;0x19;0x80;CHG_INT_GEN;0;RW1S;0;"Determines if an interrupt is generated at every mode transition in charger
+0 — Interrupt is not generated at every mode transition except transition from Fast Charge to CV
+1 — Interrupt is generated at every mode transition (Fast Charge, CV, EOC, DONE, No Charger)
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_CNFG;0x19;0x80;EOC_INT;1;RW1S;0;"Interrupt bit generated at end-of-charge
+0 — No interrupt bit is generated when end-of- charge current is triggered
+1 — Interrupt bit is generated when end-of-charge current is triggered
+Reset condition — VCOREDIG_RSTB"
+CHG_INT_CNFG;0x19;0x80;RSVD2;7 to 2;RW;0;Unused
+THM_ADJ_SETTING;0x1A;0x80;THM_WARM;0;RW1S;0;"Thermistor warm threshold setting
+0 — 45 °C
+1 — 50 °C
+Reset condition — VCOREDIG_RSTB"
+THM_ADJ_SETTING;0x1A;0x80;THM_COOL;1;RW1S;0;"Thermistor cool threshold setting
+0 — 15 °C
+1 — 10 °C
+Reset condition — VCOREDIG_RSTB"
+THM_ADJ_SETTING;0x1A;0x80;CV_ADJ;3 to 2;RW1S;0;"JEITA Thermistor battery termination voltage subtraction setting
+0 — 60 mV
+1 — 100 mV
+2 — 160 mV
+3 — 200 mv
+Reset condition — VCOREDIG_RSTB"
+THM_ADJ_SETTING;0x1A;0x80;CC_ADJ;5 to 4;RW1S;0;"JEITA Thermistor battery charging current setting (percentage of IFC)
+0 — 25 %
+1 — 50 %
+2 — 75 %
+3 — 100 %
+Reset condition — VCOREDIG_RSTB"
+THM_ADJ_SETTING;0x1A;0x80;RSVD6;7 to 6;RW;0;Unused
+VBUS2SYS_CNFG;0x1B;0x80;VBUS2SYS_TDB;1 to 0;RW1S;0;"VBUS to VSYS comparator debounce time
+0 — Reserved
+1 — 100 µs
+2 — 1 ms
+3 — 10 ms
+Reset condition — VCOREDIG_RSTB"
+VBUS2SYS_CNFG;0x1B;0x80;VBUS2SYS_THRSH;2;RW1S;0;"VBUS to VSYS comparator threshold setting
+0 — 50 mV
+1 — 175 mV
+Reset condition — VCOREDIG_RSTB"
+VBUS2SYS_CNFG;0x1B;0x80;RSVD3;7 to 3;RW;0;Unused
+LED_PWM;0x1C;0x80;LED_PWM;5 to 0;RW;0;"LED PWM duty cycle setting
+0 — 0/32 (Off)
+1 — 1/32
+2 — 2/32
+3 — 3/32
+4 — 4/32
+5 — 5/32
+6 — 6/32
+7 — 7/32
+8 — 8/32
+9 — 9/32
+10 — 10/32
+11 — 11/32
+12 — 12/32
+13 — 13/32
+14 — 14/32
+15 — 15/32
+16 — 16/32
+17 — 17/32
+18 — 18/32
+19 — 19/32
+20 — 20/32
+21 — 21/32
+22 — 22/32
+23 — 23/32
+24 — 24/32
+25 — 25/32
+26 — 26/32
+27 — 27/32
+28 — 28/32
+29 — 29/32
+30 — 30/32
+31 — 31/32
+32 and higher — 32/32
+Reset condition — VCOREDIG_RSTB"
+LED_PWM;0x1C;0x80;LED_RAMP;6;RW;0;"Enable PWM ramp enable
+0 — Ramp disable
+1 — Ramp enable
+Reset condition — VCOREDIG_RSTB"
+LED_PWM;0x1C;0x80;LED_EN;7;RW;0;"LED driver enable
+0 — Disabled
+1 — Enabled
+Reset condition — VCOREDIG_RSTB"
+FAULT_BATFET_CNFG;0x1D;0x80;OVFLT_BFET_EN;0;RW1S;0;"BATFET control during battery overvoltage
+0 — BATFET is opened during battery overvoltage
+1 — BATFET remains closed
+Reset condition — VCOREDIG_RSTB"
+FAULT_BATFET_CNFG;0x1D;0x80;WDFLT_BFET_EN;1;RW1S;0;"BATFET control during watchdog fault
+0 — BATFET is opened during watchdog fault
+1 — BATFET remains closed
+Reset condition — VCOREDIG_RSTB"
+FAULT_BATFET_CNFG;0x1D;0x80;THMSUS_BFET_EN;2;RW1S;0;"BATFET control during thermistor fault (< Cold or > Hot)
+0 — BATFET is opened during battery thermistor fault
+1 — BATFET remains closed
+Reset condition — VCOREDIG_RSTB"
+FAULT_BATFET_CNFG;0x1D;0x80;TSHDN_BFET_EN;3;RW1S;0;"BATFET control during thermal shutdown
+0 — BATFET is opened during thermal shutdown
+1 — BATFET remains closed
+Reset condition — VCOREDIG_RSTB"
+FAULT_BATFET_CNFG;0x1D;0x80;TMRFLT_BFET_EN;4;RW1S;0;"BATFET control during charger timer fault
+0 — BATFET is opened during charger timer fault
+1 — BATFET remains closed
+Reset condition — POR"
+FAULT_BATFET_CNFG;0x1D;0x80;RSVD5;5;RW1S;0;Unused
+FAULT_BATFET_CNFG;0x1D;0x80;CTRL_CHGR_BET A_ SEL;7 to 6;RW1S;0;Reserved
+LED_CNFG;0x1E;0x80;LED_FREQ;1 to 0;RW;0;"LED driver PWM frequency setting
+0 — 1.0 Hz
+1 — 0.5 Hz
+2 — 256 Hz
+3 — 8.0 Hz
+Reset condition — VCOREDIG_RSTB"
+LED_CNFG;0x1E;0x80;LED_CURRENT;3 to 2;RW1S;0;"LED driver current amplitude setting
+0 — Reserved
+1 — 6.0 mA
+2 — Reserved
+3 — Reserved
+Reset condition — VCOREDIG_RSTB"
+LED_CNFG;0x1E;0x80;LED_CFG;4;RW1S;0;"Controls LED on/blinking mode
+0 — LED on during charging. flashing during charger fault. off in DONE state
+1 — LED flashing during charging. on during charger fault. off in DONE state
+Reset condition — VCOREDIG_RSTB"
+LED_CNFG;0x1E;0x80;LEDOVRD;5;RW;0;"Enable software control of LED
+0 — LED controlled by state machine
+1 — LED controlled via software
+Reset condition — VCOREDIG_RSTB"
+LED_CNFG;0x1E;0x80;RSVD4;7 to 6;RW;0;Unused

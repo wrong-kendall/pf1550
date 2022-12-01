@@ -264,9 +264,9 @@ const VrefddrCtrl::VrefddrLPwrMask VrefddrCtrl::kVrefddrLPwrMask(BITS_3);
 const uint8_t VrefddrCtrl::VrefddrLPwrMask::ENABLE = BITS_3;
 const uint8_t VrefddrCtrl::VrefddrLPwrMask::DISABLE = BITS_NONE;
 
-const uint8_t VrefddrPwrdnseq::kRegister = 0x65;
-const VrefddrPwrdnseq::VrefddrPwrdnseqMask
-    VrefddrPwrdnseq::kVrefddrPwrdnseqMask(BITS_2_1_0);
+const uint8_t VrefddrPwrDnSeq::kRegister = 0x65;
+const VrefddrPwrDnSeq::VrefddrPwrDnSeqMask
+    VrefddrPwrDnSeq::kVrefddrPwrDnSeqMask(BITS_2_1_0);
 
 // TODO(kendall): Figure out the right register. This conflicts with RC_16MHz
 const uint8_t Key1::kRegister = 0x6B;
@@ -298,6 +298,29 @@ const uint8_t ChgInt::VbusDpmIMask::ACTIVE = BITS_6;
 const ChgInt::ThmIMask ChgInt::kThmIMask(BITS_7);
 const uint8_t ChgInt::ThmIMask::CLEARED = BITS_NONE;
 const uint8_t ChgInt::ThmIMask::ACTIVE = BITS_7;
+
+const uint8_t ChgIntMask::kRegister = 0x02 + SPECIFIC_REGISTER_OFFSET;
+const ChgIntMask::SupMMask ChgIntMask::kSupMMask(BITS_0);
+const uint8_t ChgIntMask::SupMMask::UNMASKED = BITS_NONE;
+const uint8_t ChgIntMask::SupMMask::MASKED = BITS_0;
+const ChgIntMask::Bat2SocMMask ChgIntMask::kBat2SocMMask(BITS_1);
+const uint8_t ChgIntMask::Bat2SocMMask::UNMASKED = BITS_NONE;
+const uint8_t ChgIntMask::Bat2SocMMask::MASKED = BITS_1;
+const ChgIntMask::BatMMask ChgIntMask::kBatMMask(BITS_2);
+const uint8_t ChgIntMask::BatMMask::UNMASKED = BITS_NONE;
+const uint8_t ChgIntMask::BatMMask::MASKED = BITS_2;
+const ChgIntMask::ChgMMask ChgIntMask::kChgMMask(BITS_3);
+const uint8_t ChgIntMask::ChgMMask::UNMASKED = BITS_NONE;
+const uint8_t ChgIntMask::ChgMMask::MASKED = BITS_3;
+const ChgIntMask::VbusMMask ChgIntMask::kVbusMMask(BITS_5);
+const uint8_t ChgIntMask::VbusMMask::UNMASKED = BITS_NONE;
+const uint8_t ChgIntMask::VbusMMask::MASKED = BITS_5;
+const ChgIntMask::VbusDpmMMask ChgIntMask::kVbusDpmMMask(BITS_6);
+const uint8_t ChgIntMask::VbusDpmMMask::UNMASKED = BITS_NONE;
+const uint8_t ChgIntMask::VbusDpmMMask::MASKED = BITS_6;
+const ChgIntMask::ThmMMask ChgIntMask::kThmMMask(BITS_7);
+const uint8_t ChgIntMask::ThmMMask::UNMASKED = BITS_NONE;
+const uint8_t ChgIntMask::ThmMMask::MASKED = BITS_7;
 
 const uint8_t ChgIntOk::kRegister = 0x04 + SPECIFIC_REGISTER_OFFSET;
 const ChgIntOk::SupOkMask ChgIntOk::kSupOkMask(BITS_0);
@@ -615,7 +638,7 @@ const UsbPhyLdoCnfg::UsbPhyLdoMask UsbPhyLdoCnfg::kUsbPhyLdoMask(BITS_2);
 const uint8_t UsbPhyLdoCnfg::UsbPhyLdoMask::DISABLED = BITS_NONE;
 const uint8_t UsbPhyLdoCnfg::UsbPhyLdoMask::ENABLED = BITS_2;
 
-const uint8_t DbncDelayTime::kRegister = 0x19 + SPECIFIC_REGISTER_OFFSET;
+const uint8_t DbncDelayTime::kRegister = 0x18 + SPECIFIC_REGISTER_OFFSET;
 const DbncDelayTime::VbusOvTdbMask DbncDelayTime::kVbusOvTdbMask(BITS_1_0);
 const uint8_t DbncDelayTime::VbusOvTdbMask::_10US = BITS_NONE;
 const uint8_t DbncDelayTime::VbusOvTdbMask::_100US = BITS_0;
@@ -639,7 +662,7 @@ const ChgIntCnfg::EoCIntMask ChgIntCnfg::kEoCIntMask(BITS_1);
 const uint8_t ChgIntCnfg::EoCIntMask::NO_EOC_INT = BITS_NONE;
 const uint8_t ChgIntCnfg::EoCIntMask::EOC_INT = BITS_1;
 
-const uint8_t ThmAdjSetting::kRegister = 0x1B + SPECIFIC_REGISTER_OFFSET;
+const uint8_t ThmAdjSetting::kRegister = 0x1A + SPECIFIC_REGISTER_OFFSET;
 const ThmAdjSetting::ThmWarmMask ThmAdjSetting::kThmWarmMask(BITS_0);
 const uint8_t ThmAdjSetting::ThmWarmMask::_45C = BITS_NONE;
 const uint8_t ThmAdjSetting::ThmWarmMask::_50C = BITS_0;
@@ -656,6 +679,15 @@ const uint8_t ThmAdjSetting::CcAdjMask::_25PCT = BITS_NONE;
 const uint8_t ThmAdjSetting::CcAdjMask::_50PCT = BITS_4;
 const uint8_t ThmAdjSetting::CcAdjMask::_75PCT = BITS_5;
 const uint8_t ThmAdjSetting::CcAdjMask::_100PCT = BITS_5_4;
+
+const uint8_t Vbus2SysCnfg::kRegister = 0x1B + SPECIFIC_REGISTER_OFFSET;
+const Vbus2SysCnfg::Vbus2SysTdbMask Vbus2SysCnfg::kVbus2SysTdbMask(BITS_1_0);
+const uint8_t Vbus2SysCnfg::Vbus2SysTdbMask::_100US = BITS_0;
+const uint8_t Vbus2SysCnfg::Vbus2SysTdbMask::_1MS = BITS_1;
+const uint8_t Vbus2SysCnfg::Vbus2SysTdbMask::_10MS = BITS_1_0;
+const Vbus2SysCnfg::Vbus2SysThrshMask Vbus2SysCnfg::kVbus2SysThrshMask(BITS_2);
+const uint8_t Vbus2SysCnfg::Vbus2SysThrshMask::_50MV = BITS_NONE;
+const uint8_t Vbus2SysCnfg::Vbus2SysThrshMask::_175MV = BITS_2;
 
 const uint8_t LedPwm::kRegister = 0x1C + SPECIFIC_REGISTER_OFFSET;
 const LedPwm::LedPwmMask LedPwm::kLedPwmMask(BITS_5_4_3_2_1_0);
@@ -1138,21 +1170,21 @@ const uint8_t Sw1::SlpVolt::kRegister = 0x34;
 const uint8_t Sw1::Ctrl::kRegister = 0x35;
 // Misnamed in data sheet as SLP_VOLT
 const uint8_t Sw1::Ctrl1::kRegister = 0x36;
-const uint8_t Sw1::PwrDn::kRegister = 0x5F;
+const uint8_t Sw1::PwrDnSeq::kRegister = 0x5F;
 
 const uint8_t Sw2::Volt::kRegister = 0x38;
 const uint8_t Sw2::StbyVolt::kRegister = 0x39;
 const uint8_t Sw2::SlpVolt::kRegister = 0x3A;
 const uint8_t Sw2::Ctrl::kRegister = 0x3B;
 const uint8_t Sw2::Ctrl1::kRegister = 0x3C;
-const uint8_t Sw2::PwrDn::kRegister = 0x60;
+const uint8_t Sw2::PwrDnSeq::kRegister = 0x60;
 
 const uint8_t Sw3::Volt::kRegister = 0x3E;
 const uint8_t Sw3::StbyVolt::kRegister = 0x3F;
 const uint8_t Sw3::SlpVolt::kRegister = 0x40;
 const uint8_t Sw3::Ctrl::kRegister = 0x41;
 const uint8_t Sw3::Ctrl1::kRegister = 0x42;
-const uint8_t Sw3::PwrDn::kRegister = 0x61;
+const uint8_t Sw3::PwrDnSeq::kRegister = 0x61;
 
 /*
 const SWx::PwrUp::PwrUpSeqMask SWx::PwrUp::k
