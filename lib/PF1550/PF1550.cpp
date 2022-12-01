@@ -526,8 +526,7 @@ const uint8_t BatfetCnfg::WdtClrMask::NOT_CLEARED = BITS_NONE;
 const uint8_t BatfetCnfg::WdtClrMask::CLEARED = BITS_0;
 const uint8_t BatfetCnfg::WdtClrMask::NOT_CLEARED_1 = BITS_1;
 const uint8_t BatfetCnfg::WdtClrMask::NOT_CLEARED_2 = BITS_1_0;
-const BatfetCnfg::BOVRCDisBattFetMask
-    BatfetCnfg::kBOVRCDisBattFetMask(BITS_3);
+const BatfetCnfg::BOVRCDisBattFetMask BatfetCnfg::kBOVRCDisBattFetMask(BITS_3);
 const uint8_t BatfetCnfg::BOVRCDisBattFetMask::CHARGER_CONTROLLED = BITS_NONE;
 const uint8_t BatfetCnfg::BOVRCDisBattFetMask::NOT_TURNED_OFF_BY_OVC = BITS_3;
 const BatfetCnfg::BattFetOCMask BatfetCnfg::kBattFetOCMask(BITS_5_4);
@@ -883,7 +882,19 @@ const LDOy::Ctrl::LsMask LDOy::Ctrl::kLsMask(BITS_4);
 const uint8_t LDOy::Ctrl::LsMask::SWITCH_MODE = BITS_4;
 const uint8_t LDOy::Ctrl::LsMask::LDO_MODE = BITS_NONE;
 const LDOy::PwrDnSeq::PwrDnSeqMask LDOy::PwrDnSeq::kPwrDnSeqMask(BITS_2_1_0);
-// TODO(kendall): Fill in the values here.
+
+const uint8_t Ldo1::Volt::kRegister = 0x4C;
+const uint8_t Ldo1::Ctrl::kRegister = 0x4D;
+const uint8_t Ldo1::PwrDnSeq::kRegister = 0x62;
+
+const uint8_t Ldo2::Volt::kRegister = 0x4F;
+const uint8_t Ldo2::Ctrl::kRegister = 0x50;
+const uint8_t Ldo2::PwrDnSeq::kRegister = 0x63;
+
+const uint8_t Ldo3::Volt::kRegister = 0x52;
+const uint8_t Ldo3::Ctrl::kRegister = 0x53;
+const uint8_t Ldo3::PwrDnSeq::kRegister = 0x64;
+
 // end of LDOy.h
 
 // swx.h
