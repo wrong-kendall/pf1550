@@ -3,8 +3,10 @@
 #include <Arduino.h>
 #include <unity.h>
 using namespace fakeit;
+using namespace PMIC;
 
 void setUp(void) {}
+namespace PMIC {
 struct PF1550Test {
   static void test_DeviceId_address() {
     PF1550<DeviceId> pf1550(0x08);
@@ -469,10 +471,11 @@ struct PF1550Test {
     TEST_ASSERT_EQUAL(0x9e, pf1550.get_register<LedCnfg>().kRegisterAddress);
   }
 };
+} // namespace PMIC
 
 int main(int argc, char **argv) {
   UNITY_BEGIN();
-  PF1550Test pf1550_test;
+  PMIC::PF1550Test pf1550_test;
   RUN_TEST(pf1550_test.test_DeviceId_address);
   RUN_TEST(pf1550_test.test_OtpFlavor_address);
   RUN_TEST(pf1550_test.test_SiliconRev_address);

@@ -1,5 +1,7 @@
 #include "PF1550.h"
 
+using namespace PMIC;
+
 // DeviceInfo.h
 const uint8_t DeviceId::kRegister = 0x00;
 const DeviceId::DeviceIdMask DeviceId::kDeviceIdMask(BITS_2_1_0);
@@ -34,7 +36,7 @@ const uint8_t StateInfo::StateMask::REG_DISABLE = BITS_5_3_1_0;
 
 const uint8_t I2cAddr::kRegister = 0x68;
 const I2cAddr::AddrMask I2cAddr::kAddrMask(BITS_2_1_0);
-const uint8_t I2cAddr::AddrMask::DEFAULT = 0x08;
+const uint8_t I2cAddr::AddrMask::I2C_ADDR_DEFAULT = 0x08;
 const uint8_t I2cAddr::AddrMask::X08 = BITS_NONE;
 const uint8_t I2cAddr::AddrMask::X09 = BITS_0;
 const uint8_t I2cAddr::AddrMask::X0A = BITS_1;
@@ -210,8 +212,8 @@ const MiscIntSense0::PwrDnSMask MiscIntSense0::kPwrDnSMask(BITS_1);
 const uint8_t MiscIntSense0::PwrDnSMask::NOT_IN_PROGRESS = BITS_NONE;
 const uint8_t MiscIntSense0::PwrDnSMask::IN_PROGRESS = BITS_1;
 const MiscIntSense0::PwrOnSMask MiscIntSense0::kPwrOnSMask(BITS_2);
-const uint8_t MiscIntSense0::PwrOnSMask::LOW = BITS_NONE;
-const uint8_t MiscIntSense0::PwrOnSMask::HIGH = BITS_2;
+const uint8_t MiscIntSense0::PwrOnSMask::PWR_ON_LOW = BITS_NONE;
+const uint8_t MiscIntSense0::PwrOnSMask::PWR_ON_HIGH = BITS_2;
 const MiscIntSense0::LowSysWarnSMask MiscIntSense0::kLowSysWarnSMask(BITS_3);
 const uint8_t MiscIntSense0::LowSysWarnSMask::BELOW = BITS_NONE;
 const uint8_t MiscIntSense0::LowSysWarnSMask::ABOVE = BITS_3;

@@ -2,6 +2,7 @@
 #include <inttypes.h>
 #include <tuple>
 
+namespace PMIC {
 class I2CRegister {
 public:
   const uint8_t kDeviceAddress;
@@ -107,7 +108,7 @@ private:
 };
 struct I2cAddr : public I2CRegister {
   struct AddrMask : public Mask {
-    static const uint8_t DEFAULT;
+    static const uint8_t I2C_ADDR_DEFAULT;
     static const uint8_t X08;
     static const uint8_t X09;
     static const uint8_t X0A;
@@ -495,8 +496,8 @@ struct MiscIntSense0 : public I2CRegister {
     PwrDnSMask(uint8_t mask) : Mask(mask) {}
   };
   struct PwrOnSMask : public Mask {
-    static const uint8_t LOW;
-    static const uint8_t HIGH;
+    static const uint8_t PWR_ON_LOW;
+    static const uint8_t PWR_ON_HIGH;
     PwrOnSMask(uint8_t mask) : Mask(mask) {}
   };
   struct LowSysWarnSMask : public Mask {
@@ -2559,3 +2560,4 @@ public:
   }
   friend class PF1550Test;
 };
+} // namespace PMIC
