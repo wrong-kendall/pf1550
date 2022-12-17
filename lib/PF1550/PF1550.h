@@ -1,5 +1,6 @@
 #include "common_bitmasks.h"
-#include <inttypes.h>
+#include <Arduino.h>
+#include <Wire.h>
 #include <tuple>
 
 namespace PMIC {

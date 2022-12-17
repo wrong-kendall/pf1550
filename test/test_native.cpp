@@ -5,7 +5,7 @@
 using namespace fakeit;
 using namespace PMIC;
 
-void setUp(void) {}
+void setUp(void) { ArduinoFakeReset(); }
 namespace PMIC {
 struct PF1550Test {
   static void test_DeviceId_address() {
