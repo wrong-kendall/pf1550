@@ -63,7 +63,7 @@ struct DeviceId : public I2CRegister {
   // TODO(kendall): Add Family
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x00;
 };
 
 struct OtpFlavor : public I2CRegister {
@@ -84,7 +84,7 @@ struct OtpFlavor : public I2CRegister {
   OtpFlavor(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x01;
 };
 
 struct SiliconRev : public I2CRegister {
@@ -103,7 +103,7 @@ struct SiliconRev : public I2CRegister {
   SiliconRev(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x02;
 };
 struct StateInfo : public I2CRegister {
   struct StateMask : public Mask {
@@ -118,7 +118,7 @@ struct StateInfo : public I2CRegister {
   StateInfo(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x67;
 };
 struct I2cAddr : public I2CRegister {
   struct AddrMask : public Mask {
@@ -137,7 +137,7 @@ struct I2cAddr : public I2CRegister {
   I2cAddr(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x68;
 };
 
 struct Rc16mhz : public I2CRegister {
@@ -162,7 +162,7 @@ struct Rc16mhz : public I2CRegister {
   Rc16mhz(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x6B;
 };
 // End DeviceInfo
 
@@ -228,7 +228,7 @@ struct IntCategory : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x06;
 };
 
 struct TempIntStat0 : public I2CRegister {
@@ -248,7 +248,7 @@ struct TempIntStat0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x20;
 };
 
 struct TempIntMask0 : public I2CRegister {
@@ -268,7 +268,7 @@ struct TempIntMask0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x21;
 };
 
 struct TempIntSense0 : public I2CRegister {
@@ -288,7 +288,7 @@ struct TempIntSense0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x22;
 };
 struct OnkeyIntStat0 : public I2CRegister {
   struct OnkeyPushIMask : public Mask {
@@ -331,7 +331,7 @@ struct OnkeyIntStat0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x24;
 };
 
 struct OnkeyIntMask0 : public I2CRegister {
@@ -375,7 +375,7 @@ struct OnkeyIntMask0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x25;
 };
 
 struct OnkeyIntSense0 : public I2CRegister {
@@ -419,7 +419,7 @@ struct OnkeyIntSense0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x26;
 };
 
 struct MiscIntStat0 : public I2CRegister {
@@ -457,7 +457,7 @@ struct MiscIntStat0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x28;
 };
 
 struct MiscIntMask0 : public I2CRegister {
@@ -495,7 +495,7 @@ struct MiscIntMask0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x29;
 };
 
 struct MiscIntSense0 : public I2CRegister {
@@ -533,7 +533,7 @@ struct MiscIntSense0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x2A;
 };
 
 struct CoincellControl : public I2CRegister {
@@ -567,7 +567,7 @@ struct CoincellControl : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x30;
 };
 
 struct VsnvsCtrl : public I2CRegister {
@@ -590,7 +590,7 @@ struct VsnvsCtrl : public I2CRegister {
   VsnvsCtrl(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x48;
 };
 
 struct VrefddrCtrl : public I2CRegister {
@@ -622,7 +622,7 @@ struct VrefddrCtrl : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x4A;
 };
 struct VrefddrPwrDnSeq : public I2CRegister {
   struct VrefddrPwrDnSeqMask : public Mask {
@@ -634,7 +634,7 @@ struct VrefddrPwrDnSeq : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x65;
 };
 
 struct Key1 : public I2CRegister {
@@ -646,11 +646,13 @@ struct Key1 : public I2CRegister {
   Key1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x6B;
 };
 // End Misch.h
 
 // Charger.h
+// TODO(kendall): Find a better place for this.
+static const uint8_t SPECIFIC_REGISTER_OFFSET = 0x80;
 struct ChgInt : public I2CRegister {
   struct SupIMask : public Mask {
     static const uint8_t CLEARED;
@@ -698,7 +700,7 @@ struct ChgInt : public I2CRegister {
   ChgInt(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x00 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct ChgIntMask : public I2CRegister {
@@ -748,7 +750,7 @@ struct ChgIntMask : public I2CRegister {
   ChgIntMask(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x02 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct ChgIntOk : public I2CRegister {
@@ -798,7 +800,7 @@ struct ChgIntOk : public I2CRegister {
   ChgIntOk(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x04 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct VbusSns : public I2CRegister {
@@ -836,7 +838,7 @@ struct VbusSns : public I2CRegister {
   VbusSns(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x06 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct ChgSns : public I2CRegister {
@@ -877,7 +879,7 @@ struct ChgSns : public I2CRegister {
   ChgSns(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x07 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct BattSns : public I2CRegister {
@@ -901,7 +903,7 @@ struct BattSns : public I2CRegister {
   BattSns(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x08 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct ChgOper : public I2CRegister {
@@ -929,7 +931,7 @@ struct ChgOper : public I2CRegister {
   ChgOper(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x09 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct ChgTmr : public I2CRegister {
@@ -967,7 +969,7 @@ struct ChgTmr : public I2CRegister {
   ChgTmr(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x0A + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct ChgEocCnfg : public I2CRegister {
@@ -992,7 +994,7 @@ struct ChgEocCnfg : public I2CRegister {
   ChgEocCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x0D + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct ChgCurrCnfg : public I2CRegister {
@@ -1033,7 +1035,7 @@ struct ChgCurrCnfg : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x0E + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct BattReg : public I2CRegister {
@@ -1116,7 +1118,7 @@ struct BattReg : public I2CRegister {
   BattReg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x0F + SPECIFIC_REGISTER_OFFSET;
 };
 struct BatfetCnfg : public I2CRegister {
   struct WdtClrMask : public Mask {
@@ -1161,7 +1163,7 @@ struct BatfetCnfg : public I2CRegister {
   BatfetCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x11 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct ThmRegCnfg : public I2CRegister {
@@ -1204,7 +1206,7 @@ struct ThmRegCnfg : public I2CRegister {
   ThmRegCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x12 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct VbusInLimCnfg : public I2CRegister {
@@ -1237,7 +1239,7 @@ struct VbusInLimCnfg : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x14 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct VbusLinDpm : public I2CRegister {
@@ -1272,7 +1274,7 @@ struct VbusLinDpm : public I2CRegister {
   VbusLinDpm(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x15 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct UsbPhyLdoCnfg : public I2CRegister {
@@ -1300,7 +1302,7 @@ struct UsbPhyLdoCnfg : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x16 + SPECIFIC_REGISTER_OFFSET;
 };
 struct DbncDelayTime : public I2CRegister {
   struct VbusOvTdbMask : public Mask {
@@ -1332,7 +1334,7 @@ struct DbncDelayTime : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x18 + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct ChgIntCnfg : public I2CRegister {
@@ -1352,7 +1354,7 @@ struct ChgIntCnfg : public I2CRegister {
   ChgIntCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x19 + SPECIFIC_REGISTER_OFFSET;
 };
 struct ThmAdjSetting : public I2CRegister {
   struct ThmWarmMask : public Mask {
@@ -1389,7 +1391,7 @@ struct ThmAdjSetting : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x1A + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct Vbus2SysCnfg : public I2CRegister {
@@ -1412,7 +1414,7 @@ struct Vbus2SysCnfg : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x1B + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct LedPwm : public I2CRegister {
@@ -1468,7 +1470,7 @@ struct LedPwm : public I2CRegister {
   LedPwm(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x1C + SPECIFIC_REGISTER_OFFSET;
 };
 
 struct FaultBatfetCnfg : I2CRegister {
@@ -1501,7 +1503,7 @@ struct FaultBatfetCnfg : I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x1D + SPECIFIC_REGISTER_OFFSET;
 };
 struct LedCnfg : public I2CRegister {
   struct LedFreqMask : public Mask {
@@ -1534,7 +1536,7 @@ struct LedCnfg : public I2CRegister {
   LedCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x1E + SPECIFIC_REGISTER_OFFSET;
 };
 
 // Pwrctrl.h
@@ -1578,7 +1580,7 @@ struct Pwrctrl0 : public I2CRegister {
   Pwrctrl0(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x58;
 };
 
 struct Pwrctrl1 : public I2CRegister {
@@ -1626,7 +1628,7 @@ struct Pwrctrl1 : public I2CRegister {
   Pwrctrl1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x59;
 };
 
 struct Pwrctrl2 : public I2CRegister {
@@ -1651,7 +1653,7 @@ struct Pwrctrl2 : public I2CRegister {
   Pwrctrl2(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x5A;
 };
 
 struct Pwrctrl3 : public I2CRegister {
@@ -1670,7 +1672,7 @@ struct Pwrctrl3 : public I2CRegister {
   Pwrctrl3(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x5B;
 };
 // End of pwrctrl.h
 
@@ -1700,7 +1702,7 @@ struct LdoIntStat0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x18;
 };
 struct LdoIntMask0 : public I2CRegister {
   struct Ldo1FaultMMask : public Mask {
@@ -1727,7 +1729,7 @@ struct LdoIntMask0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x19;
 };
 
 struct LdoIntSense0 : public I2CRegister {
@@ -1755,7 +1757,7 @@ struct LdoIntSense0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x1A;
 };
 
 namespace LDOy {
@@ -1856,20 +1858,20 @@ struct Volt : public LDOy::Volt {
   Volt(uint8_t device_address) : LDOy::Volt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x4C;
 };
 struct Ctrl : public LDOy::Ctrl {
   Ctrl(uint8_t device_address) : LDOy::Ctrl(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x4D;
 };
 struct PwrDnSeq : public LDOy::PwrDnSeq {
   PwrDnSeq(uint8_t device_address)
       : LDOy::PwrDnSeq(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x62;
 };
 } // namespace Ldo1
 namespace Ldo2 {
@@ -1877,20 +1879,20 @@ struct Volt : public LDOy::Volt {
   Volt(uint8_t device_address) : LDOy::Volt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x4F;
 };
 struct Ctrl : public LDOy::Ctrl {
   Ctrl(uint8_t device_address) : LDOy::Ctrl(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x50;
 };
 struct PwrDnSeq : public LDOy::PwrDnSeq {
   PwrDnSeq(uint8_t device_address)
       : LDOy::PwrDnSeq(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x63;
 };
 } // namespace Ldo2
 namespace Ldo3 {
@@ -1898,20 +1900,20 @@ struct Volt : public LDOy::Volt {
   Volt(uint8_t device_address) : LDOy::Volt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x52;
 };
 struct Ctrl : public LDOy::Ctrl {
   Ctrl(uint8_t device_address) : LDOy::Ctrl(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x53;
 };
 struct PwrDnSeq : public LDOy::PwrDnSeq {
   PwrDnSeq(uint8_t device_address)
       : LDOy::PwrDnSeq(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x64;
 };
 } // namespace Ldo3
 
@@ -1942,7 +1944,7 @@ struct SwIntStat0 : public I2CRegister {
   SwIntStat0(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x08;
 };
 struct SwIntMask0 : public I2CRegister {
   struct Sw1LsMMask : public Mask {
@@ -1968,7 +1970,7 @@ struct SwIntMask0 : public I2CRegister {
   SwIntMask0(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x09;
 };
 struct SwIntSense0 : public I2CRegister {
   struct Sw1LsSMask : public Mask {
@@ -1995,7 +1997,7 @@ struct SwIntSense0 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x0A;
 };
 struct SwIntStat1 : public I2CRegister {
   struct Sw1HsIMask : public Mask {
@@ -2021,7 +2023,7 @@ struct SwIntStat1 : public I2CRegister {
   SwIntStat1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x0B;
 };
 struct SwIntMask1 : public I2CRegister {
   struct Sw1HsMMask : public Mask {
@@ -2047,7 +2049,7 @@ struct SwIntMask1 : public I2CRegister {
   SwIntMask1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x0C;
 };
 struct SwIntSense1 : public I2CRegister {
   struct Sw1HsSMask : public Mask {
@@ -2074,7 +2076,7 @@ struct SwIntSense1 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x0D;
 };
 
 struct SwIntStat2 : public I2CRegister {
@@ -2101,7 +2103,7 @@ struct SwIntStat2 : public I2CRegister {
   SwIntStat2(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x0E;
 };
 struct SwIntMask2 : public I2CRegister {
   struct Sw1DvsDoneMMask : public Mask {
@@ -2127,7 +2129,7 @@ struct SwIntMask2 : public I2CRegister {
   SwIntMask2(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x0F;
 };
 struct SwIntSense2 : public I2CRegister {
   struct Sw1DvsDoneSMask : public Mask {
@@ -2154,7 +2156,7 @@ struct SwIntSense2 : public I2CRegister {
       : I2CRegister(device_address, kRegister) {}
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x10;
 };
 
 namespace SWx {
@@ -2421,19 +2423,19 @@ struct Volt : public SWx::Volt {
   Volt(uint8_t device_address) : SWx::Volt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x32;
 };
 struct StbyVolt : public SWx::StbyVolt {
   StbyVolt(uint8_t device_address) : SWx::StbyVolt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x33;
 };
 struct SlpVolt : public SWx::SlpVolt {
   SlpVolt(uint8_t device_address) : SWx::SlpVolt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x34;
 };
 struct PwrUp : public SWx::PwrUp {
   PwrUp(uint8_t device_address) : SWx::PwrUp(device_address, kRegister){};
@@ -2445,19 +2447,20 @@ struct Ctrl : public SWx::Ctrl {
   Ctrl(uint8_t device_address) : SWx::Ctrl(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x35;
 };
 struct Ctrl1 : public SWx::Ctrl1 {
   Ctrl1(uint8_t device_address) : SWx::Ctrl1(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x36;
+  // Misnamed in data sheet as SLP_VOLT
 };
 struct PwrDnSeq : public SWx::PwrDnSeq {
   PwrDnSeq(uint8_t device_address) : SWx::PwrDnSeq(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x5F;
 };
 
 } // namespace Sw1
@@ -2466,19 +2469,19 @@ struct Volt : public SWx::Volt {
   Volt(uint8_t device_address) : SWx::Volt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x38;
 };
 struct StbyVolt : public SWx::StbyVolt {
   StbyVolt(uint8_t device_address) : SWx::StbyVolt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x39;
 };
 struct SlpVolt : public SWx::SlpVolt {
   SlpVolt(uint8_t device_address) : SWx::SlpVolt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x3A;
 };
 struct PwrUp : public SWx::PwrUp {
   PwrUp(uint8_t device_address) : SWx::PwrUp(device_address, kRegister){};
@@ -2490,19 +2493,19 @@ struct Ctrl : public SWx::Ctrl {
   Ctrl(uint8_t device_address) : SWx::Ctrl(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x3B;
 };
 struct Ctrl1 : public SWx::Ctrl1 {
   Ctrl1(uint8_t device_address) : SWx::Ctrl1(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x3C;
 };
 struct PwrDnSeq : public SWx::PwrDnSeq {
   PwrDnSeq(uint8_t device_address) : SWx::PwrDnSeq(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x60;
 };
 
 } // namespace Sw2
@@ -2511,19 +2514,19 @@ struct Volt : public SWx::Volt {
   Volt(uint8_t device_address) : SWx::Volt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x3E;
 };
 struct StbyVolt : public SWx::StbyVolt {
   StbyVolt(uint8_t device_address) : SWx::StbyVolt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x3F;
 };
 struct SlpVolt : public SWx::SlpVolt {
   SlpVolt(uint8_t device_address) : SWx::SlpVolt(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x40;
 };
 struct PwrUp : public SWx::PwrUp {
   PwrUp(uint8_t device_address) : SWx::PwrUp(device_address, kRegister){};
@@ -2535,19 +2538,19 @@ struct Ctrl : public SWx::Ctrl {
   Ctrl(uint8_t device_address) : SWx::Ctrl(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x41;
 };
 struct Ctrl1 : public SWx::Ctrl1 {
   Ctrl1(uint8_t device_address) : SWx::Ctrl1(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x42;
 };
 struct PwrDnSeq : public SWx::PwrDnSeq {
   PwrDnSeq(uint8_t device_address) : SWx::PwrDnSeq(device_address, kRegister){};
 
 private:
-  static const uint8_t kRegister;
+  static const uint8_t kRegister = 0x61;
 };
 
 } // namespace Sw3

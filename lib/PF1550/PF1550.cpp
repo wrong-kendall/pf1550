@@ -3,12 +3,10 @@
 using namespace PMIC;
 
 // DeviceInfo.h
-const uint8_t DeviceId::kRegister = 0x00;
 const DeviceId::DeviceIdMask DeviceId::kDeviceIdMask(BITS_2_1_0);
 const uint8_t DeviceId::DeviceIdMask::kPF1550Mask = BITS_2;
 const uint8_t DeviceId::DeviceIdMask::kPF1500Mask = BITS_NONE;
 
-const uint8_t OtpFlavor::kRegister = 0x01;
 const OtpFlavor::ModelMask OtpFlavor::kModelMask(BITS_ALL);
 const uint8_t OtpFlavor::ModelMask::A0 = 0x00;
 const uint8_t OtpFlavor::ModelMask::A1 = 0x01;
@@ -21,12 +19,10 @@ const uint8_t OtpFlavor::ModelMask::A7 = 0x07;
 const uint8_t OtpFlavor::ModelMask::A8 = 0x08;
 const uint8_t OtpFlavor::ModelMask::A9 = 0x09;
 
-const uint8_t SiliconRev::kRegister = 0x02;
 const SiliconRev::MetalLayerRevMask SiliconRev::kMetalLayerRevMask(BITS_2_1_0);
 const SiliconRev::FullLayerRevMask SiliconRev::kFullLayerRevMask(BITS_5_4_3);
 const SiliconRev::FabFinMask SiliconRev::kFabFinMask(BITS_7_6);
 
-const uint8_t StateInfo::kRegister = 0x67;
 const StateInfo::StateMask StateInfo::kStateMask(BITS_ALL);
 const uint8_t StateInfo::StateMask::WAIT = BITS_NONE;
 const uint8_t StateInfo::StateMask::RUN = BITS_3_2;
@@ -34,7 +30,6 @@ const uint8_t StateInfo::StateMask::STANDBY = BITS_3_2_0;
 const uint8_t StateInfo::StateMask::SLEEP = BITS_3_2_1;
 const uint8_t StateInfo::StateMask::REG_DISABLE = BITS_5_3_1_0;
 
-const uint8_t I2cAddr::kRegister = 0x68;
 const I2cAddr::AddrMask I2cAddr::kAddrMask(BITS_2_1_0);
 const uint8_t I2cAddr::AddrMask::I2C_ADDR_DEFAULT = 0x08;
 const uint8_t I2cAddr::AddrMask::X08 = BITS_NONE;
@@ -46,7 +41,6 @@ const uint8_t I2cAddr::AddrMask::X0D = BITS_2_0;
 const uint8_t I2cAddr::AddrMask::X0E = BITS_2_1;
 const uint8_t I2cAddr::AddrMask::X0F = BITS_2_1_0;
 
-const uint8_t Rc16mhz::kRegister = 0x6B;
 const Rc16mhz::Req16MhzMask Rc16mhz::kReq16MhzMask(BITS_0);
 const uint8_t Rc16mhz::Req16MhzMask::ALWAYS_ON = BITS_1;
 const uint8_t Rc16mhz::Req16MhzMask::STATEMACHINE_EN = BITS_NONE;
@@ -60,7 +54,6 @@ const uint8_t Rc16mhz::ReqAcoreHiPwrMask::LOW_POWER_NEVER = BITS_2;
 // End DeviceInfo.h
 
 // Misc.h
-const uint8_t IntCategory::kRegister = 0x06;
 const IntCategory::ChgIntMask IntCategory::kChgIntMask(BITS_0);
 const uint8_t IntCategory::ChgIntMask::CLEAR = BITS_NONE;
 const uint8_t IntCategory::ChgIntMask::OR_BITS = BITS_0;
@@ -86,7 +79,6 @@ const IntCategory::MiscIntMask IntCategory::kMiscIntMask(BITS_7);
 const uint8_t IntCategory::MiscIntMask::CLEAR = BITS_NONE;
 const uint8_t IntCategory::MiscIntMask::ANY = BITS_7;
 
-const uint8_t TempIntStat0::kRegister = 0x20;
 const TempIntStat0::Therm110IMask TempIntStat0::kTherm110IMask(BITS_0);
 const uint8_t TempIntStat0::Therm110IMask::CLEARED = BITS_NONE;
 const uint8_t TempIntStat0::Therm110IMask::ACTIVE = BITS_0;
@@ -94,7 +86,6 @@ const TempIntStat0::Therm125IMask TempIntStat0::kTherm125IMask(BITS_2);
 const uint8_t TempIntStat0::Therm125IMask::CLEARED = BITS_NONE;
 const uint8_t TempIntStat0::Therm125IMask::ACTIVE = BITS_0;
 
-const uint8_t TempIntMask0::kRegister = 0x21;
 const TempIntMask0::Therm110MMask TempIntMask0::kTherm110MMask(BITS_0);
 const uint8_t TempIntMask0::Therm110MMask::REMOVED = BITS_NONE;
 const uint8_t TempIntMask0::Therm110MMask::ENABLED = BITS_0;
@@ -102,7 +93,6 @@ const TempIntMask0::Therm125MMask TempIntMask0::kTherm125MMask(BITS_2);
 const uint8_t TempIntMask0::Therm125MMask::REMOVED = BITS_NONE;
 const uint8_t TempIntMask0::Therm125MMask::ENABLED = BITS_0;
 
-const uint8_t TempIntSense0::kRegister = 0x22;
 const TempIntSense0::Therm110SMask TempIntSense0::kTherm110SMask(BITS_0);
 const uint8_t TempIntSense0::Therm110SMask::BELOW = BITS_NONE;
 const uint8_t TempIntSense0::Therm110SMask::ABOVE = BITS_0;
@@ -110,7 +100,6 @@ const TempIntSense0::Therm125SMask TempIntSense0::kTherm125SMask(BITS_2);
 const uint8_t TempIntSense0::Therm125SMask::BELOW = BITS_NONE;
 const uint8_t TempIntSense0::Therm125SMask::ABOVE = BITS_0;
 
-const uint8_t OnkeyIntStat0::kRegister = 0x24;
 const OnkeyIntStat0::OnkeyPushIMask OnkeyIntStat0::kOnkeyPushIMask(BITS_0);
 const uint8_t OnkeyIntStat0::OnkeyPushIMask::CLEARED = BITS_NONE;
 const uint8_t OnkeyIntStat0::OnkeyPushIMask::ACTIVE = BITS_0;
@@ -130,7 +119,6 @@ const OnkeyIntStat0::Onkey8SIMask OnkeyIntStat0::kOnkey8SIMask(BITS_5);
 const uint8_t OnkeyIntStat0::Onkey8SIMask::CLEARED = BITS_NONE;
 const uint8_t OnkeyIntStat0::Onkey8SIMask::ACTIVE = BITS_5;
 
-const uint8_t OnkeyIntMask0::kRegister = 0x25;
 const OnkeyIntMask0::OnkeyPushMMask OnkeyIntMask0::kOnkeyPushMMask(BITS_0);
 const uint8_t OnkeyIntMask0::OnkeyPushMMask::REMOVED = BITS_NONE;
 const uint8_t OnkeyIntMask0::OnkeyPushMMask::ENABLED = BITS_0;
@@ -150,7 +138,6 @@ const OnkeyIntMask0::Onkey8SMMask OnkeyIntMask0::kOnkey8SMMask(BITS_5);
 const uint8_t OnkeyIntMask0::Onkey8SMMask::REMOVED = BITS_NONE;
 const uint8_t OnkeyIntMask0::Onkey8SMMask::ENABLED = BITS_5;
 
-const uint8_t OnkeyIntSense0::kRegister = 0x26;
 const OnkeyIntSense0::OnkeyPushSMask OnkeyIntSense0::kOnkeyPushSMask(BITS_0);
 const uint8_t OnkeyIntSense0::OnkeyPushSMask::NOT_PUSHED = BITS_NONE;
 const uint8_t OnkeyIntSense0::OnkeyPushSMask::PUSHED = BITS_0;
@@ -170,7 +157,6 @@ const OnkeyIntSense0::Onkey8SSMask OnkeyIntSense0::kOnkey8SSMask(BITS_5);
 const uint8_t OnkeyIntSense0::Onkey8SSMask::NOT_PUSHED = BITS_NONE;
 const uint8_t OnkeyIntSense0::Onkey8SSMask::PUSHED = BITS_5;
 
-const uint8_t MiscIntStat0::kRegister = 0x28;
 const MiscIntStat0::PwrUpIMask MiscIntStat0::kPwrUpIMask(BITS_0);
 const uint8_t MiscIntStat0::PwrUpIMask::NOT_ACTIVE = BITS_NONE;
 const uint8_t MiscIntStat0::PwrUpIMask::ACTIVE = BITS_0;
@@ -187,7 +173,6 @@ const MiscIntStat0::SysOlvoIMask MiscIntStat0::kSysOlvoIMask(BITS_4);
 const uint8_t MiscIntStat0::SysOlvoIMask::NOT_ACTIVE = BITS_NONE;
 const uint8_t MiscIntStat0::SysOlvoIMask::ACTIVE = BITS_4;
 
-const uint8_t MiscIntMask0::kRegister = 0x29;
 const MiscIntMask0::PwrUpMMask MiscIntMask0::kPwrUpMMask(BITS_0);
 const uint8_t MiscIntMask0::PwrUpMMask::REMOVED = BITS_NONE;
 const uint8_t MiscIntMask0::PwrUpMMask::ENABLED = BITS_0;
@@ -204,7 +189,6 @@ const MiscIntMask0::SysOlvoMMask MiscIntMask0::kSysOlvoMMask(BITS_4);
 const uint8_t MiscIntMask0::SysOlvoMMask::REMOVED = BITS_NONE;
 const uint8_t MiscIntMask0::SysOlvoMMask::ENABLED = BITS_4;
 
-const uint8_t MiscIntSense0::kRegister = 0x2A;
 const MiscIntSense0::PwrUpSMask MiscIntSense0::kPwrUpSMask(BITS_0);
 const uint8_t MiscIntSense0::PwrUpSMask::NOT_IN_PROGRESS = BITS_NONE;
 const uint8_t MiscIntSense0::PwrUpSMask::IN_PROGRESS = BITS_0;
@@ -221,7 +205,6 @@ const MiscIntSense0::SysOlvoSMask MiscIntSense0::kSysOlvoSMask(BITS_4);
 const uint8_t MiscIntSense0::SysOlvoSMask::BELOW = BITS_NONE;
 const uint8_t MiscIntSense0::SysOlvoSMask::ABOVE = BITS_4;
 
-const uint8_t CoincellControl::kRegister = 0x30;
 const CoincellControl::VCoinMask CoincellControl::kVCoinMask(BITS_3_2_1_0);
 const uint8_t CoincellControl::VCoinMask::_1_8 = BITS_NONE;
 const uint8_t CoincellControl::VCoinMask::_1_9 = BITS_0;
@@ -243,7 +226,6 @@ const CoincellControl::ChEnMask CoincellControl::kChEnMask(BITS_4);
 const uint8_t CoincellControl::ChEnMask::DISABLED = BITS_NONE;
 const uint8_t CoincellControl::ChEnMask::ENABLED = BITS_4;
 
-const uint8_t VsnvsCtrl::kRegister = 0x48;
 const VsnvsCtrl::CLKPulseMask VsnvsCtrl::kCLKPulseMask(BITS_3);
 const VsnvsCtrl::ForceBOSMask VsnvsCtrl::kForceBOSMask(BITS_4);
 const uint8_t VsnvsCtrl::ForceBOSMask::FORCED = BITS_4;
@@ -252,7 +234,6 @@ const VsnvsCtrl::LiBGDisMask VsnvsCtrl::kLiBGDisMask(BITS_4);
 const uint8_t VsnvsCtrl::LiBGDisMask::Vsnvs_BAND_GAP_DISABLED = BITS_NONE;
 const uint8_t VsnvsCtrl::LiBGDisMask::Vsnvs_BAND_GAP_ENABLED = BITS_5;
 
-const uint8_t VrefddrCtrl::kRegister = 0x4A;
 const VrefddrCtrl::VrefddrEnMask VrefddrCtrl::kVrefddrEnMask(BITS_0);
 const uint8_t VrefddrCtrl::VrefddrEnMask::ENABLE = BITS_0;
 const uint8_t VrefddrCtrl::VrefddrEnMask::DISABLE = BITS_NONE;
@@ -266,19 +247,16 @@ const VrefddrCtrl::VrefddrLPwrMask VrefddrCtrl::kVrefddrLPwrMask(BITS_3);
 const uint8_t VrefddrCtrl::VrefddrLPwrMask::ENABLE = BITS_3;
 const uint8_t VrefddrCtrl::VrefddrLPwrMask::DISABLE = BITS_NONE;
 
-const uint8_t VrefddrPwrDnSeq::kRegister = 0x65;
 const VrefddrPwrDnSeq::VrefddrPwrDnSeqMask
     VrefddrPwrDnSeq::kVrefddrPwrDnSeqMask(BITS_2_1_0);
 
 // TODO(kendall): Figure out the right register. This conflicts with RC_16MHz
-const uint8_t Key1::kRegister = 0x6B;
 const Key1::Key1Mask Key1::kKey1Mask(BITS_2_1_0);
 // End Misc.h
 
 // Charger.h
 static const uint8_t SPECIFIC_REGISTER_OFFSET = 0x80;
 
-const uint8_t ChgInt::kRegister = 0x00 + SPECIFIC_REGISTER_OFFSET;
 const ChgInt::SupIMask ChgInt::kSupIMask(BITS_0);
 const uint8_t ChgInt::SupIMask::CLEARED = BITS_NONE;
 const uint8_t ChgInt::SupIMask::ACTIVE = BITS_0;
@@ -301,7 +279,6 @@ const ChgInt::ThmIMask ChgInt::kThmIMask(BITS_7);
 const uint8_t ChgInt::ThmIMask::CLEARED = BITS_NONE;
 const uint8_t ChgInt::ThmIMask::ACTIVE = BITS_7;
 
-const uint8_t ChgIntMask::kRegister = 0x02 + SPECIFIC_REGISTER_OFFSET;
 const ChgIntMask::SupMMask ChgIntMask::kSupMMask(BITS_0);
 const uint8_t ChgIntMask::SupMMask::UNMASKED = BITS_NONE;
 const uint8_t ChgIntMask::SupMMask::MASKED = BITS_0;
@@ -324,7 +301,6 @@ const ChgIntMask::ThmMMask ChgIntMask::kThmMMask(BITS_7);
 const uint8_t ChgIntMask::ThmMMask::UNMASKED = BITS_NONE;
 const uint8_t ChgIntMask::ThmMMask::MASKED = BITS_7;
 
-const uint8_t ChgIntOk::kRegister = 0x04 + SPECIFIC_REGISTER_OFFSET;
 const ChgIntOk::SupOkMask ChgIntOk::kSupOkMask(BITS_0);
 const uint8_t ChgIntOk::SupOkMask::NOT_DETECTED = BITS_NONE;
 const uint8_t ChgIntOk::SupOkMask::DETECTED = BITS_0;
@@ -347,7 +323,6 @@ const ChgIntOk::ThmOkMask ChgIntOk::kThmOkMask(BITS_7);
 const uint8_t ChgIntOk::ThmOkMask::OUTSIDE_THRESHOLD = BITS_NONE;
 const uint8_t ChgIntOk::ThmOkMask::WITHIN_THRESHOLD = BITS_7;
 
-const uint8_t VbusSns::kRegister = 0x06 + SPECIFIC_REGISTER_OFFSET;
 const VbusSns::VbusUvloSnsMask VbusSns::kVbusUvloSnsMask(BITS_2);
 const uint8_t VbusSns::VbusUvloSnsMask::VBUS_GT_UVLO = BITS_NONE;
 const uint8_t VbusSns::VbusUvloSnsMask::VBUS_DETACHED = BITS_2;
@@ -364,7 +339,6 @@ const VbusSns::VbusDpmSnsMask VbusSns::kVbusDpmSnsMask(BITS_7);
 const uint8_t VbusSns::VbusDpmSnsMask::NOT_TRIGGERED = BITS_NONE;
 const uint8_t VbusSns::VbusDpmSnsMask::TRIGGERED = BITS_7;
 
-const uint8_t ChgSns::kRegister = 0x07 + SPECIFIC_REGISTER_OFFSET;
 const ChgSns::ChgSnsMask ChgSns::kChgSnsMask(BITS_3_2_1_0);
 const uint8_t ChgSns::ChgSnsMask::PRECHARGE = BITS_NONE;
 const uint8_t ChgSns::ChgSnsMask::FAST_CHARGE_CC = BITS_0;
@@ -387,7 +361,6 @@ const ChgSns::TregSnsMask ChgSns::kTregSnsMask(BITS_7);
 const uint8_t ChgSns::TregSnsMask::LESS_THAN_THRESHOLD = BITS_NONE;
 const uint8_t ChgSns::TregSnsMask::GREATER_THAN_THRESHOLD = BITS_7;
 
-const uint8_t BattSns::kRegister = 0x08 + SPECIFIC_REGISTER_OFFSET;
 const BattSns::BattSnsMask BattSns::kBattSnsMask(BITS_2_1_0);
 const uint8_t BattSns::BattSnsMask::VBUS_INVALID = BITS_NONE;
 const uint8_t BattSns::BattSnsMask::VBATT_LT_PRECHG = BITS_0;
@@ -399,7 +372,6 @@ const BattSns::BattOCSnsMask BattSns::kBattOCSnsMask(BITS_5);
 const uint8_t BattSns::BattOCSnsMask::NOFAULT = BITS_NONE;
 const uint8_t BattSns::BattOCSnsMask::FAULT = BITS_5;
 
-const uint8_t ChgOper::kRegister = 0x09 + SPECIFIC_REGISTER_OFFSET;
 const ChgOper::ChgOperMask ChgOper::kChgOperMask(BITS_1_0);
 const uint8_t ChgOper::ChgOperMask::CHG_OFF_LINEAR_OFF = BITS_NONE;
 const uint8_t ChgOper::ChgOperMask::CHG_OFF_LINEAR_ON = BITS_0;
@@ -411,7 +383,6 @@ const ChgOper::DisBattFetMask ChgOper::kDisBattFetMask(BITS_4);
 const uint8_t ChgOper::DisBattFetMask::FET_STATEMACHINE = BITS_NONE;
 const uint8_t ChgOper::DisBattFetMask::FET_FORCED_OFF = BITS_4;
 
-const uint8_t ChgTmr::kRegister = 0x0A + SPECIFIC_REGISTER_OFFSET;
 const ChgTmr::FChgTimeMask ChgTmr::kFChgTimeMask(BITS_2_1_0);
 const uint8_t ChgTmr::FChgTimeMask::DISABLE = BITS_NONE;
 const uint8_t ChgTmr::FChgTimeMask::_2HR = BITS_0;
@@ -434,7 +405,6 @@ const ChgTmr::TPreChgMask ChgTmr::kTPreChgMask(BITS_7);
 const uint8_t ChgTmr::TPreChgMask::_30M = BITS_NONE;
 const uint8_t ChgTmr::TPreChgMask::_45M = BITS_7;
 
-const uint8_t ChgEocCnfg::kRegister = 0x0D + SPECIFIC_REGISTER_OFFSET;
 const ChgEocCnfg::ChgRestartMask ChgEocCnfg::kChgRestartMask(BITS_1_0);
 const uint8_t ChgEocCnfg::ChgRestartMask::_100MV = BITS_NONE;
 const uint8_t ChgEocCnfg::ChgRestartMask::_150MV = BITS_0;
@@ -447,7 +417,6 @@ const uint8_t ChgEocCnfg::IEoCMask::_20MA = BITS_5;
 const uint8_t ChgEocCnfg::IEoCMask::_30MA = BITS_5_4;
 const uint8_t ChgEocCnfg::IEoCMask::_50MA = BITS_6;
 
-const uint8_t ChgCurrCnfg::kRegister = 0x0E + SPECIFIC_REGISTER_OFFSET;
 const ChgCurrCnfg::ChgCcMask ChgCurrCnfg::kChgCcMask(BITS_4_3_2_1_0);
 const uint8_t ChgCurrCnfg::ChgCcMask::_100MA = BITS_NONE;
 const uint8_t ChgCurrCnfg::ChgCcMask::_150MA = BITS_0;
@@ -474,7 +443,6 @@ const uint8_t ChgCurrCnfg::PreChgLbThrsMask::_2_7V = BITS_5;
 const uint8_t ChgCurrCnfg::PreChgLbThrsMask::_2_9V = BITS_6;
 const uint8_t ChgCurrCnfg::PreChgLbThrsMask::_3_0V = BITS_6_5;
 
-const uint8_t BattReg::kRegister = 0x0F + SPECIFIC_REGISTER_OFFSET;
 const BattReg::ChgCvMask BattReg::kChgCvMask(BITS_5_4_3_2_1_0);
 const uint8_t BattReg::ChgCvMask::_3_50V = BITS_NONE;
 const uint8_t BattReg::ChgCvMask::_3_50V_1 = BITS_0;
@@ -545,7 +513,6 @@ const uint8_t BattReg::VsysMinMask::_3_5V = BITS_NONE;
 const uint8_t BattReg::VsysMinMask::_3_7V = BITS_6;
 const uint8_t BattReg::VsysMinMask::_4_3V = BITS_7;
 
-const uint8_t BatfetCnfg::kRegister = 0x11 + SPECIFIC_REGISTER_OFFSET;
 const BatfetCnfg::WdtClrMask BatfetCnfg::kWdtClrMask(BITS_1_0);
 const uint8_t BatfetCnfg::WdtClrMask::NOT_CLEARED = BITS_NONE;
 const uint8_t BatfetCnfg::WdtClrMask::CLEARED = BITS_0;
@@ -566,7 +533,6 @@ const BatfetCnfg::BOVRCNoVBusMask BatfetCnfg::kBOVRCNoVBusMask(BITS_7);
 const uint8_t BatfetCnfg::BOVRCNoVBusMask::ENABLED = BITS_7;
 const uint8_t BatfetCnfg::BOVRCNoVBusMask::DISABLED = BITS_NONE;
 
-const uint8_t ThmRegCnfg::kRegister = 0x12 + SPECIFIC_REGISTER_OFFSET;
 const ThmRegCnfg::ThmCnfgMask ThmRegCnfg::kThmCnfgMask(BITS_1_0);
 const uint8_t ThmRegCnfg::ThmCnfgMask::THM_DOES_NOT_CONTROL = BITS_NONE;
 const uint8_t ThmRegCnfg::ThmCnfgMask::THM_CONTROLS = BITS_0;
@@ -587,7 +553,6 @@ const ThmRegCnfg::TempFbEnMask ThmRegCnfg::kTempFbEnMask(BITS_7);
 const uint8_t ThmRegCnfg::TempFbEnMask::DISABLED = BITS_NONE;
 const uint8_t ThmRegCnfg::TempFbEnMask::ENABLED = BITS_7;
 
-const uint8_t VbusInLimCnfg::kRegister = 0x14 + SPECIFIC_REGISTER_OFFSET;
 const VbusInLimCnfg::VbusLinILimMask
     VbusInLimCnfg::kVbusLinILimMask(BITS_7_6_5_4_3);
 const uint8_t VbusInLimCnfg::VbusLinILimMask::_10MA = BITS_NONE;
@@ -612,7 +577,6 @@ const uint8_t VbusInLimCnfg::VbusLinILimMask::_900MA = BITS_7_4;
 const uint8_t VbusInLimCnfg::VbusLinILimMask::_1000MA = BITS_7_4_3;
 const uint8_t VbusInLimCnfg::VbusLinILimMask::_1500MA = BITS_7_5;
 
-const uint8_t VbusLinDpm::kRegister = 0x15 + SPECIFIC_REGISTER_OFFSET;
 const VbusLinDpm::VbusDpmRegMask VbusLinDpm::kVbusDpmRegMask(BITS_2_1_0);
 const uint8_t VbusLinDpm::VbusDpmRegMask::_3_9V = BITS_NONE;
 const uint8_t VbusLinDpm::VbusDpmRegMask::_4_0V = BITS_0;
@@ -629,7 +593,6 @@ const uint8_t VbusLinDpm::VinDpmStopMask::_200MV = BITS_NONE;
 const uint8_t VbusLinDpm::VinDpmStopMask::_250MV = BITS_5;
 const VbusLinDpm::FetScaleMask VbusLinDpm::kFetScaleMask(BITS_7);
 
-const uint8_t UsbPhyLdoCnfg::kRegister = 0x16 + SPECIFIC_REGISTER_OFFSET;
 const UsbPhyLdoCnfg::ActDisPhyMask UsbPhyLdoCnfg::kActDisPhyMask(BITS_0);
 const uint8_t UsbPhyLdoCnfg::ActDisPhyMask::NO_DISCHARGE = BITS_NONE;
 const uint8_t UsbPhyLdoCnfg::ActDisPhyMask::DISCHARGE = BITS_0;
@@ -640,7 +603,6 @@ const UsbPhyLdoCnfg::UsbPhyLdoMask UsbPhyLdoCnfg::kUsbPhyLdoMask(BITS_2);
 const uint8_t UsbPhyLdoCnfg::UsbPhyLdoMask::DISABLED = BITS_NONE;
 const uint8_t UsbPhyLdoCnfg::UsbPhyLdoMask::ENABLED = BITS_2;
 
-const uint8_t DbncDelayTime::kRegister = 0x18 + SPECIFIC_REGISTER_OFFSET;
 const DbncDelayTime::VbusOvTdbMask DbncDelayTime::kVbusOvTdbMask(BITS_1_0);
 const uint8_t DbncDelayTime::VbusOvTdbMask::_10US = BITS_NONE;
 const uint8_t DbncDelayTime::VbusOvTdbMask::_100US = BITS_0;
@@ -656,7 +618,6 @@ const uint8_t DbncDelayTime::SysWkUpDlyMask::_16MS = BITS_4;
 const uint8_t DbncDelayTime::SysWkUpDlyMask::_32MS = BITS_5;
 const uint8_t DbncDelayTime::SysWkUpDlyMask::_100MS = BITS_5_4;
 
-const uint8_t ChgIntCnfg::kRegister = 0x19 + SPECIFIC_REGISTER_OFFSET;
 const ChgIntCnfg::ChgIntGenMask ChgIntCnfg::kChgIntGenMask(BITS_0);
 const uint8_t ChgIntCnfg::ChgIntGenMask::INT_ONLY_FC_TO_CV = BITS_NONE;
 const uint8_t ChgIntCnfg::ChgIntGenMask::INT_ON_TRANSITION = BITS_0;
@@ -664,7 +625,6 @@ const ChgIntCnfg::EoCIntMask ChgIntCnfg::kEoCIntMask(BITS_1);
 const uint8_t ChgIntCnfg::EoCIntMask::NO_EOC_INT = BITS_NONE;
 const uint8_t ChgIntCnfg::EoCIntMask::EOC_INT = BITS_1;
 
-const uint8_t ThmAdjSetting::kRegister = 0x1A + SPECIFIC_REGISTER_OFFSET;
 const ThmAdjSetting::ThmWarmMask ThmAdjSetting::kThmWarmMask(BITS_0);
 const uint8_t ThmAdjSetting::ThmWarmMask::_45C = BITS_NONE;
 const uint8_t ThmAdjSetting::ThmWarmMask::_50C = BITS_0;
@@ -682,7 +642,6 @@ const uint8_t ThmAdjSetting::CcAdjMask::_50PCT = BITS_4;
 const uint8_t ThmAdjSetting::CcAdjMask::_75PCT = BITS_5;
 const uint8_t ThmAdjSetting::CcAdjMask::_100PCT = BITS_5_4;
 
-const uint8_t Vbus2SysCnfg::kRegister = 0x1B + SPECIFIC_REGISTER_OFFSET;
 const Vbus2SysCnfg::Vbus2SysTdbMask Vbus2SysCnfg::kVbus2SysTdbMask(BITS_1_0);
 const uint8_t Vbus2SysCnfg::Vbus2SysTdbMask::_100US = BITS_0;
 const uint8_t Vbus2SysCnfg::Vbus2SysTdbMask::_1MS = BITS_1;
@@ -691,7 +650,6 @@ const Vbus2SysCnfg::Vbus2SysThrshMask Vbus2SysCnfg::kVbus2SysThrshMask(BITS_2);
 const uint8_t Vbus2SysCnfg::Vbus2SysThrshMask::_50MV = BITS_NONE;
 const uint8_t Vbus2SysCnfg::Vbus2SysThrshMask::_175MV = BITS_2;
 
-const uint8_t LedPwm::kRegister = 0x1C + SPECIFIC_REGISTER_OFFSET;
 const LedPwm::LedPwmMask LedPwm::kLedPwmMask(BITS_5_4_3_2_1_0);
 const uint8_t LedPwm::LedPwmMask::_0_32 = BITS_NONE;
 const uint8_t LedPwm::LedPwmMask::_1_32 = BITS_0;
@@ -732,7 +690,6 @@ const LedPwm::LedEnMask LedPwm::kLedEnMask(BITS_7);
 const uint8_t LedPwm::LedEnMask::DISABLE = BITS_NONE;
 const uint8_t LedPwm::LedEnMask::ENABLE = BITS_7;
 
-const uint8_t FaultBatfetCnfg::kRegister = 0x1D + SPECIFIC_REGISTER_OFFSET;
 const FaultBatfetCnfg::WdFltBfFetEnMask
     FaultBatfetCnfg::kWdFltBfFetEnMask(BITS_0);
 const uint8_t FaultBatfetCnfg::WdFltBfFetEnMask::OPENED = BITS_NONE;
@@ -750,7 +707,6 @@ const FaultBatfetCnfg::TmrFltBFetEnMask
 const uint8_t FaultBatfetCnfg::TmrFltBFetEnMask::OPENED = BITS_NONE;
 const uint8_t FaultBatfetCnfg::TmrFltBFetEnMask::CLOSED = BITS_3;
 
-const uint8_t LedCnfg::kRegister = 0x1E + SPECIFIC_REGISTER_OFFSET;
 const LedCnfg::LedFreqMask LedCnfg::kLedFreqMask(BITS_1_0);
 const uint8_t LedCnfg::LedFreqMask::_1HZ = BITS_NONE;
 const uint8_t LedCnfg::LedFreqMask::_0_5HZ = BITS_0;
@@ -767,7 +723,6 @@ const uint8_t LedCnfg::LedOvrdMask::SOFTWARE_CONTROLLED = BITS_5;
 // End charger.h
 
 // Pwrctrl.h
-const uint8_t Pwrctrl0::kRegister = 0x58;
 const Pwrctrl0::StandbyDlyMask Pwrctrl0::kStandbyDlyMask(BITS_1_0);
 // TODO(kendall): WTF? these don't make sense
 const uint8_t Pwrctrl0::StandbyDlyMask::_1_32KHZ_DELAY = BITS_0;
@@ -790,7 +745,6 @@ const uint8_t Pwrctrl0::TgResetMask::_8S = BITS_6;
 const uint8_t Pwrctrl0::TgResetMask::_12S = BITS_7;
 const uint8_t Pwrctrl0::TgResetMask::_16S = BITS_7_6;
 
-const uint8_t Pwrctrl1::kRegister = 0x59;
 const Pwrctrl1::PwronDbncMask Pwrctrl1::kPwronDbncMask(BITS_1_0);
 const uint8_t Pwrctrl1::PwronDbncMask::_31_25MS_FALL_31_25MS_RISE_1 = BITS_NONE;
 const uint8_t Pwrctrl1::PwronDbncMask::_31_25MS_FALL_31_25MS_RISE_2 = BITS_0;
@@ -818,7 +772,6 @@ const Pwrctrl1::OnkeyRstEnmask Pwrctrl1::kOnkeyRstEnmask(BITS_7);
 const uint8_t Pwrctrl1::OnkeyRstEnmask::ONKEY_RESET = BITS_7;
 const uint8_t Pwrctrl1::OnkeyRstEnmask::NO_ONKEY_RESET = BITS_NONE;
 
-const uint8_t Pwrctrl2::kRegister = 0x5A;
 const Pwrctrl2::UvdetMask Pwrctrl2::kUvdetMask(BITS_1_0);
 const uint8_t Pwrctrl2::UvdetMask::_2_65_RISE_2_55_FALL = BITS_NONE;
 const uint8_t Pwrctrl2::UvdetMask::_2_8_RISE_2_7_FALL = BITS_0;
@@ -830,14 +783,12 @@ const uint8_t Pwrctrl2::LowSysWarnMask::_3_5_RISE_3_3_FALL = BITS_2;
 const uint8_t Pwrctrl2::LowSysWarnMask::_3_7_RISE_3_5_FALL = BITS_3;
 const uint8_t Pwrctrl2::LowSysWarnMask::_3_9_RISE_3_7_FALL = BITS_3_2;
 
-const uint8_t Pwrctrl3::kRegister = 0x5B;
 const Pwrctrl3::GotoShipMask Pwrctrl3::kGotoShipMask(BITS_0);
 const uint8_t Pwrctrl3::GotoShipMask::GOTO_SHIP_EN = BITS_0;
 const Pwrctrl3::CoreOffMask Pwrctrl3::kCoreOffMask(BITS_1);
 const uint8_t Pwrctrl3::CoreOffMask::CORE_OFF_EN = BITS_1;
 // End of pwrctrl.h
 // LDOy.h
-const uint8_t LdoIntStat0::kRegister = 0x18;
 const LdoIntStat0::Ldo1FaultIMask LdoIntStat0::kLdo1FaultIMask(BITS_0);
 const uint8_t LdoIntStat0::Ldo1FaultIMask::CLEARED = BITS_NONE;
 const uint8_t LdoIntStat0::Ldo1FaultIMask::ACTIVE = BITS_0;
@@ -848,7 +799,6 @@ const LdoIntStat0::Ldo3FaultIMask LdoIntStat0::kLdo3FaultIMask(BITS_2);
 const uint8_t LdoIntStat0::Ldo3FaultIMask::CLEARED = BITS_NONE;
 const uint8_t LdoIntStat0::Ldo3FaultIMask::ACTIVE = BITS_2;
 
-const uint8_t LdoIntMask0::kRegister = 0x19;
 const LdoIntMask0::Ldo1FaultMMask LdoIntMask0::kLdo1FaultMMask(BITS_0);
 const uint8_t LdoIntMask0::Ldo1FaultMMask::REMOVED = BITS_NONE;
 const uint8_t LdoIntMask0::Ldo1FaultMMask::ENABLED = BITS_0;
@@ -859,7 +809,6 @@ const LdoIntMask0::Ldo3FaultMMask LdoIntMask0::kLdo3FaultMMask(BITS_2);
 const uint8_t LdoIntMask0::Ldo3FaultMMask::REMOVED = BITS_NONE;
 const uint8_t LdoIntMask0::Ldo3FaultMMask::ENABLED = BITS_2;
 
-const uint8_t LdoIntSense0::kRegister = 0x1A;
 const LdoIntSense0::Ldo1FaultSMask LdoIntSense0::kLdo1FaultSMask(BITS_0);
 const uint8_t LdoIntSense0::Ldo1FaultSMask::FAULT_REMOVED = BITS_NONE;
 const uint8_t LdoIntSense0::Ldo1FaultSMask::FAULT_EXISTS = BITS_0;
@@ -917,22 +866,9 @@ const uint8_t LDOy::Ctrl::LsMask::SWITCH_MODE = BITS_4;
 const uint8_t LDOy::Ctrl::LsMask::LDO_MODE = BITS_NONE;
 const LDOy::PwrDnSeq::PwrDnSeqMask LDOy::PwrDnSeq::kPwrDnSeqMask(BITS_2_1_0);
 
-const uint8_t Ldo1::Volt::kRegister = 0x4C;
-const uint8_t Ldo1::Ctrl::kRegister = 0x4D;
-const uint8_t Ldo1::PwrDnSeq::kRegister = 0x62;
-
-const uint8_t Ldo2::Volt::kRegister = 0x4F;
-const uint8_t Ldo2::Ctrl::kRegister = 0x50;
-const uint8_t Ldo2::PwrDnSeq::kRegister = 0x63;
-
-const uint8_t Ldo3::Volt::kRegister = 0x52;
-const uint8_t Ldo3::Ctrl::kRegister = 0x53;
-const uint8_t Ldo3::PwrDnSeq::kRegister = 0x64;
-
 // end of LDOy.h
 
 // swx.h
-const uint8_t SwIntStat0::kRegister = 0x08;
 const SwIntStat0::Sw1LsIMask SwIntStat0::kSw1LsIMask(BITS_0);
 const uint8_t SwIntStat0::Sw1LsIMask::CLEAR = BITS_NONE;
 const uint8_t SwIntStat0::Sw1LsIMask::INT = BITS_0;
@@ -943,7 +879,6 @@ const SwIntStat0::Sw3LsIMask SwIntStat0::kSw3LsIMask(BITS_2);
 const uint8_t SwIntStat0::Sw3LsIMask::CLEAR = BITS_NONE;
 const uint8_t SwIntStat0::Sw3LsIMask::INT = BITS_2;
 
-const uint8_t SwIntMask0::kRegister = 0x09;
 const SwIntMask0::Sw1LsMMask SwIntMask0::kSw1LsMMask(BITS_0);
 const uint8_t SwIntMask0::Sw1LsMMask::REMOVED = BITS_NONE;
 const uint8_t SwIntMask0::Sw1LsMMask::ENABLED = BITS_0;
@@ -954,7 +889,6 @@ const SwIntMask0::Sw3LsMMask SwIntMask0::kSw3LsMMask(BITS_2);
 const uint8_t SwIntMask0::Sw3LsMMask::REMOVED = BITS_NONE;
 const uint8_t SwIntMask0::Sw3LsMMask::ENABLED = BITS_2;
 
-const uint8_t SwIntSense0::kRegister = 0x0A;
 const SwIntSense0::Sw1LsSMask SwIntSense0::kSw1LsSMask(BITS_0);
 const uint8_t SwIntSense0::Sw1LsSMask::FAULT_REMOVED = BITS_NONE;
 const uint8_t SwIntSense0::Sw1LsSMask::FAULT_EXISTS = BITS_0;
@@ -965,7 +899,6 @@ const SwIntSense0::Sw3LsSMask SwIntSense0::kSw3LsSMask(BITS_2);
 const uint8_t SwIntSense0::Sw3LsSMask::FAULT_REMOVED = BITS_NONE;
 const uint8_t SwIntSense0::Sw3LsSMask::FAULT_EXISTS = BITS_2;
 
-const uint8_t SwIntStat1::kRegister = 0x0B;
 const SwIntStat1::Sw1HsIMask SwIntStat1::kSw1HsIMask(BITS_0);
 const uint8_t SwIntStat1::Sw1HsIMask::CLEAR = BITS_NONE;
 const uint8_t SwIntStat1::Sw1HsIMask::INT = BITS_0;
@@ -976,7 +909,6 @@ const SwIntStat1::Sw3HsIMask SwIntStat1::kSw3HsIMask(BITS_2);
 const uint8_t SwIntStat1::Sw3HsIMask::CLEAR = BITS_NONE;
 const uint8_t SwIntStat1::Sw3HsIMask::INT = BITS_2;
 
-const uint8_t SwIntMask1::kRegister = 0x0C;
 const SwIntMask1::Sw1HsMMask SwIntMask1::kSw1HsMMask(BITS_0);
 const uint8_t SwIntMask1::Sw1HsMMask::REMOVED = BITS_NONE;
 const uint8_t SwIntMask1::Sw1HsMMask::ENABLED = BITS_0;
@@ -987,7 +919,6 @@ const SwIntMask1::Sw3HsMMask SwIntMask1::kSw3HsMMask(BITS_2);
 const uint8_t SwIntMask1::Sw3HsMMask::REMOVED = BITS_NONE;
 const uint8_t SwIntMask1::Sw3HsMMask::ENABLED = BITS_2;
 
-const uint8_t SwIntSense1::kRegister = 0x0D;
 const SwIntSense1::Sw1HsSMask SwIntSense1::kSw1HsSMask(BITS_0);
 const uint8_t SwIntSense1::Sw1HsSMask::FAULT_REMOVED = BITS_NONE;
 const uint8_t SwIntSense1::Sw1HsSMask::FAULT_EXISTS = BITS_0;
@@ -998,7 +929,6 @@ const SwIntSense1::Sw3HsSMask SwIntSense1::kSw3HsSMask(BITS_2);
 const uint8_t SwIntSense1::Sw3HsSMask::FAULT_REMOVED = BITS_NONE;
 const uint8_t SwIntSense1::Sw3HsSMask::FAULT_EXISTS = BITS_2;
 
-const uint8_t SwIntStat2::kRegister = 0x0E;
 const SwIntStat2::Sw1DvsDoneIMask SwIntStat2::kSw1DvsDoneIMask(BITS_0);
 const uint8_t SwIntStat2::Sw1DvsDoneIMask::CLEAR = BITS_NONE;
 const uint8_t SwIntStat2::Sw1DvsDoneIMask::INT = BITS_0;
@@ -1009,7 +939,6 @@ const SwIntStat2::Sw3DvsDoneIMask SwIntStat2::kSw3DvsDoneIMask(BITS_2);
 const uint8_t SwIntStat2::Sw3DvsDoneIMask::CLEAR = BITS_NONE;
 const uint8_t SwIntStat2::Sw3DvsDoneIMask::INT = BITS_2;
 
-const uint8_t SwIntMask2::kRegister = 0x0F;
 const SwIntMask2::Sw1DvsDoneMMask SwIntMask2::kSw1DvsDoneMMask(BITS_0);
 const uint8_t SwIntMask2::Sw1DvsDoneMMask::REMOVED = BITS_NONE;
 const uint8_t SwIntMask2::Sw1DvsDoneMMask::ENABLED = BITS_0;
@@ -1020,7 +949,6 @@ const SwIntMask2::Sw3DvsDoneMMask SwIntMask2::kSw3DvsDoneMMask(BITS_2);
 const uint8_t SwIntMask2::Sw3DvsDoneMMask::REMOVED = BITS_NONE;
 const uint8_t SwIntMask2::Sw3DvsDoneMMask::ENABLED = BITS_2;
 
-const uint8_t SwIntSense2::kRegister = 0x10;
 const SwIntSense2::Sw1DvsDoneSMask SwIntSense2::kSw1DvsDoneSMask(BITS_0);
 const uint8_t SwIntSense2::Sw1DvsDoneSMask::NOT_IN_PROGRESS = BITS_NONE;
 const uint8_t SwIntSense2::Sw1DvsDoneSMask::IN_PROGRESS = BITS_0;
@@ -1165,28 +1093,6 @@ const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3500 = BITS_5_4_3_2;
 const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3625 = BITS_5_4_3_2_0;
 const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3750 = BITS_5_4_3_2_1;
 const uint8_t SWx::OtpSWxDvsSelEnVolt::_1_3875 = BITS_5_4_3_2_1_0;
-
-const uint8_t Sw1::Volt::kRegister = 0x32;
-const uint8_t Sw1::StbyVolt::kRegister = 0x33;
-const uint8_t Sw1::SlpVolt::kRegister = 0x34;
-const uint8_t Sw1::Ctrl::kRegister = 0x35;
-// Misnamed in data sheet as SLP_VOLT
-const uint8_t Sw1::Ctrl1::kRegister = 0x36;
-const uint8_t Sw1::PwrDnSeq::kRegister = 0x5F;
-
-const uint8_t Sw2::Volt::kRegister = 0x38;
-const uint8_t Sw2::StbyVolt::kRegister = 0x39;
-const uint8_t Sw2::SlpVolt::kRegister = 0x3A;
-const uint8_t Sw2::Ctrl::kRegister = 0x3B;
-const uint8_t Sw2::Ctrl1::kRegister = 0x3C;
-const uint8_t Sw2::PwrDnSeq::kRegister = 0x60;
-
-const uint8_t Sw3::Volt::kRegister = 0x3E;
-const uint8_t Sw3::StbyVolt::kRegister = 0x3F;
-const uint8_t Sw3::SlpVolt::kRegister = 0x40;
-const uint8_t Sw3::Ctrl::kRegister = 0x41;
-const uint8_t Sw3::Ctrl1::kRegister = 0x42;
-const uint8_t Sw3::PwrDnSeq::kRegister = 0x61;
 
 /*
 const SWx::PwrUp::PwrUpSeqMask SWx::PwrUp::k
