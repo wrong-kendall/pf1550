@@ -470,6 +470,73 @@ struct PF1550Test {
     PF1550<LedCnfg> pf1550(0x08);
     TEST_ASSERT_EQUAL(0x9e, pf1550.get_register<LedCnfg>().kRegisterAddress);
   }
+
+  static void test_ReadRegister() {
+    uint8_t device_address = 0x08;
+    When(OverloadedMethod(ArduinoFake(Wire), begin, void(void))).AlwaysReturn();
+    When(OverloadedMethod(ArduinoFake(Wire), beginTransmission, void(uint8_t)))
+        .AlwaysReturn();
+    When(OverloadedMethod(ArduinoFake(Wire), write, size_t(uint8_t)))
+        .Return(true);
+    When(OverloadedMethod(ArduinoFake(Wire), endTransmission, uint8_t(bool)))
+        .Return(0);
+    When(OverloadedMethod(ArduinoFake(Wire), requestFrom,
+                          uint8_t(uint8_t, uint8_t)))
+        .Return(0);
+    When(OverloadedMethod(ArduinoFake(Wire), available, int(void))).Return(1);
+    When(OverloadedMethod(ArduinoFake(Wire), read, int(void))).Return(1);
+
+    PF1550<DeviceId, I2cAddr> pf1550(device_address);
+    pf1550.Initialize();
+    pf1550.get_register<DeviceId>().ReadRegister();
+
+    Verify(OverloadedMethod(ArduinoFake(Wire), begin, void(void))).Exactly(1);
+    Verify(OverloadedMethod(ArduinoFake(Wire), beginTransmission, void(uint8_t))
+               .Using(device_address))
+        .Exactly(1);
+    Verify(OverloadedMethod(ArduinoFake(Wire), write, size_t(uint8_t))
+               .Using(pf1550.get_register<DeviceId>().kRegisterAddress))
+        .Exactly(1);
+    Verify(OverloadedMethod(ArduinoFake(Wire), endTransmission, uint8_t(bool))
+               .Using(false))
+        .Exactly(1);
+    Verify(OverloadedMethod(ArduinoFake(Wire), requestFrom,
+                            uint8_t(uint8_t, uint8_t))
+               .Using(device_address, 1))
+        .Exactly(1);
+    Verify(OverloadedMethod(ArduinoFake(Wire), available, int(void)))
+        .Exactly(1);
+    Verify(OverloadedMethod(ArduinoFake(Wire), read, int(void))).Exactly(1);
+  }
+
+  static void test_WriteRegister() {
+    uint8_t device_address = 0x08;
+    uint8_t data = 0x02;
+    When(OverloadedMethod(ArduinoFake(Wire), begin, void(void))).AlwaysReturn();
+    When(OverloadedMethod(ArduinoFake(Wire), beginTransmission, void(uint8_t)))
+        .AlwaysReturn();
+    When(OverloadedMethod(ArduinoFake(Wire), write, size_t(uint8_t)))
+        .AlwaysReturn(true);
+    When(OverloadedMethod(ArduinoFake(Wire), endTransmission, uint8_t(void)))
+        .AlwaysReturn(0);
+
+    PF1550<Pwrctrl3> pf1550(device_address);
+    pf1550.Initialize();
+    pf1550.get_register<Pwrctrl3>().WriteRegister(data);
+
+    Verify(OverloadedMethod(ArduinoFake(Wire), begin, void(void))).Exactly(1);
+    Verify(OverloadedMethod(ArduinoFake(Wire), beginTransmission, void(uint8_t))
+               .Using(device_address))
+        .Exactly(1);
+    Verify(OverloadedMethod(ArduinoFake(Wire), write, size_t(uint8_t))
+               .Using(pf1550.get_register<Pwrctrl3>().kRegisterAddress))
+        .Exactly(1);
+    Verify(
+        OverloadedMethod(ArduinoFake(Wire), write, size_t(uint8_t)).Using(data))
+        .Exactly(1);
+    Verify(OverloadedMethod(ArduinoFake(Wire), endTransmission, uint8_t(void)))
+        .Exactly(1);
+  }
 };
 } // namespace PMIC
 
@@ -562,6 +629,8 @@ int main(int argc, char **argv) {
   RUN_TEST(pf1550_test.test_LedPwm_address);
   RUN_TEST(pf1550_test.test_FaultBatfetCnfg_address);
   RUN_TEST(pf1550_test.test_LedCnfg_address);
+  RUN_TEST(pf1550_test.test_ReadRegister);
+  RUN_TEST(pf1550_test.test_WriteRegister);
   UNITY_END();
 }
 #endif

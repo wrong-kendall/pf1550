@@ -17,12 +17,25 @@ public:
     return I2CRegister::WriteRegister(kDeviceAddress, kRegisterAddress, data);
   }
 
+  // TODO(kendall): These should be in the cpp file.
   inline uint8_t ReadRegister(uint8_t device_address,
                               uint8_t register_address) {
-    return 0;
+    Wire.beginTransmission(kDeviceAddress);
+    Wire.write(kRegisterAddress);
+    Wire.endTransmission(false);
+    Wire.requestFrom(kDeviceAddress, 1);
+    uint8_t register_data = 0;
+    if (Wire.available()) {
+      register_data = Wire.read();
+    }
+    return register_data;
   }
   inline bool WriteRegister(uint8_t device_address, uint8_t register_address,
                             uint8_t data) {
+    Wire.beginTransmission(kDeviceAddress);
+    Wire.write(kRegisterAddress);
+    Wire.write(data);
+    Wire.endTransmission();
     return true;
   }
 
@@ -2559,6 +2572,8 @@ public:
     return std::get<count_first_falses((std::is_same<Registers, R>::value)...)>(
         registers_);
   }
+
+  void Initialize() { Wire.begin(); };
   friend class PF1550Test;
 };
 } // namespace PMIC
