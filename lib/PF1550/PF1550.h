@@ -322,6 +322,62 @@ struct OnkeyIntStat0 : public I2CRegister {
   OnkeyIntStat0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
+  void ClearOnkeyPushI() {
+    auto register_data = ReadRegister();
+    auto data =
+        (register_data | (kOnkeyPushIMask.kMask & kOnkeyPushIMask.CLEARED));
+    WriteRegister(data);
+  }
+  bool OnkeyPushIActive() {
+    auto register_data = ReadRegister();
+    return (register_data & kOnkeyPushIMask.kMask) == kOnkeyPushIMask.ACTIVE;
+  }
+  void ClearOnkey1SIActive() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey1SIMask.kMask & kOnkey1SIMask.CLEARED));
+    WriteRegister(data);
+  }
+  bool Onkey1SIActive() {
+    auto register_data = ReadRegister();
+    return (register_data & kOnkey1SIMask.kMask) == kOnkey1SIMask.ACTIVE;
+  }
+  void ClearOnkey2SIActive() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey2SIMask.kMask & kOnkey2SIMask.CLEARED));
+    WriteRegister(data);
+  }
+  bool Onkey2SIActive() {
+    auto register_data = ReadRegister();
+    return (register_data & kOnkey2SIMask.kMask) == kOnkey2SIMask.ACTIVE;
+  }
+  void ClearOnkey3SI() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey3SIMask.kMask & kOnkey3SIMask.CLEARED));
+    WriteRegister(data);
+  }
+  bool Onkey3SIActive() {
+    auto register_data = ReadRegister();
+    return (register_data & kOnkey3SIMask.kMask) == kOnkey3SIMask.ACTIVE;
+  }
+  void ClearOnkey4SIActive() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey4SIMask.kMask & kOnkey4SIMask.CLEARED));
+    WriteRegister(data);
+  }
+  bool Onkey4SIActive() {
+    auto register_data = ReadRegister();
+    return (register_data & kOnkey4SIMask.kMask) == kOnkey4SIMask.ACTIVE;
+  }
+  void ClearOnkey8SI() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey8SIMask.kMask & kOnkey8SIMask.CLEARED));
+    WriteRegister(data);
+  }
+  bool Onkey8SIActive() {
+    auto register_data = ReadRegister();
+    return (register_data & kOnkey8SIMask.kMask) == kOnkey4SIMask.ACTIVE;
+  }
+
 private:
   static const uint8_t kRegister = 0x24;
 };
@@ -365,6 +421,69 @@ struct OnkeyIntMask0 : public I2CRegister {
   static const Onkey8SMMask kOnkey8SMMask;
   OnkeyIntMask0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
+
+  void OnkeyPushMEnable() {
+    auto register_data = ReadRegister();
+    auto data =
+        (register_data | (kOnkeyPushMMask.kMask & kOnkeyPushMMask.ENABLED));
+    WriteRegister(data);
+  }
+  void OnkeyPushMRemove() {
+    auto register_data = ReadRegister();
+    auto data =
+        (register_data | (kOnkeyPushMMask.kMask & kOnkeyPushMMask.REMOVED));
+    WriteRegister(data);
+  }
+  void Onkey1SMEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey1SMMask.kMask & kOnkey1SMMask.ENABLED));
+    WriteRegister(data);
+  }
+  void Onkey1SMRemove() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey1SMMask.kMask & kOnkey1SMMask.REMOVED));
+    WriteRegister(data);
+  }
+  void Onkey2SMEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey2SMMask.kMask & kOnkey2SMMask.ENABLED));
+    WriteRegister(data);
+  }
+  void Onkey2SMRemove() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey2SMMask.kMask & kOnkey2SMMask.REMOVED));
+    WriteRegister(data);
+  }
+  void Onkey3SMEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey3SMMask.kMask & kOnkey3SMMask.ENABLED));
+    WriteRegister(data);
+  }
+  void Onkey3SMRemove() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey3SMMask.kMask & kOnkey3SMMask.REMOVED));
+    WriteRegister(data);
+  }
+  void Onkey4SMEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey4SMMask.kMask & kOnkey4SMMask.ENABLED));
+    WriteRegister(data);
+  }
+  void Onkey4SMRemove() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey4SMMask.kMask & kOnkey4SMMask.REMOVED));
+    WriteRegister(data);
+  }
+  void Onkey8SMEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey8SMMask.kMask & kOnkey8SMMask.ENABLED));
+    WriteRegister(data);
+  }
+  void Onkey8SMRemove() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOnkey8SMMask.kMask & kOnkey8SMMask.REMOVED));
+    WriteRegister(data);
+  }
 
 private:
   static const uint8_t kRegister = 0x25;
@@ -557,6 +676,17 @@ struct CoincellControl : public I2CRegister {
   static const ChEnMask kChEnMask;
   CoincellControl(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
+  void VCoin(uint8_t voltage) { WriteRegister(voltage); }
+  void ChEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kChEnMask.kMask & kChEnMask.ENABLED));
+    WriteRegister(data);
+  }
+  void ChDisable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kChEnMask.kMask & kChEnMask.DISABLED));
+    WriteRegister(data);
+  }
 
 private:
   static const uint8_t kRegister = 0x30;
@@ -1652,15 +1782,29 @@ struct Pwrctrl3 : public I2CRegister {
     static const uint8_t GOTO_SHIP_EN = BITS_0;
     GotoShipMask(uint8_t mask) : Mask(mask) {}
   };
-  struct CoreOffMask : public Mask {
-    static const uint8_t CORE_OFF_EN = BITS_1;
-    CoreOffMask(uint8_t mask) : Mask(mask) {}
+  struct GotoCoreOffMask : public Mask {
+    static const uint8_t GOTO_CORE_OFF_EN = BITS_1;
+    GotoCoreOffMask(uint8_t mask) : Mask(mask) {}
   };
 
   static const GotoShipMask kGotoShipMask;
-  static const CoreOffMask kCoreOffMask;
+  static const GotoCoreOffMask kGotoCoreOffMask;
 
   Pwrctrl3(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
+
+  void GotoShip() {
+    auto register_data = ReadRegister();
+    auto data =
+        (register_data | (kGotoShipMask.kMask & kGotoShipMask.GOTO_SHIP_EN));
+    WriteRegister(data);
+  }
+
+  void CoreOff() {
+    auto register_data = ReadRegister();
+    auto data = (register_data |
+                 (kGotoCoreOffMask.kMask & kGotoCoreOffMask.GOTO_CORE_OFF_EN));
+    WriteRegister(data);
+  }
 
 private:
   static const uint8_t kRegister = 0x5B;

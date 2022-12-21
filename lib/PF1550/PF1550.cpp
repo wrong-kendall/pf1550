@@ -231,7 +231,7 @@ const Pwrctrl2::UvdetMask Pwrctrl2::kUvdetMask(BITS_1_0);
 const Pwrctrl2::LowSysWarnMask Pwrctrl2::kLowSysWarnMask(BITS_3_2);
 
 const Pwrctrl3::GotoShipMask Pwrctrl3::kGotoShipMask(BITS_0);
-const Pwrctrl3::CoreOffMask Pwrctrl3::kCoreOffMask(BITS_1);
+const Pwrctrl3::GotoCoreOffMask Pwrctrl3::kGotoCoreOffMask(BITS_1);
 // End of pwrctrl.h
 // LDOy.h
 const LdoIntStat0::Ldo1FaultIMask LdoIntStat0::kLdo1FaultIMask(BITS_0);
