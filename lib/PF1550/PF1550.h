@@ -2428,6 +2428,89 @@ struct Ctrl : public I2CRegister {
   static const RDisMask kRDisMask;
   Ctrl(uint8_t device_address, uint8_t register_address)
       : I2CRegister(device_address, register_address) {}
+  void Enable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kEnableMask.kMask & kEnableMask.ENABLED));
+    WriteRegister(data);
+  }
+  void Disable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kEnableMask.kMask & kEnableMask.DISABLED));
+    WriteRegister(data);
+  }
+  void StbyEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kStbyMask.kMask & kStbyMask.ENABLED));
+    WriteRegister(data);
+  }
+  void StbyDisable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kStbyMask.kMask & kStbyMask.DISABLED));
+    WriteRegister(data);
+  }
+  void OmodeEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOmodeMask.kMask & kOmodeMask.ENABLED));
+    WriteRegister(data);
+  }
+  void OmodeDisable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOmodeMask.kMask & kOmodeMask.DISABLED));
+    WriteRegister(data);
+  }
+  void LPwrEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kLPwrMask.kMask & kLPwrMask.ENABLED));
+    WriteRegister(data);
+  }
+  void LPwrDisable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kLPwrMask.kMask & kLPwrMask.DISABLED));
+    WriteRegister(data);
+  }
+  void DvsSpeed2us() {
+    auto register_data = ReadRegister();
+    auto data =
+        (register_data | (kDvsSpeedMask.kMask & kDvsSpeedMask._12_5MV_DIV_2US));
+    WriteRegister(data);
+  }
+  void DvsSpeed4us() {
+    auto register_data = ReadRegister();
+    auto data =
+        (register_data | (kDvsSpeedMask.kMask & kDvsSpeedMask._12_5MV_DIV_4US));
+    WriteRegister(data);
+  }
+  void FPwmInDvsForce() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kFPwmInDvsMask.kMask & kFPwmInDvsMask.FORCE));
+    WriteRegister(data);
+  }
+  void FPwmInDvsNoForce() {
+    auto register_data = ReadRegister();
+    auto data =
+        (register_data | (kFPwmInDvsMask.kMask & kFPwmInDvsMask.NO_FORCE));
+    WriteRegister(data);
+  }
+  void FPwmEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kFPwmMask.kMask & kFPwmMask.FPWM_ON));
+    WriteRegister(data);
+  }
+  void FPwmDisable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kFPwmMask.kMask & kFPwmMask.NO_FPWM));
+    WriteRegister(data);
+  }
+  void RDisEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kRDisMask.kMask & kRDisMask.ENABLED));
+    WriteRegister(data);
+  }
+  void RDisDisable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kRDisMask.kMask & kRDisMask.DISABLED));
+    WriteRegister(data);
+  }
 };
 struct Ctrl1 : public I2CRegister {
   struct ILimMask : public Mask {
