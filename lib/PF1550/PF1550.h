@@ -643,7 +643,8 @@ private:
 // End Misch.h
 
 // Charger.h
-// TODO(kendall): Find a better place for this.
+// TODO(kendall): Find a better place for this. Also rename it to
+// SPECIFIC_CHARGER_REGISTERS_OFFSET
 static const uint8_t SPECIFIC_REGISTER_OFFSET = 0x80;
 struct ChgInt : public I2CRegister {
   struct SupIMask : public Mask {
@@ -1827,6 +1828,61 @@ struct Ctrl : public I2CRegister {
 
   Ctrl(uint8_t device_address, uint8_t register_address)
       : I2CRegister(device_address, register_address) {}
+  void Enable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kEnableMask.kMask & kEnableMask.ENABLED));
+    WriteRegister(data);
+  }
+  void Disable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kEnableMask.kMask & kEnableMask.DISABLED));
+    WriteRegister(data);
+  }
+  void StbyEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kStbyMask.kMask & kStbyMask.ENABLED));
+    WriteRegister(data);
+  }
+  void StbyDisable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kStbyMask.kMask & kStbyMask.DISABLED));
+    WriteRegister(data);
+  }
+  void OmodeEnable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOmodeMask.kMask & kOmodeMask.ENABLED));
+    WriteRegister(data);
+  }
+
+  void OmodeDisable() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kOmodeMask.kMask & kOmodeMask.DISABLED));
+    WriteRegister(data);
+  }
+
+  void ForceLPwr() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kLPwrMask.kMask & kLPwrMask.IN_SLP_AND_STBY));
+    WriteRegister(data);
+  }
+
+  void DisableLPwr() {
+    auto register_data = ReadRegister();
+    auto data =
+        (register_data | (kLPwrMask.kMask & kLPwrMask.NOT_IN_SLP_AND_STBY));
+    WriteRegister(data);
+  }
+  void LdoMode() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kLsMask.kMask & kLsMask.LDO_MODE));
+    WriteRegister(data);
+  }
+
+  void SwMode() {
+    auto register_data = ReadRegister();
+    auto data = (register_data | (kLsMask.kMask & kLsMask.SWITCH_MODE));
+    WriteRegister(data);
+  }
 };
 struct PwrDnSeq : public I2CRegister {
   struct PwrDnSeqMask : public Mask {
