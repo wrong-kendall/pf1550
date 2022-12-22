@@ -2839,7 +2839,8 @@ template <typename... B> constexpr int count_first_falses(bool b1, B... b) {
 template <class... Registers> class PF1550 {
 public:
   std::tuple<Registers...> registers_;
-  PF1550(uint8_t device_address) : registers_(Registers(device_address)...) {}
+  PF1550(uint8_t device_address = I2cAddr::kAddrMask.I2C_ADDR_DEFAULT)
+      : registers_(Registers(device_address)...) {}
 
   template <typename R> decltype(auto) get_register() {
     return std::get<count_first_falses((std::is_same<Registers, R>::value)...)>(
