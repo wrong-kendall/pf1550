@@ -1,3 +1,4 @@
+#pragma once
 #include "common_bitmasks.h"
 #include <Arduino.h>
 #include <Wire.h>
