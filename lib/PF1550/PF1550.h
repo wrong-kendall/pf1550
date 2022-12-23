@@ -323,6 +323,12 @@ struct OnkeyIntStat0 : public I2CRegister {
   OnkeyIntStat0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
+  bool AnyOnkeyActive() {
+    auto register_data = ReadRegister();
+    // If any bit is set, return true;
+    return register_data > 0;
+  }
+  void ClearAllOnkey() { WriteRegister(0x0); }
   void ClearOnkeyPushI() {
     auto register_data = ReadRegister();
     auto data =
