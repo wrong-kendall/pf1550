@@ -58,7 +58,7 @@ struct DeviceId : public I2CRegister {
     DeviceIdMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const DeviceIdMask kDeviceIdMask;
+  static inline const DeviceIdMask kDeviceIdMask{BITS_2_1_0};
   DeviceId(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
   // TODO(kendall): Add Family
@@ -81,7 +81,7 @@ struct OtpFlavor : public I2CRegister {
     static inline const uint8_t A9 = 0x09;
     ModelMask(uint8_t mask) : Mask(mask) {}
   };
-  static const ModelMask kModelMask;
+  static inline const ModelMask kModelMask{BITS_ALL};
   OtpFlavor(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -98,9 +98,9 @@ struct SiliconRev : public I2CRegister {
   struct FabFinMask : public Mask {
     FabFinMask(uint8_t mask) : Mask(mask) {}
   };
-  static const MetalLayerRevMask kMetalLayerRevMask;
-  static const FullLayerRevMask kFullLayerRevMask;
-  static const FabFinMask kFabFinMask;
+  static inline const MetalLayerRevMask kMetalLayerRevMask{BITS_2_1_0};
+  static inline const FullLayerRevMask kFullLayerRevMask{BITS_5_4_3};
+  static inline const FabFinMask kFabFinMask{BITS_7_6};
   SiliconRev(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -115,7 +115,7 @@ struct StateInfo : public I2CRegister {
     static inline const uint8_t SLEEP = BITS_3_2_1;
     static inline const uint8_t REG_DISABLE = BITS_5_3_1_0;
   };
-  static const StateMask kStateMask;
+  static inline const StateMask kStateMask{BITS_ALL};
   StateInfo(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -134,7 +134,7 @@ struct I2cAddr : public I2CRegister {
     static inline const uint8_t X0F = BITS_2_1_0;
     AddrMask(uint8_t mask) : Mask(mask) {}
   };
-  static const AddrMask kAddrMask;
+  static inline const AddrMask kAddrMask{BITS_2_1_0};
   I2cAddr(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -157,9 +157,9 @@ struct Rc16mhz : public I2CRegister {
     static inline const uint8_t LOW_POWER_NEVER = BITS_2;
     ReqAcoreHiPwrMask(uint8_t mask) : Mask(mask) {}
   };
-  static const Req16MhzMask kReq16MhzMask;
-  static const ReqAcoreOnMask kReqAcoreOnMask;
-  static const ReqAcoreHiPwrMask kReqAcoreHiPwrMask;
+  static inline const Req16MhzMask kReq16MhzMask{BITS_0};
+  static inline const ReqAcoreOnMask kReqAcoreOnMask{BITS_1};
+  static inline const ReqAcoreHiPwrMask kReqAcoreHiPwrMask{BITS_2};
   Rc16mhz(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -209,14 +209,14 @@ struct IntCategory : public I2CRegister {
     static inline const uint8_t ANY = BITS_7;
     MiscIntMask(uint8_t mask) : Mask(mask) {}
   };
-  static const ChgIntMask kChgIntMask;
-  static const Sw1IntMask kSw1IntMask;
-  static const Sw2IntMask kSw2IntMask;
-  static const Sw3IntMask kSw3IntMask;
-  static const LdoIntMask kLdoIntMask;
-  static const OnkeyIntMask kOnkeyIntMask;
-  static const TempIntMask kTempIntMask;
-  static const MiscIntMask kMiscIntMask;
+  static inline const ChgIntMask kChgIntMask{BITS_0};
+  static inline const Sw1IntMask kSw1IntMask{BITS_1};
+  static inline const Sw2IntMask kSw2IntMask{BITS_2};
+  static inline const Sw3IntMask kSw3IntMask{BITS_3};
+  static inline const LdoIntMask kLdoIntMask{BITS_4};
+  static inline const OnkeyIntMask kOnkeyIntMask{BITS_5};
+  static inline const TempIntMask kTempIntMask{BITS_6};
+  static inline const MiscIntMask kMiscIntMask{BITS_7};
   IntCategory(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -235,8 +235,8 @@ struct TempIntStat0 : public I2CRegister {
     static inline const uint8_t ACTIVE = BITS_0;
     Therm125IMask(uint8_t mask) : Mask(mask) {}
   };
-  static const Therm110IMask kTherm110IMask;
-  static const Therm125IMask kTherm125IMask;
+  static inline const Therm110IMask kTherm110IMask{BITS_0};
+  static inline const Therm125IMask kTherm125IMask{BITS_2};
   TempIntStat0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -275,8 +275,8 @@ struct TempIntSense0 : public I2CRegister {
     static inline const uint8_t ABOVE = BITS_0;
     Therm125SMask(uint8_t mask) : Mask(mask) {}
   };
-  static const Therm110SMask kTherm110SMask;
-  static const Therm125SMask kTherm125SMask;
+  static inline const Therm110SMask kTherm110SMask{BITS_0};
+  static inline const Therm125SMask kTherm125SMask{BITS_2};
   TempIntSense0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -314,12 +314,12 @@ struct OnkeyIntStat0 : public I2CRegister {
     static inline const uint8_t ACTIVE = BITS_5;
     Onkey8SIMask(uint8_t mask) : Mask(mask) {}
   };
-  static const OnkeyPushIMask kOnkeyPushIMask;
-  static const Onkey1SIMask kOnkey1SIMask;
-  static const Onkey2SIMask kOnkey2SIMask;
-  static const Onkey3SIMask kOnkey3SIMask;
-  static const Onkey4SIMask kOnkey4SIMask;
-  static const Onkey8SIMask kOnkey8SIMask;
+  static inline const OnkeyPushIMask kOnkeyPushIMask{BITS_0};
+  static inline const Onkey1SIMask kOnkey1SIMask{BITS_1};
+  static inline const Onkey2SIMask kOnkey2SIMask{BITS_2};
+  static inline const Onkey3SIMask kOnkey3SIMask{BITS_3};
+  static inline const Onkey4SIMask kOnkey4SIMask{BITS_4};
+  static inline const Onkey8SIMask kOnkey8SIMask{BITS_5};
   OnkeyIntStat0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -420,12 +420,12 @@ struct OnkeyIntMask0 : public I2CRegister {
     static inline const uint8_t REMOVED = BITS_5;
     Onkey8SMMask(uint8_t mask) : Mask(mask) {}
   };
-  static const OnkeyPushMMask kOnkeyPushMMask;
-  static const Onkey1SMMask kOnkey1SMMask;
-  static const Onkey2SMMask kOnkey2SMMask;
-  static const Onkey3SMMask kOnkey3SMMask;
-  static const Onkey4SMMask kOnkey4SMMask;
-  static const Onkey8SMMask kOnkey8SMMask;
+  static inline const OnkeyPushMMask kOnkeyPushMMask{BITS_0};
+  static inline const Onkey1SMMask kOnkey1SMMask{BITS_1};
+  static inline const Onkey2SMMask kOnkey2SMMask{BITS_2};
+  static inline const Onkey3SMMask kOnkey3SMMask{BITS_3};
+  static inline const Onkey4SMMask kOnkey4SMMask{BITS_4};
+  static inline const Onkey8SMMask kOnkey8SMMask{BITS_5};
   OnkeyIntMask0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -527,12 +527,12 @@ struct OnkeyIntSense0 : public I2CRegister {
     static inline const uint8_t NOT_PUSHED = BITS_5;
     Onkey8SSMask(uint8_t mask) : Mask(mask) {}
   };
-  static const OnkeyPushSMask kOnkeyPushSMask;
-  static const Onkey1SSMask kOnkey1SSMask;
-  static const Onkey2SSMask kOnkey2SSMask;
-  static const Onkey3SSMask kOnkey3SSMask;
-  static const Onkey4SSMask kOnkey4SSMask;
-  static const Onkey8SSMask kOnkey8SSMask;
+  static inline const OnkeyPushSMask kOnkeyPushSMask{BITS_0};
+  static inline const Onkey1SSMask kOnkey1SSMask{BITS_1};
+  static inline const Onkey2SSMask kOnkey2SSMask{BITS_2};
+  static inline const Onkey3SSMask kOnkey3SSMask{BITS_3};
+  static inline const Onkey4SSMask kOnkey4SSMask{BITS_4};
+  static inline const Onkey8SSMask kOnkey8SSMask{BITS_5};
   OnkeyIntSense0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -566,11 +566,11 @@ struct MiscIntStat0 : public I2CRegister {
     static inline const uint8_t NOT_ACTIVE = BITS_4;
     SysOlvoIMask(uint8_t mask) : Mask(mask) {}
   };
-  static const PwrOnIMask kPwrOnIMask;
-  static const PwrDnIMask kPwrDnIMask;
-  static const PwrUpIMask kPwrUpIMask;
-  static const LowSysWarnIMask kLowSysWarnIMask;
-  static const SysOlvoIMask kSysOlvoIMask;
+  static inline const PwrUpIMask kPwrUpIMask{BITS_0};
+  static inline const PwrDnIMask kPwrDnIMask{BITS_1};
+  static inline const PwrOnIMask kPwrOnIMask{BITS_2};
+  static inline const LowSysWarnIMask kLowSysWarnIMask{BITS_3};
+  static inline const SysOlvoIMask kSysOlvoIMask{BITS_4};
   MiscIntStat0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -604,11 +604,11 @@ struct MiscIntMask0 : public I2CRegister {
     static inline const uint8_t REMOVED = BITS_4;
     SysOlvoMMask(uint8_t mask) : Mask(mask) {}
   };
-  static const PwrOnMMask kPwrOnMMask;
-  static const PwrDnMMask kPwrDnMMask;
-  static const PwrUpMMask kPwrUpMMask;
-  static const LowSysWarnMMask kLowSysWarnMMask;
-  static const SysOlvoMMask kSysOlvoMMask;
+  static inline const PwrUpMMask kPwrUpMMask{BITS_0};
+  static inline const PwrDnMMask kPwrDnMMask{BITS_1};
+  static inline const PwrOnMMask kPwrOnMMask{BITS_2};
+  static inline const LowSysWarnMMask kLowSysWarnMMask{BITS_3};
+  static inline const SysOlvoMMask kSysOlvoMMask{BITS_4};
   MiscIntMask0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -642,11 +642,11 @@ struct MiscIntSense0 : public I2CRegister {
     static inline const uint8_t BELOW = BITS_4;
     SysOlvoSMask(uint8_t mask) : Mask(mask) {}
   };
-  static const PwrOnSMask kPwrOnSMask;
-  static const PwrDnSMask kPwrDnSMask;
-  static const PwrUpSMask kPwrUpSMask;
-  static const LowSysWarnSMask kLowSysWarnSMask;
-  static const SysOlvoSMask kSysOlvoSMask;
+  static inline const PwrUpSMask kPwrUpSMask{BITS_0};
+  static inline const PwrDnSMask kPwrDnSMask{BITS_1};
+  static inline const PwrOnSMask kPwrOnSMask{BITS_2};
+  static inline const LowSysWarnSMask kLowSysWarnSMask{BITS_3};
+  static inline const SysOlvoSMask kSysOlvoSMask{BITS_4};
   MiscIntSense0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -679,8 +679,8 @@ struct CoincellControl : public I2CRegister {
     static inline const uint8_t ENABLED = BITS_4;
     ChEnMask(uint8_t mask) : Mask(mask) {}
   };
-  static const VCoinMask kVCoinMask;
-  static const ChEnMask kChEnMask;
+  static inline const VCoinMask kVCoinMask{BITS_3_2_1_0};
+  static inline const ChEnMask kChEnMask{BITS_4};
   CoincellControl(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
   void VCoin(uint8_t voltage) { WriteRegister(voltage); }
@@ -713,9 +713,9 @@ struct VsnvsCtrl : public I2CRegister {
     static inline const uint8_t Vsnvs_BAND_GAP_ENABLED = BITS_5;
     LiBGDisMask(uint8_t mask) : Mask(mask) {}
   };
-  static const CLKPulseMask kCLKPulseMask;
-  static const ForceBOSMask kForceBOSMask;
-  static const LiBGDisMask kLiBGDisMask;
+  static inline const CLKPulseMask kCLKPulseMask{BITS_3};
+  static inline const ForceBOSMask kForceBOSMask{BITS_4};
+  static inline const LiBGDisMask kLiBGDisMask{BITS_5};
   VsnvsCtrl(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -743,10 +743,10 @@ struct VrefddrCtrl : public I2CRegister {
     static inline const uint8_t ENABLE = BITS_NONE;
     VrefddrLPwrMask(uint8_t mask) : Mask(mask) {}
   };
-  static const VrefddrEnMask kVrefddrEnMask;
-  static const VrefddrStbyEnMask kVrefddrStbyEnMask;
-  static const VrefddrOModeMask kVrefddrOModeMask;
-  static const VrefddrLPwrMask kVrefddrLPwrMask;
+  static inline const VrefddrEnMask kVrefddrEnMask{BITS_0};
+  static inline const VrefddrStbyEnMask kVrefddrStbyEnMask{BITS_1};
+  static inline const VrefddrOModeMask kVrefddrOModeMask{BITS_2};
+  static inline const VrefddrLPwrMask kVrefddrLPwrMask{BITS_3};
   VrefddrCtrl(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -758,7 +758,7 @@ struct VrefddrPwrDnSeq : public I2CRegister {
     // TODO(kendall): Add specific masks/values.
     VrefddrPwrDnSeqMask(uint8_t mask) : Mask(mask) {}
   };
-  static const VrefddrPwrDnSeqMask kVrefddrPwrDnSeqMask;
+  static inline const VrefddrPwrDnSeqMask kVrefddrPwrDnSeqMask{BITS_2_1_0};
   VrefddrPwrDnSeq(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -771,7 +771,7 @@ struct Key1 : public I2CRegister {
     // TODO(kendall): Add specific masks/values.
     Key1Mask(uint8_t mask) : Mask(mask) {}
   };
-  static const Key1Mask kKey1Mask;
+  static inline const Key1Mask kKey1Mask{BITS_2_1_0};
   Key1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -819,13 +819,13 @@ struct ChgInt : public I2CRegister {
     static inline const uint8_t ACTIVE = BITS_7;
     ThmIMask(uint8_t mask) : Mask(mask) {}
   };
-  static const SupIMask kSupIMask;
-  static const Bat2SocIMask kBat2SocIMask;
-  static const BatIMask kBatIMask;
-  static const ChgIMask kChgIMask;
-  static const VbusIMask kVbusIMask;
-  static const VbusDpmIMask kVbusDpmIMask;
-  static const ThmIMask kThmIMask;
+  static inline const SupIMask kSupIMask{BITS_0};
+  static inline const Bat2SocIMask kBat2SocIMask{BITS_1};
+  static inline const BatIMask kBatIMask{BITS_2};
+  static inline const ChgIMask kChgIMask{BITS_3};
+  static inline const VbusIMask kVbusIMask{BITS_5};
+  static inline const VbusDpmIMask kVbusDpmIMask{BITS_6};
+  static inline const ThmIMask kThmIMask{BITS_7};
 
   ChgInt(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -869,13 +869,13 @@ struct ChgIntMask : public I2CRegister {
     static inline const uint8_t UNMASKED = BITS_7;
     ThmMMask(uint8_t mask) : Mask(mask) {}
   };
-  static const SupMMask kSupMMask;
-  static const Bat2SocMMask kBat2SocMMask;
-  static const BatMMask kBatMMask;
-  static const ChgMMask kChgMMask;
-  static const VbusMMask kVbusMMask;
-  static const VbusDpmMMask kVbusDpmMMask;
-  static const ThmMMask kThmMMask;
+  static inline const SupMMask kSupMMask{BITS_0};
+  static inline const Bat2SocMMask kBat2SocMMask{BITS_1};
+  static inline const BatMMask kBatMMask{BITS_2};
+  static inline const ChgMMask kChgMMask{BITS_3};
+  static inline const VbusMMask kVbusMMask{BITS_5};
+  static inline const VbusDpmMMask kVbusDpmMMask{BITS_6};
+  static inline const ThmMMask kThmMMask{BITS_7};
 
   ChgIntMask(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -919,13 +919,13 @@ struct ChgIntOk : public I2CRegister {
     static inline const uint8_t OUTSIDE_THRESHOLD = BITS_7;
     ThmOkMask(uint8_t mask) : Mask(mask) {}
   };
-  static const SupOkMask kSupOkMask;
-  static const Bat2SocOkMask kBat2SocOkMask;
-  static const BatOkMask kBatOkMask;
-  static const ChgOkMask kChgOkMask;
-  static const VbusOkMask kVbusOkMask;
-  static const VbusDpmOkMask kVbusDpmOkMask;
-  static const ThmOkMask kThmOkMask;
+  static inline const SupOkMask kSupOkMask{BITS_0};
+  static inline const Bat2SocOkMask kBat2SocOkMask{BITS_1};
+  static inline const BatOkMask kBatOkMask{BITS_2};
+  static inline const ChgOkMask kChgOkMask{BITS_3};
+  static inline const VbusOkMask kVbusOkMask{BITS_5};
+  static inline const VbusDpmOkMask kVbusDpmOkMask{BITS_6};
+  static inline const ThmOkMask kThmOkMask{BITS_7};
 
   ChgIntOk(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -959,11 +959,11 @@ struct VbusSns : public I2CRegister {
     static inline const uint8_t TRIGGERED = BITS_7;
     VbusDpmSnsMask(uint8_t mask) : Mask(mask) {}
   };
-  static const VbusUvloSnsMask kVbusUvloSnsMask;
-  static const VbusIn2SysSnsMask kVbusIn2SysSnsMask;
-  static const VbusOvloSnsMask kVbusOvloSnsMask;
-  static const VbusValidMask kVbusValidMask;
-  static const VbusDpmSnsMask kVbusDpmSnsMask;
+  static inline const VbusUvloSnsMask kVbusUvloSnsMask{BITS_2};
+  static inline const VbusIn2SysSnsMask kVbusIn2SysSnsMask{BITS_3};
+  static inline const VbusOvloSnsMask kVbusOvloSnsMask{BITS_4};
+  static inline const VbusValidMask kVbusValidMask{BITS_5};
+  static inline const VbusDpmSnsMask kVbusDpmSnsMask{BITS_7};
 
   VbusSns(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1001,10 +1001,10 @@ struct ChgSns : public I2CRegister {
     static inline const uint8_t LESS_THAN_THRESHOLD = BITS_NONE;
     TregSnsMask(uint8_t mask) : Mask(mask) {}
   };
-  static const ChgSnsMask kChgSnsMask;
-  static const WdtSnsMask kWdtSnsMask;
-  static const ThmSnsMask kThmSnsMask;
-  static const TregSnsMask kTregSnsMask;
+  static inline const ChgSnsMask kChgSnsMask{BITS_3_2_1_0};
+  static inline const WdtSnsMask kWdtSnsMask{BITS_5};
+  static inline const ThmSnsMask kThmSnsMask{BITS_6};
+  static inline const TregSnsMask kTregSnsMask{BITS_7};
 
   ChgSns(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1027,8 +1027,8 @@ struct BattSns : public I2CRegister {
     static inline const uint8_t FAULT = BITS_5;
     BattOCSnsMask(uint8_t mask) : Mask(mask) {}
   };
-  static const BattSnsMask kBattSnsMask;
-  static const BattOCSnsMask kBattOCSnsMask;
+  static inline const BattSnsMask kBattSnsMask{BITS_2_1_0};
+  static inline const BattOCSnsMask kBattOCSnsMask{BITS_5};
 
   BattSns(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1054,9 +1054,9 @@ struct ChgOper : public I2CRegister {
     DisBattFetMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const ChgOperMask kChgOperMask;
-  static const WdtEnMask kWdtEnMask;
-  static const DisBattFetMask kDisBattFetMask;
+  static inline const ChgOperMask kChgOperMask{BITS_1_0};
+  static inline const WdtEnMask kWdtEnMask{BITS_3};
+  static inline const DisBattFetMask kDisBattFetMask{BITS_4};
 
   ChgOper(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1092,9 +1092,9 @@ struct ChgTmr : public I2CRegister {
     static inline const uint8_t _45M = BITS_7;
     TPreChgMask(uint8_t mask) : Mask(mask) {}
   };
-  static const FChgTimeMask kFChgTimeMask;
-  static const EoCTimeMask kEoCTimeMask;
-  static const TPreChgMask kTPreChgMask;
+  static inline const FChgTimeMask kFChgTimeMask{BITS_2_1_0};
+  static inline const EoCTimeMask kEoCTimeMask{BITS_5_4_3};
+  static inline const TPreChgMask kTPreChgMask{BITS_7};
 
   ChgTmr(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1119,8 +1119,8 @@ struct ChgEocCnfg : public I2CRegister {
     IEoCMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const ChgRestartMask kChgRestartMask;
-  static const IEoCMask kIEoCMask;
+  static inline const ChgRestartMask kChgRestartMask{BITS_1_0};
+  static inline const IEoCMask kIEoCMask{BITS_6_5_4};
   ChgEocCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -1158,8 +1158,8 @@ struct ChgCurrCnfg : public I2CRegister {
     PreChgLbThrsMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const ChgCcMask kChgCcMask;
-  static const PreChgLbThrsMask kPreChgLbThrsMask;
+  static inline const ChgCcMask kChgCcMask{BITS_4_3_2_1_0};
+  static inline const PreChgLbThrsMask kPreChgLbThrsMask{BITS_6_5};
 
   ChgCurrCnfg(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -1242,8 +1242,8 @@ struct BattReg : public I2CRegister {
     static inline const uint8_t _4_3V = BITS_7;
     VsysMinMask(uint8_t mask) : Mask(mask) {}
   };
-  static const ChgCvMask kChgCvMask;
-  static const VsysMinMask kVsysMinMask;
+  static inline const ChgCvMask kChgCvMask{BITS_5_4_3_2_1_0};
+  static inline const VsysMinMask kVsysMinMask{BITS_7_6};
 
   BattReg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1283,12 +1283,12 @@ struct BatfetCnfg : public I2CRegister {
     static inline const uint8_t DISABLED = BITS_NONE;
     BOVRCNoVBusMask(uint8_t mask) : Mask(mask) {}
   };
-  static const WdtClrMask kWdtClrMask;
-  static const WdBattFetOffMask kWdBattFetOffMask;
-  static const BOVRCDisBattFetMask kBOVRCDisBattFetMask;
-  static const BattFetOCMask kBattFetOCMask;
-  static const WdTimeMask kWdTimeMask;
-  static const BOVRCNoVBusMask kBOVRCNoVBusMask;
+  static inline const WdtClrMask kWdtClrMask{BITS_1_0};
+  static inline const WdBattFetOffMask kWdBattFetOffMask{BITS_2};
+  static inline const BOVRCDisBattFetMask kBOVRCDisBattFetMask{BITS_3};
+  static inline const BattFetOCMask kBattFetOCMask{BITS_5_4};
+  static inline const WdTimeMask kWdTimeMask{BITS_6};
+  static inline const BOVRCNoVBusMask kBOVRCNoVBusMask{BITS_7};
 
   BatfetCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1327,11 +1327,11 @@ struct ThmRegCnfg : public I2CRegister {
     TempFbEnMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const ThmCnfgMask kThmCnfgMask;
-  static const RegTempMask kRegTempMask;
-  static const ThmColdMask kThmColdMask;
-  static const ThmHotMask kThmHotMask;
-  static const TempFbEnMask kTempFbEnMask;
+  static inline const ThmCnfgMask kThmCnfgMask{BITS_1_0};
+  static inline const RegTempMask kRegTempMask{BITS_3_2};
+  static inline const ThmColdMask kThmColdMask{BITS_4};
+  static inline const ThmHotMask kThmHotMask{BITS_5};
+  static inline const TempFbEnMask kTempFbEnMask{BITS_7};
   ThmRegCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -1363,7 +1363,7 @@ struct VbusInLimCnfg : public I2CRegister {
     static inline const uint8_t _1500MA = BITS_7_5;
     VbusLinILimMask(uint8_t mask) : Mask(mask) {}
   };
-  static const VbusLinILimMask kVbusLinILimMask;
+  static inline const VbusLinILimMask kVbusLinILimMask{BITS_7_6_5_4_3};
   VbusInLimCnfg(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
@@ -1395,10 +1395,10 @@ struct VbusLinDpm : public I2CRegister {
     FetScaleMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const VbusDpmRegMask kVbusDpmRegMask;
-  static const PreChgdBattThrshMask kPreChgdBattThrshMask;
-  static const VinDpmStopMask kVinDpmStopMask;
-  static const FetScaleMask kFetScaleMask;
+  static inline const VbusDpmRegMask kVbusDpmRegMask{BITS_2_1_0};
+  static inline const PreChgdBattThrshMask kPreChgdBattThrshMask{BITS_4_3};
+  static inline const VinDpmStopMask kVinDpmStopMask{BITS_5};
+  static inline const FetScaleMask kFetScaleMask{BITS_7};
 
   VbusLinDpm(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1423,9 +1423,9 @@ struct UsbPhyLdoCnfg : public I2CRegister {
     UsbPhyLdoMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const ActDisPhyMask kActDisPhyMask;
-  static const UsbPhyMask kUsbPhyMask;
-  static const UsbPhyLdoMask kUsbPhyLdoMask;
+  static inline const ActDisPhyMask kActDisPhyMask{BITS_0};
+  static inline const UsbPhyMask kUsbPhyMask{BITS_1};
+  static inline const UsbPhyLdoMask kUsbPhyLdoMask{BITS_2};
 
   UsbPhyLdoCnfg(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -1455,9 +1455,9 @@ struct DbncDelayTime : public I2CRegister {
     SysWkUpDlyMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const VbusOvTdbMask kVbusOvTdbMask;
-  static const UsbPhyTdbMask kUsbPhyTdbMask;
-  static const SysWkUpDlyMask kSysWkUpDlyMask;
+  static inline const VbusOvTdbMask kVbusOvTdbMask{BITS_1_0};
+  static inline const UsbPhyTdbMask kUsbPhyTdbMask{BITS_3_2};
+  static inline const SysWkUpDlyMask kSysWkUpDlyMask{BITS_5_4};
 
   DbncDelayTime(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -1478,8 +1478,8 @@ struct ChgIntCnfg : public I2CRegister {
     EoCIntMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const ChgIntGenMask kChgIntGenMask;
-  static const EoCIntMask kEoCIntMask;
+  static inline const ChgIntGenMask kChgIntGenMask{BITS_0};
+  static inline const EoCIntMask kEoCIntMask{BITS_1};
   ChgIntCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -1510,10 +1510,10 @@ struct ThmAdjSetting : public I2CRegister {
     static inline const uint8_t _100PCT = BITS_5_4;
     CcAdjMask(uint8_t mask) : Mask(mask) {}
   };
-  static const ThmWarmMask kThmWarmMask;
-  static const ThmCoolMask kThmCoolMask;
-  static const CvAdjMask kCvAdjMask;
-  static const CcAdjMask kCcAdjMask;
+  static inline const ThmWarmMask kThmWarmMask{BITS_0};
+  static inline const ThmCoolMask kThmCoolMask{BITS_1};
+  static inline const CvAdjMask kCvAdjMask{BITS_3_2};
+  static inline const CcAdjMask kCcAdjMask{BITS_5_4};
 
   ThmAdjSetting(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -1535,8 +1535,8 @@ struct Vbus2SysCnfg : public I2CRegister {
     Vbus2SysThrshMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Vbus2SysTdbMask kVbus2SysTdbMask;
-  static const Vbus2SysThrshMask kVbus2SysThrshMask;
+  static inline const Vbus2SysTdbMask kVbus2SysTdbMask{BITS_1_0};
+  static inline const Vbus2SysThrshMask kVbus2SysThrshMask{BITS_2};
 
   Vbus2SysCnfg(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -1592,9 +1592,9 @@ struct LedPwm : public I2CRegister {
     LedEnMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const LedPwmMask kLedPwmMask;
-  static const LedRampMask kLedRampMask;
-  static const LedEnMask kLedEnMask;
+  static inline const LedPwmMask kLedPwmMask{BITS_5_4_3_2_1_0};
+  static inline const LedRampMask kLedRampMask{BITS_6};
+  static inline const LedEnMask kLedEnMask{BITS_7};
   LedPwm(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -1622,10 +1622,10 @@ struct FaultBatfetCnfg : I2CRegister {
     static inline const uint8_t CLOSED = BITS_3;
     TmrFltBFetEnMask(uint8_t mask) : Mask(mask) {}
   };
-  static const WdFltBfFetEnMask kWdFltBfFetEnMask;
-  static const ThmSusBFetEnMask kThmSusBFetEnMask;
-  static const TShdnBFetEnMask kTShdnBFetEnMask;
-  static const TmrFltBFetEnMask kTmrFltBFetEnMask;
+  static inline const WdFltBfFetEnMask kWdFltBfFetEnMask{BITS_0};
+  static inline const ThmSusBFetEnMask kThmSusBFetEnMask{BITS_1};
+  static inline const TShdnBFetEnMask kTShdnBFetEnMask{BITS_2};
+  static inline const TmrFltBFetEnMask kTmrFltBFetEnMask{BITS_3};
 
   FaultBatfetCnfg(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -1656,10 +1656,10 @@ struct LedCnfg : public I2CRegister {
     LedOvrdMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const LedOvrdMask kLedOvrdMask;
-  static const LedFreqMask kLedFreqMask;
-  static const LedCurrentMask kLedCurrentMask;
-  static const LedCfgMask kLedCfgMask;
+  static inline const LedFreqMask kLedFreqMask{BITS_1_0};
+  static inline const LedCurrentMask kLedCurrentMask{BITS_3_2};
+  static inline const LedCfgMask kLedCfgMask{BITS_4};
+  static inline const LedOvrdMask kLedOvrdMask{BITS_5};
 
   LedCnfg(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1700,10 +1700,10 @@ struct Pwrctrl0 : public I2CRegister {
     TgResetMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const StandbyDlyMask kStandbyDlyMask;
-  static const StandbyInvMask kStandbyInvMask;
-  static const PoRDlyMask kPoRDlyMask;
-  static const TgResetMask kTgResetMask;
+  static inline const StandbyDlyMask kStandbyDlyMask{BITS_1_0};
+  static inline const StandbyInvMask kStandbyInvMask{BITS_2};
+  static inline const PoRDlyMask kPoRDlyMask{BITS_5_4_3};
+  static inline const TgResetMask kTgResetMask{BITS_7_6};
 
   Pwrctrl0(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1748,12 +1748,12 @@ struct Pwrctrl1 : public I2CRegister {
     static inline const uint8_t NO_ONKEY_RESET = BITS_NONE;
     OnkeyRstEnmask(uint8_t mask) : Mask(mask) {}
   };
-  static const PwronDbncMask kPwronDbncMask;
-  static const OnkeyBbncMask kOnkeyBbncMask;
-  static const PwronRstEnMask kPwronRstEnMask;
-  static const RestartEnMask kRestartEnMask;
-  static const RegScpEnMask kRegScpEnMask;
-  static const OnkeyRstEnmask kOnkeyRstEnmask;
+  static inline const PwronDbncMask kPwronDbncMask{BITS_1_0};
+  static inline const OnkeyBbncMask kOnkeyBbncMask{BITS_3_2};
+  static inline const PwronRstEnMask kPwronRstEnMask{BITS_4};
+  static inline const RestartEnMask kRestartEnMask{BITS_5};
+  static inline const RegScpEnMask kRegScpEnMask{BITS_6};
+  static inline const OnkeyRstEnmask kOnkeyRstEnmask{BITS_7};
   Pwrctrl1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
 private:
@@ -1776,8 +1776,8 @@ struct Pwrctrl2 : public I2CRegister {
     LowSysWarnMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const LowSysWarnMask kLowSysWarnMask;
-  static const UvdetMask kUvdetMask;
+  static inline const UvdetMask kUvdetMask{BITS_1_0};
+  static inline const LowSysWarnMask kLowSysWarnMask{BITS_3_2};
 
   Pwrctrl2(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1795,8 +1795,8 @@ struct Pwrctrl3 : public I2CRegister {
     GotoCoreOffMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const GotoShipMask kGotoShipMask;
-  static const GotoCoreOffMask kGotoCoreOffMask;
+  static inline const GotoShipMask kGotoShipMask{BITS_0};
+  static inline const GotoCoreOffMask kGotoCoreOffMask{BITS_1};
 
   Pwrctrl3(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -1837,9 +1837,9 @@ struct LdoIntStat0 : public I2CRegister {
     Ldo3FaultIMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Ldo1FaultIMask kLdo1FaultIMask;
-  static const Ldo2FaultIMask kLdo2FaultIMask;
-  static const Ldo3FaultIMask kLdo3FaultIMask;
+  static inline const Ldo1FaultIMask kLdo1FaultIMask{BITS_0};
+  static inline const Ldo2FaultIMask kLdo2FaultIMask{BITS_1};
+  static inline const Ldo3FaultIMask kLdo3FaultIMask{BITS_2};
 
   LdoIntStat0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -1864,9 +1864,9 @@ struct LdoIntMask0 : public I2CRegister {
     Ldo3FaultMMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Ldo1FaultMMask kLdo1FaultMMask;
-  static const Ldo2FaultMMask kLdo2FaultMMask;
-  static const Ldo3FaultMMask kLdo3FaultMMask;
+  static inline const Ldo1FaultMMask kLdo1FaultMMask{BITS_0};
+  static inline const Ldo2FaultMMask kLdo2FaultMMask{BITS_1};
+  static inline const Ldo3FaultMMask kLdo3FaultMMask{BITS_2};
 
   LdoIntMask0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -1892,9 +1892,9 @@ struct LdoIntSense0 : public I2CRegister {
     Ldo3FaultSMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Ldo1FaultSMask kLdo1FaultSMask;
-  static const Ldo2FaultSMask kLdo2FaultSMask;
-  static const Ldo3FaultSMask kLdo3FaultSMask;
+  static inline const Ldo1FaultSMask kLdo1FaultSMask{BITS_0};
+  static inline const Ldo2FaultSMask kLdo2FaultSMask{BITS_1};
+  static inline const Ldo3FaultSMask kLdo3FaultSMask{BITS_2};
 
   LdoIntSense0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -1941,7 +1941,7 @@ struct Volt : public I2CRegister {
     VoltMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const VoltMask kVoltMask;
+  static inline const VoltMask kVoltMask{BITS_4_3_2_1_0};
   Volt(uint8_t device_address, uint8_t register_address)
       : I2CRegister(device_address, register_address) {}
 };
@@ -1972,11 +1972,11 @@ struct Ctrl : public I2CRegister {
     LsMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const EnableMask kEnableMask;
-  static const StbyMask kStbyMask;
-  static const OmodeMask kOmodeMask;
-  static const LPwrMask kLPwrMask;
-  static const LsMask kLsMask;
+  static inline const EnableMask kEnableMask{BITS_0};
+  static inline const StbyMask kStbyMask{BITS_1};
+  static inline const OmodeMask kOmodeMask{BITS_2};
+  static inline const LPwrMask kLPwrMask{BITS_3};
+  static inline const LsMask kLsMask{BITS_4};
 
   Ctrl(uint8_t device_address, uint8_t register_address)
       : I2CRegister(device_address, register_address) {}
@@ -2041,7 +2041,7 @@ struct PwrDnSeq : public I2CRegister {
     PwrDnSeqMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const PwrDnSeqMask kPwrDnSeqMask;
+  static inline const PwrDnSeqMask kPwrDnSeqMask{BITS_2_1_0};
   PwrDnSeq(uint8_t device_address, uint8_t register_address)
       : I2CRegister(device_address, register_address) {}
 };
@@ -2131,9 +2131,9 @@ struct SwIntStat0 : public I2CRegister {
     Sw3LsIMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Sw1LsIMask kSw1LsIMask;
-  static const Sw2LsIMask kSw2LsIMask;
-  static const Sw3LsIMask kSw3LsIMask;
+  static inline const Sw1LsIMask kSw1LsIMask{BITS_0};
+  static inline const Sw2LsIMask kSw2LsIMask{BITS_1};
+  static inline const Sw3LsIMask kSw3LsIMask{BITS_2};
 
   SwIntStat0(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -2157,9 +2157,9 @@ struct SwIntMask0 : public I2CRegister {
     Sw3LsMMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Sw1LsMMask kSw1LsMMask;
-  static const Sw2LsMMask kSw2LsMMask;
-  static const Sw3LsMMask kSw3LsMMask;
+  static inline const Sw1LsMMask kSw1LsMMask{BITS_0};
+  static inline const Sw2LsMMask kSw2LsMMask{BITS_1};
+  static inline const Sw3LsMMask kSw3LsMMask{BITS_2};
 
   SwIntMask0(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -2183,9 +2183,9 @@ struct SwIntSense0 : public I2CRegister {
     Sw3LsSMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Sw1LsSMask kSw1LsSMask;
-  static const Sw2LsSMask kSw2LsSMask;
-  static const Sw3LsSMask kSw3LsSMask;
+  static inline const Sw1LsSMask kSw1LsSMask{BITS_0};
+  static inline const Sw2LsSMask kSw2LsSMask{BITS_1};
+  static inline const Sw3LsSMask kSw3LsSMask{BITS_2};
 
   SwIntSense0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -2210,9 +2210,9 @@ struct SwIntStat1 : public I2CRegister {
     Sw3HsIMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Sw1HsIMask kSw1HsIMask;
-  static const Sw2HsIMask kSw2HsIMask;
-  static const Sw3HsIMask kSw3HsIMask;
+  static inline const Sw1HsIMask kSw1HsIMask{BITS_0};
+  static inline const Sw2HsIMask kSw2HsIMask{BITS_1};
+  static inline const Sw3HsIMask kSw3HsIMask{BITS_2};
 
   SwIntStat1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -2236,9 +2236,9 @@ struct SwIntMask1 : public I2CRegister {
     Sw3HsMMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Sw1HsMMask kSw1HsMMask;
-  static const Sw2HsMMask kSw2HsMMask;
-  static const Sw3HsMMask kSw3HsMMask;
+  static inline const Sw1HsMMask kSw1HsMMask{BITS_0};
+  static inline const Sw2HsMMask kSw2HsMMask{BITS_1};
+  static inline const Sw3HsMMask kSw3HsMMask{BITS_2};
 
   SwIntMask1(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -2262,9 +2262,9 @@ struct SwIntSense1 : public I2CRegister {
     Sw3HsSMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Sw1HsSMask kSw1HsSMask;
-  static const Sw2HsSMask kSw2HsSMask;
-  static const Sw3HsSMask kSw3HsSMask;
+  static inline const Sw1HsSMask kSw1HsSMask{BITS_0};
+  static inline const Sw2HsSMask kSw2HsSMask{BITS_1};
+  static inline const Sw3HsSMask kSw3HsSMask{BITS_2};
 
   SwIntSense1(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -2290,9 +2290,9 @@ struct SwIntStat2 : public I2CRegister {
     Sw3DvsDoneIMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Sw1DvsDoneIMask kSw1DvsDoneIMask;
-  static const Sw2DvsDoneIMask kSw2DvsDoneIMask;
-  static const Sw3DvsDoneIMask kSw3DvsDoneIMask;
+  static inline const Sw1DvsDoneIMask kSw1DvsDoneIMask{BITS_0};
+  static inline const Sw2DvsDoneIMask kSw2DvsDoneIMask{BITS_1};
+  static inline const Sw3DvsDoneIMask kSw3DvsDoneIMask{BITS_2};
 
   SwIntStat2(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -2316,9 +2316,9 @@ struct SwIntMask2 : public I2CRegister {
     Sw3DvsDoneMMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Sw1DvsDoneMMask kSw1DvsDoneMMask;
-  static const Sw2DvsDoneMMask kSw2DvsDoneMMask;
-  static const Sw3DvsDoneMMask kSw3DvsDoneMMask;
+  static inline const Sw1DvsDoneMMask kSw1DvsDoneMMask{BITS_0};
+  static inline const Sw2DvsDoneMMask kSw2DvsDoneMMask{BITS_1};
+  static inline const Sw3DvsDoneMMask kSw3DvsDoneMMask{BITS_2};
 
   SwIntMask2(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
@@ -2342,9 +2342,9 @@ struct SwIntSense2 : public I2CRegister {
     Sw3DvsDoneSMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const Sw1DvsDoneSMask kSw1DvsDoneSMask;
-  static const Sw2DvsDoneSMask kSw2DvsDoneSMask;
-  static const Sw3DvsDoneSMask kSw3DvsDoneSMask;
+  static inline const Sw1DvsDoneSMask kSw1DvsDoneSMask{BITS_0};
+  static inline const Sw2DvsDoneSMask kSw2DvsDoneSMask{BITS_1};
+  static inline const Sw3DvsDoneSMask kSw3DvsDoneSMask{BITS_2};
 
   SwIntSense2(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
@@ -2493,7 +2493,7 @@ struct Volt : public I2CRegister {
   struct VoltMask : public Mask {
     VoltMask(uint8_t mask) : Mask(mask) {}
   };
-  static const VoltMask kVoltMask;
+  static inline const VoltMask kVoltMask{BITS_5_4_3_2_1_0};
   Volt(uint8_t device_address, uint8_t register_address)
       : I2CRegister(device_address, register_address) {}
 };
@@ -2502,7 +2502,7 @@ struct StbyVolt : public I2CRegister {
   struct StbyVoltMask : public Mask {
     StbyVoltMask(uint8_t mask) : Mask(mask) {}
   };
-  static const StbyVoltMask kStbyVoltMask;
+  static inline const StbyVoltMask kStbyVoltMask{BITS_5_4_3_2_1_0};
   StbyVolt(uint8_t device_address, uint8_t register_address)
       : I2CRegister(device_address, register_address) {}
 };
@@ -2510,7 +2510,7 @@ struct SlpVolt : public I2CRegister {
   struct SlpVoltMask : public Mask {
     SlpVoltMask(uint8_t mask) : Mask(mask) {}
   };
-  static const SlpVoltMask kSlpVoltMask;
+  static inline const SlpVoltMask kSlpVoltMask{BITS_5_4_3_2_1_0};
   SlpVolt(uint8_t device_address, uint8_t register_address)
       : I2CRegister(device_address, register_address) {}
 };
