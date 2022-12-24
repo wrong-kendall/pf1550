@@ -1,5 +1,8 @@
 #pragma once
 #include <inttypes.h>
+// TODO(kendall): Find a better place for this. Also rename it to
+// SPECIFIC_CHARGER_REGISTERS_OFFSET
+static inline const uint8_t SPECIFIC_REGISTER_OFFSET = 0x80;
 // clang-format off
 static inline const uint8_t BITS_NONE =            0b00000000;
 static inline const uint8_t BITS_0 =               0b00000001;
