@@ -10,35 +10,11 @@ public:
   const uint8_t kDeviceAddress;
   const uint8_t kRegisterAddress;
 
-  uint8_t ReadRegister() {
-    return I2CRegister::ReadRegister(kDeviceAddress, kRegisterAddress);
-  }
-
-  bool WriteRegister(uint8_t data) {
-    return I2CRegister::WriteRegister(kDeviceAddress, kRegisterAddress, data);
-  }
-
-  // TODO(kendall): These should be in the cpp file.
-  inline uint8_t ReadRegister(uint8_t device_address,
-                              uint8_t register_address) {
-    Wire.beginTransmission(kDeviceAddress);
-    Wire.write(kRegisterAddress);
-    Wire.endTransmission(false);
-    Wire.requestFrom(kDeviceAddress, 1);
-    uint8_t register_data = 0;
-    if (Wire.available()) {
-      register_data = Wire.read();
-    }
-    return register_data;
-  }
+  inline uint8_t ReadRegister(uint8_t device_address, uint8_t register_address);
   inline bool WriteRegister(uint8_t device_address, uint8_t register_address,
-                            uint8_t data) {
-    Wire.beginTransmission(kDeviceAddress);
-    Wire.write(kRegisterAddress);
-    Wire.write(data);
-    Wire.endTransmission();
-    return true;
-  }
+                            uint8_t data);
+  uint8_t ReadRegister();
+  bool WriteRegister(uint8_t data);
 
 public:
   I2CRegister(uint8_t device_address, uint8_t register_address)
@@ -323,67 +299,20 @@ struct OnkeyIntStat0 : public I2CRegister {
   OnkeyIntStat0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
-  bool AnyOnkeyActive() {
-    auto register_data = ReadRegister();
-    // If any bit is set, return true;
-    return register_data > 0;
-  }
-  void ClearAllOnkey() { WriteRegister(0x0); }
-  void ClearOnkeyPushI() {
-    auto register_data = ReadRegister();
-    auto data =
-        (register_data | (kOnkeyPushIMask.kMask & kOnkeyPushIMask.CLEARED));
-    WriteRegister(data);
-  }
-  bool OnkeyPushIActive() {
-    auto register_data = ReadRegister();
-    return (register_data & kOnkeyPushIMask.kMask) == kOnkeyPushIMask.ACTIVE;
-  }
-  void ClearOnkey1SIActive() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey1SIMask.kMask & kOnkey1SIMask.CLEARED));
-    WriteRegister(data);
-  }
-  bool Onkey1SIActive() {
-    auto register_data = ReadRegister();
-    return (register_data & kOnkey1SIMask.kMask) == kOnkey1SIMask.ACTIVE;
-  }
-  void ClearOnkey2SIActive() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey2SIMask.kMask & kOnkey2SIMask.CLEARED));
-    WriteRegister(data);
-  }
-  bool Onkey2SIActive() {
-    auto register_data = ReadRegister();
-    return (register_data & kOnkey2SIMask.kMask) == kOnkey2SIMask.ACTIVE;
-  }
-  void ClearOnkey3SI() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey3SIMask.kMask & kOnkey3SIMask.CLEARED));
-    WriteRegister(data);
-  }
-  bool Onkey3SIActive() {
-    auto register_data = ReadRegister();
-    return (register_data & kOnkey3SIMask.kMask) == kOnkey3SIMask.ACTIVE;
-  }
-  void ClearOnkey4SIActive() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey4SIMask.kMask & kOnkey4SIMask.CLEARED));
-    WriteRegister(data);
-  }
-  bool Onkey4SIActive() {
-    auto register_data = ReadRegister();
-    return (register_data & kOnkey4SIMask.kMask) == kOnkey4SIMask.ACTIVE;
-  }
-  void ClearOnkey8SI() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey8SIMask.kMask & kOnkey8SIMask.CLEARED));
-    WriteRegister(data);
-  }
-  bool Onkey8SIActive() {
-    auto register_data = ReadRegister();
-    return (register_data & kOnkey8SIMask.kMask) == kOnkey4SIMask.ACTIVE;
-  }
+  bool AnyOnkeyActive();
+  void ClearAllOnkey();
+  void ClearOnkeyPushI();
+  bool OnkeyPushIActive();
+  void ClearOnkey1SIActive();
+  bool Onkey1SIActive();
+  void ClearOnkey2SIActive();
+  bool Onkey2SIActive();
+  void ClearOnkey3SI();
+  bool Onkey3SIActive();
+  void ClearOnkey4SIActive();
+  bool Onkey4SIActive();
+  void ClearOnkey8SI();
+  bool Onkey8SIActive();
 
 private:
   static inline const uint8_t kRegister = 0x24;
@@ -429,68 +358,18 @@ struct OnkeyIntMask0 : public I2CRegister {
   OnkeyIntMask0(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
 
-  void OnkeyPushMEnable() {
-    auto register_data = ReadRegister();
-    auto data =
-        (register_data | (kOnkeyPushMMask.kMask & kOnkeyPushMMask.ENABLED));
-    WriteRegister(data);
-  }
-  void OnkeyPushMRemove() {
-    auto register_data = ReadRegister();
-    auto data =
-        (register_data | (kOnkeyPushMMask.kMask & kOnkeyPushMMask.REMOVED));
-    WriteRegister(data);
-  }
-  void Onkey1SMEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey1SMMask.kMask & kOnkey1SMMask.ENABLED));
-    WriteRegister(data);
-  }
-  void Onkey1SMRemove() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey1SMMask.kMask & kOnkey1SMMask.REMOVED));
-    WriteRegister(data);
-  }
-  void Onkey2SMEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey2SMMask.kMask & kOnkey2SMMask.ENABLED));
-    WriteRegister(data);
-  }
-  void Onkey2SMRemove() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey2SMMask.kMask & kOnkey2SMMask.REMOVED));
-    WriteRegister(data);
-  }
-  void Onkey3SMEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey3SMMask.kMask & kOnkey3SMMask.ENABLED));
-    WriteRegister(data);
-  }
-  void Onkey3SMRemove() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey3SMMask.kMask & kOnkey3SMMask.REMOVED));
-    WriteRegister(data);
-  }
-  void Onkey4SMEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey4SMMask.kMask & kOnkey4SMMask.ENABLED));
-    WriteRegister(data);
-  }
-  void Onkey4SMRemove() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey4SMMask.kMask & kOnkey4SMMask.REMOVED));
-    WriteRegister(data);
-  }
-  void Onkey8SMEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey8SMMask.kMask & kOnkey8SMMask.ENABLED));
-    WriteRegister(data);
-  }
-  void Onkey8SMRemove() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOnkey8SMMask.kMask & kOnkey8SMMask.REMOVED));
-    WriteRegister(data);
-  }
+  void OnkeyPushMEnable();
+  void OnkeyPushMRemove();
+  void Onkey1SMEnable();
+  void Onkey1SMRemove();
+  void Onkey2SMEnable();
+  void Onkey2SMRemove();
+  void Onkey3SMEnable();
+  void Onkey3SMRemove();
+  void Onkey4SMEnable();
+  void Onkey4SMRemove();
+  void Onkey8SMEnable();
+  void Onkey8SMRemove();
 
 private:
   static inline const uint8_t kRegister = 0x25;
@@ -683,17 +562,9 @@ struct CoincellControl : public I2CRegister {
   static inline const ChEnMask kChEnMask{BITS_4};
   CoincellControl(uint8_t device_address)
       : I2CRegister(device_address, kRegister) {}
-  void VCoin(uint8_t voltage) { WriteRegister(voltage); }
-  void ChEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kChEnMask.kMask & kChEnMask.ENABLED));
-    WriteRegister(data);
-  }
-  void ChDisable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kChEnMask.kMask & kChEnMask.DISABLED));
-    WriteRegister(data);
-  }
+  void VCoin(uint8_t voltage);
+  void ChEnable();
+  void ChDisable();
 
 private:
   static inline const uint8_t kRegister = 0x30;
@@ -1800,19 +1671,8 @@ struct Pwrctrl3 : public I2CRegister {
 
   Pwrctrl3(uint8_t device_address) : I2CRegister(device_address, kRegister) {}
 
-  void GotoShip() {
-    auto register_data = ReadRegister();
-    auto data =
-        (register_data | (kGotoShipMask.kMask & kGotoShipMask.GOTO_SHIP_EN));
-    WriteRegister(data);
-  }
-
-  void CoreOff() {
-    auto register_data = ReadRegister();
-    auto data = (register_data |
-                 (kGotoCoreOffMask.kMask & kGotoCoreOffMask.GOTO_CORE_OFF_EN));
-    WriteRegister(data);
-  }
+  void GotoShip();
+  void CoreOff();
 
 private:
   static inline const uint8_t kRegister = 0x5B;
@@ -1980,61 +1840,16 @@ struct Ctrl : public I2CRegister {
 
   Ctrl(uint8_t device_address, uint8_t register_address)
       : I2CRegister(device_address, register_address) {}
-  void Enable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kEnableMask.kMask & kEnableMask.ENABLED));
-    WriteRegister(data);
-  }
-  void Disable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kEnableMask.kMask & kEnableMask.DISABLED));
-    WriteRegister(data);
-  }
-  void StbyEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kStbyMask.kMask & kStbyMask.ENABLED));
-    WriteRegister(data);
-  }
-  void StbyDisable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kStbyMask.kMask & kStbyMask.DISABLED));
-    WriteRegister(data);
-  }
-  void OmodeEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOmodeMask.kMask & kOmodeMask.ENABLED));
-    WriteRegister(data);
-  }
-
-  void OmodeDisable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOmodeMask.kMask & kOmodeMask.DISABLED));
-    WriteRegister(data);
-  }
-
-  void ForceLPwr() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kLPwrMask.kMask & kLPwrMask.IN_SLP_AND_STBY));
-    WriteRegister(data);
-  }
-
-  void DisableLPwr() {
-    auto register_data = ReadRegister();
-    auto data =
-        (register_data | (kLPwrMask.kMask & kLPwrMask.NOT_IN_SLP_AND_STBY));
-    WriteRegister(data);
-  }
-  void LdoMode() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kLsMask.kMask & kLsMask.LDO_MODE));
-    WriteRegister(data);
-  }
-
-  void SwMode() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kLsMask.kMask & kLsMask.SWITCH_MODE));
-    WriteRegister(data);
-  }
+  void Enable();
+  void Disable();
+  void StbyEnable();
+  void StbyDisable();
+  void OmodeEnable();
+  void OmodeDisable();
+  void ForceLPwr();
+  void DisableLPwr();
+  void LdoMode();
+  void SwMode();
 };
 struct PwrDnSeq : public I2CRegister {
   struct PwrDnSeqMask : public Mask {
@@ -2559,99 +2374,32 @@ struct Ctrl : public I2CRegister {
     RDisMask(uint8_t mask) : Mask(mask) {}
   };
 
-  static const EnableMask kEnableMask;
-  static const StbyMask kStbyMask;
-  static const OmodeMask kOmodeMask;
-  static const LPwrMask kLPwrMask;
-  static const DvsSpeedMask kDvsSpeedMask;
-  static const FPwmInDvsMask kFPwmInDvsMask;
-  static const FPwmMask kFPwmMask;
-  static const RDisMask kRDisMask;
+  static inline const EnableMask kEnableMask{BITS_0};
+  static inline const StbyMask kStbyMask{BITS_1};
+  static inline const OmodeMask kOmodeMask{BITS_2};
+  static inline const LPwrMask kLPwrMask{BITS_3};
+  static inline const DvsSpeedMask kDvsSpeedMask{BITS_4};
+  static inline const FPwmInDvsMask kFPwmInDvsMask{BITS_5};
+  static inline const FPwmMask kFPwmMask{BITS_6};
+  static inline const RDisMask kRDisMask{BITS_7};
   Ctrl(uint8_t device_address, uint8_t register_address)
       : I2CRegister(device_address, register_address) {}
-  void Enable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kEnableMask.kMask & kEnableMask.ENABLED));
-    WriteRegister(data);
-  }
-  void Disable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kEnableMask.kMask & kEnableMask.DISABLED));
-    WriteRegister(data);
-  }
-  void StbyEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kStbyMask.kMask & kStbyMask.ENABLED));
-    WriteRegister(data);
-  }
-  void StbyDisable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kStbyMask.kMask & kStbyMask.DISABLED));
-    WriteRegister(data);
-  }
-  void OmodeEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOmodeMask.kMask & kOmodeMask.ENABLED));
-    WriteRegister(data);
-  }
-  void OmodeDisable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kOmodeMask.kMask & kOmodeMask.DISABLED));
-    WriteRegister(data);
-  }
-  void LPwrEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kLPwrMask.kMask & kLPwrMask.ENABLED));
-    WriteRegister(data);
-  }
-  void LPwrDisable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kLPwrMask.kMask & kLPwrMask.DISABLED));
-    WriteRegister(data);
-  }
-  void DvsSpeed2us() {
-    auto register_data = ReadRegister();
-    auto data =
-        (register_data | (kDvsSpeedMask.kMask & kDvsSpeedMask._12_5MV_DIV_2US));
-    WriteRegister(data);
-  }
-  void DvsSpeed4us() {
-    auto register_data = ReadRegister();
-    auto data =
-        (register_data | (kDvsSpeedMask.kMask & kDvsSpeedMask._12_5MV_DIV_4US));
-    WriteRegister(data);
-  }
-  void FPwmInDvsForce() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kFPwmInDvsMask.kMask & kFPwmInDvsMask.FORCE));
-    WriteRegister(data);
-  }
-  void FPwmInDvsNoForce() {
-    auto register_data = ReadRegister();
-    auto data =
-        (register_data | (kFPwmInDvsMask.kMask & kFPwmInDvsMask.NO_FORCE));
-    WriteRegister(data);
-  }
-  void FPwmEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kFPwmMask.kMask & kFPwmMask.FPWM_ON));
-    WriteRegister(data);
-  }
-  void FPwmDisable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kFPwmMask.kMask & kFPwmMask.NO_FPWM));
-    WriteRegister(data);
-  }
-  void RDisEnable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kRDisMask.kMask & kRDisMask.ENABLED));
-    WriteRegister(data);
-  }
-  void RDisDisable() {
-    auto register_data = ReadRegister();
-    auto data = (register_data | (kRDisMask.kMask & kRDisMask.DISABLED));
-    WriteRegister(data);
-  }
+  void Enable();
+  void Disable();
+  void StbyEnable();
+  void StbyDisable();
+  void OmodeEnable();
+  void OmodeDisable();
+  void LPwrEnable();
+  void LPwrDisable();
+  void DvsSpeed2us();
+  void DvsSpeed4us();
+  void FPwmInDvsForce();
+  void FPwmInDvsNoForce();
+  void FPwmEnable();
+  void FPwmDisable();
+  void RDisEnable();
+  void RDisDisable();
 };
 struct Ctrl1 : public I2CRegister {
   struct ILimMask : public Mask {
@@ -2805,8 +2553,6 @@ private:
 } // namespace Sw3
 // end of Swx.h
 
-// TODO(kendall): Ask if he wants attribution
-// Below is courtesy of ...
 constexpr int count_first_falses() { return 0; }
 template <typename... B> constexpr int count_first_falses(bool b1, B... b) {
   if (b1)
