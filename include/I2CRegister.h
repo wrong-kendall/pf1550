@@ -1,5 +1,10 @@
 #pragma once
 #include <Arduino.h>
+// TODO(kendall): Figure out if this can be removed. Without this, Wire.h is not
+// included in real builds but is in tests because ArduinoFake adds it.
+#ifndef Wire
+#include <Wire.h>
+#endif
 namespace PMIC {
 class I2CRegister {
 public:
