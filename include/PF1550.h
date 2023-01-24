@@ -9,12 +9,12 @@
 
 namespace PMIC {
 
-constexpr int count_first_falses() { return 0; }
-template <typename... B> constexpr int count_first_falses(bool b1, B... b) {
+constexpr int CountFirstFalses() { return 0; }
+template <typename... B> constexpr int CountFirstFalses(bool b1, B... b) {
   if (b1)
     return 0;
   else
-    return 1 + count_first_falses(b...);
+    return 1 + CountFirstFalses(b...);
 }
 
 template <class... Registers> class PF1550 {
@@ -23,8 +23,8 @@ public:
   PF1550(uint8_t device_address = I2cAddr::kAddrMask.I2C_ADDR_DEFAULT)
       : registers_(Registers(device_address)...) {}
 
-  template <typename R> decltype(auto) get_register() {
-    return std::get<count_first_falses((std::is_same<Registers, R>::value)...)>(
+  template <typename R> decltype(auto) GetRegister() {
+    return std::get<CountFirstFalses((std::is_same<Registers, R>::value)...)>(
         registers_);
   }
 
