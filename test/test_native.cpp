@@ -134,20 +134,17 @@ struct PF1550Test {
 
   static void test_SwIntSense2_address() {
     PF1550<SwIntSense2> pf1550(0x08);
-    TEST_ASSERT_EQUAL(0x10,
-                      pf1550.GetRegister<SwIntSense2>().kRegisterAddress);
+    TEST_ASSERT_EQUAL(0x10, pf1550.GetRegister<SwIntSense2>().kRegisterAddress);
   }
 
   static void test_LdoIntStat0_address() {
     PF1550<LdoIntStat0> pf1550(0x08);
-    TEST_ASSERT_EQUAL(0x18,
-                      pf1550.GetRegister<LdoIntStat0>().kRegisterAddress);
+    TEST_ASSERT_EQUAL(0x18, pf1550.GetRegister<LdoIntStat0>().kRegisterAddress);
   }
 
   static void test_LdoIntMask0_address() {
     PF1550<LdoIntMask0> pf1550(0x08);
-    TEST_ASSERT_EQUAL(0x19,
-                      pf1550.GetRegister<LdoIntMask0>().kRegisterAddress);
+    TEST_ASSERT_EQUAL(0x19, pf1550.GetRegister<LdoIntMask0>().kRegisterAddress);
   }
 
   static void test_LdoIntSense0_address() {
@@ -304,8 +301,7 @@ struct PF1550Test {
 
   static void test_VrefddrCtrl_address() {
     PF1550<VrefddrCtrl> pf1550(0x08);
-    TEST_ASSERT_EQUAL(0x4a,
-                      pf1550.GetRegister<VrefddrCtrl>().kRegisterAddress);
+    TEST_ASSERT_EQUAL(0x4a, pf1550.GetRegister<VrefddrCtrl>().kRegisterAddress);
   }
 
   static void test_Ldo1Volt_address() {
@@ -461,8 +457,7 @@ struct PF1550Test {
 
   static void test_ChgCurrCnfg_address() {
     PF1550<ChgCurrCnfg> pf1550(0x08);
-    TEST_ASSERT_EQUAL(0x8e,
-                      pf1550.GetRegister<ChgCurrCnfg>().kRegisterAddress);
+    TEST_ASSERT_EQUAL(0x8e, pf1550.GetRegister<ChgCurrCnfg>().kRegisterAddress);
   }
 
   static void test_BattReg_address() {
@@ -602,6 +597,35 @@ struct PF1550Test {
     Verify(OverloadedMethod(ArduinoFake(Wire), endTransmission, uint8_t(void)))
         .Exactly(1);
   }
+  static void test_LdoyCtrl() {
+    uint8_t device_address = 0x08;
+    uint8_t register_data = 0b00000011; // VoltEnable and StbyVoltEnable
+    When(OverloadedMethod(ArduinoFake(Wire), begin, void(void))).AlwaysReturn();
+    When(OverloadedMethod(ArduinoFake(Wire), beginTransmission, void(uint8_t)))
+        .AlwaysReturn();
+    When(OverloadedMethod(ArduinoFake(Wire), write, size_t(uint8_t)))
+        .AlwaysReturn(true);
+    When(OverloadedMethod(ArduinoFake(Wire), endTransmission, uint8_t(bool)))
+        .AlwaysReturn(0);
+    When(OverloadedMethod(ArduinoFake(Wire), endTransmission, uint8_t(void)))
+        .AlwaysReturn(0);
+    When(OverloadedMethod(ArduinoFake(Wire), requestFrom,
+                          uint8_t(uint8_t, uint8_t)))
+        .AlwaysReturn(0);
+    When(OverloadedMethod(ArduinoFake(Wire), available, int(void)))
+        .AlwaysReturn(1);
+    When(OverloadedMethod(ArduinoFake(Wire), read, int(void)))
+        .Return(register_data);
+
+    PF1550<Ldo1::Ctrl> pf1550(device_address);
+    pf1550.Initialize();
+    pf1550.GetRegister<Ldo1::Ctrl>().Disable();
+    uint8_t expected_register_write =
+        0b00000010; // Only the last bit should be cleared
+    Verify(OverloadedMethod(ArduinoFake(Wire), write, size_t(uint8_t))
+               .Using(expected_register_write))
+        .Exactly(1);
+  }
 };
 } // namespace PMIC
 
@@ -696,6 +720,7 @@ int main(int argc, char **argv) {
   RUN_TEST(pf1550_test.test_LedCnfg_address);
   RUN_TEST(pf1550_test.test_ReadRegister);
   RUN_TEST(pf1550_test.test_WriteRegister);
+  RUN_TEST(pf1550_test.test_LdoyCtrl);
   UNITY_END();
 }
 #endif
