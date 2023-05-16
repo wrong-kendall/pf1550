@@ -626,6 +626,30 @@ struct PF1550Test {
                .Using(expected_register_write))
         .Exactly(1);
   }
+  static void test_ChgIntOkIsCharging() {
+    uint8_t device_address = 0x08;
+    uint8_t register_data = 0b00001000; // VoltEnable and StbyVoltEnable
+    When(OverloadedMethod(ArduinoFake(Wire), begin, void(void))).AlwaysReturn();
+    When(OverloadedMethod(ArduinoFake(Wire), beginTransmission, void(uint8_t)))
+        .AlwaysReturn();
+    When(OverloadedMethod(ArduinoFake(Wire), write, size_t(uint8_t)))
+        .AlwaysReturn(true);
+    When(OverloadedMethod(ArduinoFake(Wire), endTransmission, uint8_t(bool)))
+        .AlwaysReturn(0);
+    When(OverloadedMethod(ArduinoFake(Wire), endTransmission, uint8_t(void)))
+        .AlwaysReturn(0);
+    When(OverloadedMethod(ArduinoFake(Wire), requestFrom,
+                          uint8_t(uint8_t, uint8_t)))
+        .AlwaysReturn(0);
+    When(OverloadedMethod(ArduinoFake(Wire), available, int(void)))
+        .AlwaysReturn(1);
+    When(OverloadedMethod(ArduinoFake(Wire), read, int(void)))
+        .Return(register_data);
+
+    PF1550<ChgIntOk> pf1550(device_address);
+    pf1550.Initialize();
+    TEST_ASSERT_EQUAL(true, pf1550.GetRegister<ChgIntOk>().IsCharging());
+  }
 };
 } // namespace PMIC
 
@@ -721,6 +745,7 @@ int main(int argc, char **argv) {
   RUN_TEST(pf1550_test.test_ReadRegister);
   RUN_TEST(pf1550_test.test_WriteRegister);
   RUN_TEST(pf1550_test.test_LdoyCtrl);
+  RUN_TEST(pf1550_test.test_ChgIntOkIsCharging);
   UNITY_END();
 }
 #endif
